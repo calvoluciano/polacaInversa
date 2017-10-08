@@ -10,11 +10,21 @@ using System.Windows.Forms;
 
 namespace PagoAgilFrba
 {
-    public partial class Form1 : Form
+    public partial class Usuario : Form
     {
-        public Form1()
+        public Usuario()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
