@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace PagoAgilFrba.AbmCliente
 {
-    public partial class Form1 : Form
+    public partial class SeleccionarClienteForm : Form
     {
-        public Form1()
+        public SeleccionarClienteForm()
         {
             InitializeComponent();
+        }
+
+        private void SeleccionarClienteForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
