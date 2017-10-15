@@ -48,7 +48,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,11 +61,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbmCliente\Form1.cs">
+    <Compile Include="AbmCliente\ABMClienteForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AbmCliente\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="AbmCliente\ABMClienteForm.Designer.cs">
+      <DependentUpon>ABMClienteForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmCliente\TablaClienteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmCliente\TablaClienteForm.Designer.cs">
+      <DependentUpon>TablaClienteForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmCliente\EditarClienteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmCliente\EditarClienteForm.Designer.cs">
+      <DependentUpon>EditarClienteForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmCliente\SeleccionarClienteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmCliente\SeleccionarClienteForm.Designer.cs">
+      <DependentUpon>SeleccionarClienteForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmCliente\NuevoClienteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmCliente\NuevoClienteForm.Designer.cs">
+      <DependentUpon>NuevoClienteForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AbmEmpresa\Form1.cs">
       <SubType>Form</SubType>
@@ -89,11 +115,33 @@
     <Compile Include="AbmSucursal\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Usuario.cs">
+    <Compile Include="Modelo\ReturnForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Usuario.Designer.cs">
-      <DependentUpon>Usuario.cs</DependentUpon>
+    <Compile Include="Modelo\ReturnForm.Designer.cs">
+      <DependentUpon>ReturnForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Rol.cs" />
+    <Compile Include="Modelo\Error.cs" />
+    <Compile Include="Modelo\Usuario.cs" />
+    <Compile Include="Modelo\DB.cs" />
+    <Compile Include="SeleccionarFuncionalidad\SeleccionarFuncionalidadForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SeleccionarFuncionalidad\SeleccionarFuncionalidadForm.Designer.cs">
+      <DependentUpon>SeleccionarFuncionalidadForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SeleccionarRol\SeleccionarRolForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SeleccionarRol\SeleccionarRolForm.Designer.cs">
+      <DependentUpon>SeleccionarRolForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsuarioForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UsuarioForm.Designer.cs">
+      <DependentUpon>UsuarioForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ListadoEstadistico\Form1.cs">
       <SubType>Form</SubType>
@@ -115,11 +163,32 @@
     <Compile Include="Rendicion\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AbmCliente\ABMClienteForm.resx">
+      <DependentUpon>ABMClienteForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmCliente\TablaClienteForm.resx">
+      <DependentUpon>TablaClienteForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmCliente\EditarClienteForm.resx">
+      <DependentUpon>EditarClienteForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmCliente\SeleccionarClienteForm.resx">
+      <DependentUpon>SeleccionarClienteForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmCliente\NuevoClienteForm.resx">
+      <DependentUpon>NuevoClienteForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AbmSucursal\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Usuario.resx">
-      <DependentUpon>Usuario.cs</DependentUpon>
+    <EmbeddedResource Include="SeleccionarFuncionalidad\SeleccionarFuncionalidadForm.resx">
+      <DependentUpon>SeleccionarFuncionalidadForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SeleccionarRol\SeleccionarRolForm.resx">
+      <DependentUpon>SeleccionarRolForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsuarioForm.resx">
+      <DependentUpon>UsuarioForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListadoEstadistico\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -163,6 +232,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
