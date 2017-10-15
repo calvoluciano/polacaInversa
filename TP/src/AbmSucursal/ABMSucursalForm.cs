@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PagoAgilFrba.ListadoEstadistico
+namespace PagoAgilFrba.AbmSucursal
 {
-    public partial class Form1 : Form
+    public partial class ABMSucursalForm : Form
     {
-        public Form1()
+        public ABMSucursalForm()
         {
             InitializeComponent();
         }

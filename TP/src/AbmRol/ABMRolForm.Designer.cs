@@ -1,6 +1,6 @@
-﻿namespace PagoAgilFrba.ListadoEstadistico
+﻿namespace PagoAgilFrba.AbmRol
 {
-    partial class Form1
+    partial class ABMRolForm
     {
         /// <summary>
         /// Required designer variable.

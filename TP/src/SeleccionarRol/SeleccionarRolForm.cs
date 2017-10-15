@@ -1,4 +1,5 @@
 ﻿using PagoAgilFrba.Modelo;
+using PagoAgilFrba.SeleccionarFuncionalidad;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,13 +24,23 @@ namespace PagoAgilFrba.SeleccionarRol
 
         public override void Refrescar()
         {
-            //comboBoxRoles.Items.Clear();                                    // saco los items del combobox
-            //Usuario.getRoles().ForEach(r => comboBoxRoles.Items.Add(r));    // obtengo y agrego los nuevos
+            comboBox1.Items.Clear();                                    // saco los items del combobox
+            Usuario.getRoles().ForEach(r => comboBox1.Items.Add(r));    // obtengo y agrego los nuevos
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void buttonAceptar_Click(object sender, EventArgs e)
         {
-
+            if (comboBox1.SelectedItem != null)
+            {   // si hay un rol seleccionado...
+                Rol.rolSeleccionado = (Rol)comboBox1.SelectedItem;
+                new SeleccionarFuncionalidadForm(this).abrir();     // lo elijo y busco sus funcionalidades
+            }
         }
+
+        private void buttonCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
     }
 }

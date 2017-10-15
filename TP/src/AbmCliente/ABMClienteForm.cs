@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagoAgilFrba.Modelo;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,14 +13,10 @@ namespace PagoAgilFrba.AbmCliente
 {
     public partial class ABMClienteForm : Form
     {
-        public ABMClienteForm()
+        public ABMClienteForm(ReturnForm caller)
         {
             InitializeComponent();
         }
 
-        private void ABMClienteForm_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

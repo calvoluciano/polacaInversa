@@ -1,6 +1,6 @@
-﻿namespace PagoAgilFrba.RegistroPago
+﻿namespace PagoAgilFrba.ListadoEstadistico
 {
-    partial class Form1
+    partial class ListadoEstadisticoForm
     {
         /// <summary>
         /// Required designer variable.

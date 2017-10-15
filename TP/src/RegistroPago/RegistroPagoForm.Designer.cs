@@ -1,6 +1,6 @@
-﻿namespace PagoAgilFrba.AbmEmpresa
+﻿namespace PagoAgilFrba.RegistroPago
 {
-    partial class Form1
+    partial class RegistroPagoForm
     {
         /// <summary>
         /// Required designer variable.

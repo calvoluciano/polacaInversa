@@ -31,5 +31,14 @@ namespace PagoAgilFrba.Modelo
             return nombre;
         }
 
+
+        public List<Acceso> getAccesos() // obtengo las funcionalidades de un rol
+        {
+            DataTable data = DB.correrFuncionDeTabla("ROL_GET_FUNCIONALIDADES", "rolId", id);
+
+            return data.AsEnumerable()
+                        .Select(fila => RepoAccesos.get((byte)fila["cod_func"]))
+                        .ToList();
+        }
     }
 }

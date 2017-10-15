@@ -85,6 +85,7 @@
             this.dni.Name = "dni";
             this.dni.Size = new System.Drawing.Size(197, 24);
             this.dni.TabIndex = 5;
+            this.dni.TextChanged += new System.EventHandler(this.dni_TextChanged);
             // 
             // apellido
             // 
@@ -94,6 +95,7 @@
             this.apellido.Name = "apellido";
             this.apellido.Size = new System.Drawing.Size(227, 24);
             this.apellido.TabIndex = 5;
+            this.apellido.TextChanged += new System.EventHandler(this.apellido_TextChanged);
             // 
             // nombre
             // 
@@ -103,6 +105,7 @@
             this.nombre.Name = "nombre";
             this.nombre.Size = new System.Drawing.Size(228, 24);
             this.nombre.TabIndex = 4;
+            this.nombre.TextChanged += new System.EventHandler(this.nombre_TextChanged);
             // 
             // label3
             // 
@@ -141,7 +144,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(746, 242);
             this.dataGridView1.TabIndex = 6;
             // 
-            // SeleccionarClienteForm
+            // TablaClienteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -150,9 +153,8 @@
             this.Controls.Add(this.buttonLimpiar);
             this.Controls.Add(this.buttonFiltrar);
             this.Controls.Add(this.groupBox1);
-            this.Name = "SeleccionarClienteForm";
+            this.Name = "TablaClienteForm";
             this.Text = "Tabla Clientes";
-            this.Load += new System.EventHandler(this.TablaClienteForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

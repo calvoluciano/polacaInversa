@@ -1,6 +1,6 @@
-﻿namespace PagoAgilFrba.AbmSucursal
+﻿namespace PagoAgilFrba.AbmFactura
 {
-    partial class Form1
+    partial class ABMFacturaForm
     {
         /// <summary>
         /// Required designer variable.

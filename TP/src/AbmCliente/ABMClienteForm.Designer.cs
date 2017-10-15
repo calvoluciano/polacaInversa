@@ -199,7 +199,6 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "ABMClienteForm";
             this.Text = "ABM Clientes";
-            this.Load += new System.EventHandler(this.ABMClienteForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

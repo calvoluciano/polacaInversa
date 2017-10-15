@@ -61,6 +61,7 @@
             this.buttonAancelar.Text = "Cancelar";
             this.buttonAancelar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonAancelar.UseVisualStyleBackColor = true;
+            this.buttonAancelar.Click += new System.EventHandler(this.buttonAancelar_Click);
             // 
             // buttonAceptar
             // 
@@ -71,6 +72,7 @@
             this.buttonAceptar.Text = "Aceptar";
             this.buttonAceptar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonAceptar.UseVisualStyleBackColor = true;
+            this.buttonAceptar.Click += new System.EventHandler(this.buttonAceptar_Click);
             // 
             // SeleccionarFuncionalidadForm
             // 
