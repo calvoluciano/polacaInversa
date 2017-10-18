@@ -115,6 +115,18 @@
     <Compile Include="AbmSucursal\ABMSucursalForm.Designer.cs">
       <DependentUpon>ABMSucursalForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AbmSucursal\EditarSucursalForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmSucursal\EditarSucursalForm.Designer.cs">
+      <DependentUpon>EditarSucursalForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmSucursal\NuevaSucursalForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmSucursal\NuevaSucursalForm.Designer.cs">
+      <DependentUpon>NuevaSucursalForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modelo\Acceso.cs" />
     <Compile Include="Modelo\Cliente.cs" />
     <Compile Include="Modelo\RepoAccesos.cs" />
@@ -126,6 +138,7 @@
     </Compile>
     <Compile Include="Modelo\Rol.cs" />
     <Compile Include="Modelo\Error.cs" />
+    <Compile Include="Modelo\Sucursal.cs" />
     <Compile Include="Modelo\Usuario.cs" />
     <Compile Include="Modelo\DB.cs" />
     <Compile Include="SeleccionarFuncionalidad\SeleccionarFuncionalidadForm.cs">
