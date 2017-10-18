@@ -141,6 +141,7 @@
     </Compile>
     <Compile Include="Modelo\Acceso.cs" />
     <Compile Include="Modelo\Cliente.cs" />
+    <Compile Include="Modelo\Exceptions\EmptyFieldException.cs" />
     <Compile Include="Modelo\RepoAccesos.cs" />
     <Compile Include="Modelo\ReturnForm.cs">
       <SubType>Form</SubType>
@@ -215,6 +216,9 @@
     <EmbeddedResource Include="AbmSucursal\NuevaSucursalForm.resx">
       <DependentUpon>NuevaSucursalForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AbmSucursal\SeleccionarSucursalForm.resx">
+      <DependentUpon>SeleccionarSucursalForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AbmSucursal\TablaSucursalForm.resx">
       <DependentUpon>TablaSucursalForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -269,9 +273,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Modelo\Exceptions\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

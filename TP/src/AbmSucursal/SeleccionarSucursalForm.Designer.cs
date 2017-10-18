@@ -28,11 +28,51 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "SeleccionarSucursalForm";
+            this.buttonSeleccionar = new System.Windows.Forms.Button();
+            this.buttonCancelar = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // buttonSeleccionar
+            // 
+            this.buttonSeleccionar.Location = new System.Drawing.Point(28, 406);
+            this.buttonSeleccionar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonSeleccionar.Name = "buttonSeleccionar";
+            this.buttonSeleccionar.Size = new System.Drawing.Size(100, 28);
+            this.buttonSeleccionar.TabIndex = 15;
+            this.buttonSeleccionar.Text = "Seleccionar";
+            this.buttonSeleccionar.UseVisualStyleBackColor = true;
+            this.buttonSeleccionar.Click += new System.EventHandler(this.buttonSeleccionar_Click);
+            // 
+            // buttonCancelar
+            // 
+            this.buttonCancelar.Location = new System.Drawing.Point(638, 406);
+            this.buttonCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonCancelar.Name = "buttonCancelar";
+            this.buttonCancelar.Size = new System.Drawing.Size(100, 28);
+            this.buttonCancelar.TabIndex = 16;
+            this.buttonCancelar.Text = "Cancelar";
+            this.buttonCancelar.UseVisualStyleBackColor = true;
+            this.buttonCancelar.Click += new System.EventHandler(this.buttonCancelar_Click);
+            // 
+            // SeleccionarSucursalForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.ClientSize = new System.Drawing.Size(775, 527);
+            this.Controls.Add(this.buttonCancelar);
+            this.Controls.Add(this.buttonSeleccionar);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MaximizeBox = false;
+            this.Name = "SeleccionarSucursalForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Seleccionar Sucursal";
+            this.Controls.SetChildIndex(this.buttonSeleccionar, 0);
+            this.Controls.SetChildIndex(this.buttonCancelar, 0);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+        private System.Windows.Forms.Button buttonSeleccionar;
+        private System.Windows.Forms.Button buttonCancelar;
     }
 }
