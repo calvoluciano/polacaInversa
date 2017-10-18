@@ -83,12 +83,13 @@
             // 
             // textBoxNombre
             // 
-            this.textBoxNombre.Location = new System.Drawing.Point(23, 69);
+            this.textBoxNombre.Location = new System.Drawing.Point(22, 157);
             this.textBoxNombre.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxNombre.Name = "textBoxNombre";
             this.textBoxNombre.ReadOnly = true;
             this.textBoxNombre.Size = new System.Drawing.Size(265, 22);
             this.textBoxNombre.TabIndex = 4;
+            this.textBoxNombre.TextChanged += new System.EventHandler(this.textBoxNombre_TextChanged);
             // 
             // textBoxDireccion
             // 
@@ -101,7 +102,7 @@
             // 
             // textBoxCodigoPostal
             // 
-            this.textBoxCodigoPostal.Location = new System.Drawing.Point(66, 147);
+            this.textBoxCodigoPostal.Location = new System.Drawing.Point(23, 70);
             this.textBoxCodigoPostal.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxCodigoPostal.Name = "textBoxCodigoPostal";
             this.textBoxCodigoPostal.Size = new System.Drawing.Size(132, 22);
