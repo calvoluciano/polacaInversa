@@ -85,6 +85,11 @@ namespace PagoAgilFrba.AbmSucursal
                 Direccion = seleccionado.direccion;           
             }*/
         }
+
+        private void textBoxNombre_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

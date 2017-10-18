@@ -64,5 +64,10 @@ namespace PagoAgilFrba.AbmSucursal
         {
 
         }
+
+        private void codigoPostal_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

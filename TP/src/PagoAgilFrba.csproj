@@ -209,8 +209,14 @@
     <EmbeddedResource Include="AbmSucursal\ABMSucursalForm.resx">
       <DependentUpon>ABMSucursalForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AbmSucursal\EditarSucursalForm.resx">
+      <DependentUpon>EditarSucursalForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AbmSucursal\NuevaSucursalForm.resx">
       <DependentUpon>NuevaSucursalForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmSucursal\TablaSucursalForm.resx">
+      <DependentUpon>TablaSucursalForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SeleccionarFuncionalidad\SeleccionarFuncionalidadForm.resx">
       <DependentUpon>SeleccionarFuncionalidadForm.cs</DependentUpon>

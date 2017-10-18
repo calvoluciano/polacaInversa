@@ -31,9 +31,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.nombre = new System.Windows.Forms.TextBox();
             this.codigoPostal = new System.Windows.Forms.TextBox();
             this.direccion = new System.Windows.Forms.TextBox();
-            this.nombre = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.buttonFiltrar = new System.Windows.Forms.Button();
             this.buttonLimpiar = new System.Windows.Forms.Button();
@@ -41,16 +41,14 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
- 
-
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 80);
+            this.label1.Location = new System.Drawing.Point(12, 73);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 20);
+            this.label1.Size = new System.Drawing.Size(113, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Codigo Postal";
             // 
@@ -68,6 +66,7 @@
             // 
             this.groupBox1.Controls.Add(this.nombre);
             this.groupBox1.Controls.Add(this.codigoPostal);
+            this.groupBox1.Controls.Add(this.direccion);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
@@ -82,33 +81,39 @@
             // nombre
             // 
             this.nombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nombre.Location = new System.Drawing.Point(94, 37);
+            this.nombre.Location = new System.Drawing.Point(131, 33);
             this.nombre.MaxLength = 20;
             this.nombre.Name = "nombre";
             this.nombre.Size = new System.Drawing.Size(228, 24);
             this.nombre.TabIndex = 4;
             this.nombre.TextChanged += new System.EventHandler(this.nombre_TextChanged);
             // 
-            // label3
+            // codigoPostal
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(344, 39);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 20);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Direccion";
+            this.codigoPostal.Location = new System.Drawing.Point(131, 66);
+            this.codigoPostal.Name = "codigoPostal";
+            this.codigoPostal.Size = new System.Drawing.Size(100, 27);
+            this.codigoPostal.TabIndex = 5;
+            this.codigoPostal.TextChanged += new System.EventHandler(this.codigoPostal_TextChanged);
             // 
             // direccion
             // 
             this.direccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.direccion.Location = new System.Drawing.Point(94, 37);
+            this.direccion.Location = new System.Drawing.Point(131, 97);
             this.direccion.MaxLength = 20;
             this.direccion.Name = "direccion";
             this.direccion.Size = new System.Drawing.Size(228, 24);
             this.direccion.TabIndex = 4;
-            //this.direccion.TextChanged += new System.EventHandler(this.direccion_TextChanged);
-
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(12, 104);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(81, 20);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Direccion";
             // 
             // buttonFiltrar
             // 
@@ -141,7 +146,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(770, 430);
+            this.ClientSize = new System.Drawing.Size(1251, 566);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.buttonLimpiar);
             this.Controls.Add(this.buttonFiltrar);
@@ -152,6 +157,7 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+
         }
 
         private System.Windows.Forms.Label label1;

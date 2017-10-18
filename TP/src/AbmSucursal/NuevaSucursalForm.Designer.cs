@@ -146,7 +146,7 @@
             // 
             // buttonSeleccionarUsuario
             // 
-            this.buttonSeleccionarUsuario.Location = new System.Drawing.Point(72, 15);
+            this.buttonSeleccionarUsuario.Location = new System.Drawing.Point(124, 13);
             this.buttonSeleccionarUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSeleccionarUsuario.Name = "buttonSeleccionarUsuario";
             this.buttonSeleccionarUsuario.Size = new System.Drawing.Size(163, 28);
