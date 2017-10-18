@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PagoAgilFrba.Modelo;
+using PagoAgilFrba.Modelo.Exceptions;
+
 
 namespace PagoAgilFrba.AbmSucursal
 {
@@ -19,7 +22,7 @@ namespace PagoAgilFrba.AbmSucursal
 
             InitializeComponent();
 
-            Nombre = sucursalAEditar.nombre;      // cargo los campos con los datos del chofer
+            Nombre = sucursalAEditar.nombre;      // cargo los campos con los datos de la sucursal
             Direccion = sucursalAEditar.direccion;
             Codigo_Postal = sucursalAEditar.codigoPostal;
             Habilitado = sucursalAEditar.habilitado;
@@ -83,10 +86,10 @@ namespace PagoAgilFrba.AbmSucursal
 
         private void buttonAceptar_Click(object sender, EventArgs e)
         {
-           /* try
+            try
             {
                 validar();                              //valido los datos ingresados
-                sucursalAEditar.nombre = Nombre;          //edito el chofer
+                sucursalAEditar.nombre = Nombre;          //edito la sucursal
                 sucursalAEditar.direccion = Direccion;
                 sucursalAEditar.habilitado = Habilitado;
 
@@ -98,16 +101,17 @@ namespace PagoAgilFrba.AbmSucursal
             catch (Exception exception)
             {
                 if (exception is FormatException ||
-                    exception is CampoVacioException ||
-                    exception is ValorNegativoException) Error.show(exception.Message);
+                    exception is EmptyFieldException) Error.show(exception.Message);
                 else throw;
-            }*/
+            }
         }
 
         private void validar()  // valido los datos ingresados
         {
-           /* if (string.IsNullOrWhiteSpace(Nombre)) throw new CampoVacioException("Nombre");
-            if (string.IsNullOrWhiteSpace(Direccion)) throw new CampoVacioException("Domicilio");*/
+            if (string.IsNullOrWhiteSpace(Nombre)) throw new EmptyFieldException("Nombre");
+            if (string.IsNullOrWhiteSpace(Direccion)) throw new EmptyFieldException("Domicilio");
+            if (string.IsNullOrWhiteSpace(Codigo_Postal)) throw new EmptyFieldException("Codigo Postal");
+
         }
 
         private void buttonCancelar_Click(object sender, EventArgs e)
