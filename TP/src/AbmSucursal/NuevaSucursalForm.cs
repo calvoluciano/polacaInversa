@@ -27,6 +27,14 @@ namespace PagoAgilFrba.AbmSucursal
             }
         }
 
+        public string CodigoPostal
+        {
+            set
+            {
+                textBoxCodigoPostal.Text = value;
+            }
+        }
+
 
         public string Direccion
         {

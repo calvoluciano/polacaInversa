@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace PagoAgilFrba.Modelo
 {
@@ -16,10 +18,11 @@ namespace PagoAgilFrba.Modelo
             habilitado = (Boolean)data["Sucursal_Habilitada"];
             codigoPostal = (decimal)data["Codigo_Postal"];
         }
+        public Sucursal() { }
 
         public void editar()                                            // persisto los cambios
         {
-            DB.correrProcedimiento("Sucursal_UPDATE",
+            DB.correrProcedimiento("SUCURSAL_UPDATE",
                                          "id_sucursal", id,
                                          "nombre", nombre,
                                          "codigoPostal", codigoPostal,
