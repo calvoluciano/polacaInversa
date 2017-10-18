@@ -11,14 +11,17 @@ using PagoAgilFrba.Modelo;
 
 namespace PagoAgilFrba.AbmSucursal
 {
-    public partial class EditarSucursalForm : Form
+    public partial class EditarSucursalForm : ReturnForm
     {
-        public EditarSucursalForm(Form caller, Sucursal sucursalAEditar) : base(caller)            
+        public EditarSucursalForm(ReturnForm caller, Sucursal sucursalAEditar) : base(caller)            
         {
             this.sucursalAEditar = sucursalAEditar;
+
             InitializeComponent();
+
             Nombre = sucursalAEditar.nombre;      // cargo los campos con los datos del chofer
-            Direccion = sucursalAEditar.domicilio;
+            Direccion = sucursalAEditar.direccion;
+            Codigo_Postal = sucursalAEditar.codigoPostal;
             Habilitado = sucursalAEditar.habilitado;
         }
 
@@ -36,6 +39,18 @@ namespace PagoAgilFrba.AbmSucursal
             set
             {
                 textBoxNombre.Text = value;
+            }
+        }
+        public string Codigo_Postal
+        {
+            get
+            {
+                return textBoxCodigoPostal.Text;
+            }
+
+            set
+            {
+                textBoxCodigoPostal.Text = value;
             }
         }
 

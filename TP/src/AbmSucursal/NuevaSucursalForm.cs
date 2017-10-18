@@ -11,9 +11,9 @@ using PagoAgilFrba.Modelo;
 
 namespace PagoAgilFrba.AbmSucursal
 {
-    public partial class NuevaSucursalForm : Form
+    public partial class NuevaSucursalForm : ReturnForm
     {
-        public NuevaSucursalForm(ReturningForm caller) //: base(caller)
+        public NuevaSucursalForm(ReturnForm caller) : base(caller)
         {
             InitializeComponent();
         }
@@ -86,6 +86,6 @@ namespace PagoAgilFrba.AbmSucursal
             }*/
         }
     }
-    }
-
 }
+
+

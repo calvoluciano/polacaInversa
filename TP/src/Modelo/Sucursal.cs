@@ -8,15 +8,19 @@ using System.Windows.Forms;
 
 namespace PagoAgilFrba.Modelo
 {
-    class Sucursal : Usuario
+    public class Sucursal : Usuario
     {
-        public decimal codigoPostal;
+        public String nombre;
+        public String direccion;
+        public String codigoPostal;
 
         public Sucursal(DataRow data)
         {
             New(data);
             habilitado = (Boolean)data["Sucursal_Habilitada"];
-            codigoPostal = (decimal)data["Codigo_Postal"];
+            codigoPostal = (String)data["Codigo_Postal"];
+            direccion = (String)data["Direccion"];
+            nombre = (String)data["Nombre"];
         }
         public Sucursal() { }
 
@@ -25,21 +29,40 @@ namespace PagoAgilFrba.Modelo
             DB.correrProcedimiento("SUCURSAL_UPDATE",
                                          "id_sucursal", id,
                                          "nombre", nombre,
+                                         "direccion",direccion,
                                          "codigoPostal", codigoPostal,
                                          "estado_sucursal", habilitado);
         }
 
-        public static void nuevo(int id, decimal codigoPostal, Boolean habilitado)  // persisto una sucursal nueva
+        public static void nuevo(int id, decimal codigoPostal, Boolean habilitado,String nombre, String direccion)  // persisto una sucursal nueva
         {
             DB.correrProcedimiento("Sucursal_NUEVO",
                                          "id", id,
+                                         "nombre", nombre,
+                                         "direccion", direccion,
                                          "codigoPostal", codigoPostal,
                                          "habilitado", habilitado);
         }
-
-        public static void inhabilitar(int id)                                      // inhabilito la sucursal
+        public static DataTable getXsConFiltros(String X, // "SUCURSALES"
+                                              String nombre,
+                                              String direccion,
+                                              String codigoPostal)        // obtengo un tipo de usuarios que cumplen con los filtros
         {
-            Usuario.inhabilitar("SUCURSAL", id);
+            return DB.correrFuncionDeTabla("GET_" + X + "_CON_FILTROS",
+                               "Nombre", nombre,
+                               "Direccion", direccion,
+                               "Codigo_Postal", codigoPostal);
+        }
+
+        public void inhabilitar(int id)    // inhabilito la sucursal
+        {
+            DB.correrProcedimiento("_INHABILITAR",
+                                            "id", id);
+        }
+        public void habilitar(int id)    // habilito la sucursal
+        {
+            DB.correrProcedimiento("_HABILITAR",
+                                            "id", id);
         }
     }
 }

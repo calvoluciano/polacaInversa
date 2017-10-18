@@ -33,6 +33,7 @@
             this.checkBoxHabilitado = new System.Windows.Forms.CheckBox();
 
             this.textBoxDireccion = new System.Windows.Forms.TextBox();
+            this.textBoxCodigoPostal = new System.Windows.Forms.TextBox();
             this.textBoxNombre = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -80,7 +81,14 @@
             this.textBoxDireccion.Location = new System.Drawing.Point(17, 142);
             this.textBoxDireccion.Name = "textBoxDomicilio";
             this.textBoxDireccion.Size = new System.Drawing.Size(200, 20);
-            this.textBoxDireccion.TabIndex = 13;          
+            this.textBoxDireccion.TabIndex = 13;
+            // 
+            // textBoxCodigoPostal
+            // 
+            this.textBoxDireccion.Location = new System.Drawing.Point(17, 142);
+            this.textBoxDireccion.Name = "textBoxCodigoPostal";
+            this.textBoxDireccion.Size = new System.Drawing.Size(200, 20);
+            this.textBoxDireccion.TabIndex = 14;          
             // 
             // textBoxNombre
             // 
@@ -151,6 +159,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBoxNombre;
         private System.Windows.Forms.TextBox textBoxDireccion;
+        private System.Windows.Forms.TextBox textBoxCodigoPostal;
         private System.Windows.Forms.CheckBox checkBoxHabilitado;
         private System.Windows.Forms.Button buttonCancelar;
         private System.Windows.Forms.Button buttonAceptar;
@@ -161,12 +170,6 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
-        {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "EditarSucursalForm";
-        }
 
         #endregion
     }

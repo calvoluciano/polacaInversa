@@ -148,9 +148,6 @@
     <Compile Include="Modelo\ReturnForm.Designer.cs">
       <DependentUpon>ReturnForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modelo\ReturningForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Modelo\Rol.cs" />
     <Compile Include="Modelo\Error.cs" />
     <Compile Include="Modelo\Sucursal.cs" />
@@ -266,7 +263,9 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Modelo\Exceptions\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

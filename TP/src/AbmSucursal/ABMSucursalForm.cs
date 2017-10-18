@@ -32,7 +32,7 @@ namespace PagoAgilFrba.AbmSucursal
 
         private void buttonBaja_Click(object sender, EventArgs e)
         {
-            Sucursal.inhabilitar((int)DataGridViewUsuario.SelectedRows[0].Cells["usua_id"].Value);    // Obtengo el id del chofer seleccionado y lo inhabilito
+            //Sucursal.inhabilitar((int)DataGridViewUsuario.SelectedRows[0].Cells["usua_id"].Value);    // Obtengo el id de la sucursal seleccionada y la inhabilita
             CargarTabla();
         }
     }
