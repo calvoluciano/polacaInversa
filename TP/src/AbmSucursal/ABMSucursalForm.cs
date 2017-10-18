@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using PagoAgilFrba.Modelo;
+using PagoAgilFrba.AbmSucursal;
 
 namespace PagoAgilFrba.AbmSucursal
 {
-    public partial class ABMSucursalForm : Form
+    public partial class ABMSucursalForm : PagoAgilFrba.AbmSucursal.TablaSucursalForm
     {
         public ABMSucursalForm()
         {
@@ -19,7 +19,7 @@ namespace PagoAgilFrba.AbmSucursal
         private void buttonEditar_Click(object sender, EventArgs e)
         {
             DataRow fila = ((DataRowView)DataGridViewUsuario.SelectedRows[0].DataBoundItem).Row;
-            new EditarSucursalForm(this, new Sucursal(fila)).abrir()
+            new EditarSucursalForm(this, new Sucursal(fila)).abrir();
         }
         private void buttonVolver_Click(object sender, EventArgs e)
         {
