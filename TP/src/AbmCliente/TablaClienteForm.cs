@@ -1,12 +1,6 @@
 ﻿using PagoAgilFrba.Modelo;
+using PagoAgilFrba.Modelo.Exceptions;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PagoAgilFrba.AbmCliente
@@ -24,9 +18,9 @@ namespace PagoAgilFrba.AbmCliente
             InitializeComponent();
         }
 
-        public DataGridView DataGridViewUsuario
+        public DataGridView DataGridViewClientes
         {
-            get { return dataGridView1; }
+            get { return dataGridClientes; }
         }
 
         public string Nombre
@@ -55,7 +49,7 @@ namespace PagoAgilFrba.AbmCliente
 
         protected virtual void CargarTabla()
         {
-            dataGridView1.DataSource = Cliente.getXsConFiltros("Clientes", // obtengo los clientes y los cargo en la tabla
+            dataGridClientes.DataSource = Cliente.getXsConFiltros("Clientes", // obtengo los clientes y los cargo en la tabla
                                                                         Nombre,
                                                                         Apellido,
                                                                         DNI);
@@ -65,23 +59,36 @@ namespace PagoAgilFrba.AbmCliente
         {
             base.Refrescar();
             CargarTabla();
-            DataGridViewUsuario.Columns["Estado_Cliente"].Visible = false;              // oculto columna que no quiero mostrar
-            DataGridViewUsuario.Columns["Estado_Cliente"].HeaderText = "Habilitado";    // cambio nombre visible de columna
+            DataGridViewClientes.Columns["Estado_Cliente"].Visible = false;              // oculto columna que no quiero mostrar
+            DataGridViewClientes.Columns["Estado_Cliente"].HeaderText = "Habilitado";    // cambio nombre visible de columna
         }
 
-        private void nombre_TextChanged(object sender, EventArgs e)
+        private void validar()
         {
+           if (DNI < 0) throw new ValorNegativoException("DNI");
+        }
+        
+        private void buttonFiltrar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                validar();         // valido los datos ingresados
+                CargarTabla();    // cargo la tabla
+            }
+            catch (Exception ex)
+            {
+               if (ex is FormatException || ex is ValorNegativoException) Error.show(ex.Message);
+                else throw;
+            }
 
         }
 
-        private void apellido_TextChanged(object sender, EventArgs e)
+        private void buttonLimpiar_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void dni_TextChanged(object sender, EventArgs e)
-        {
-
+            dni.Text = "";
+            nombre.Text = "";
+            apellido.Text = "";
+            CargarTabla();
         }
     }
 }

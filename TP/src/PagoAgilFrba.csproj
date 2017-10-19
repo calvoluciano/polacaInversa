@@ -141,7 +141,9 @@
     </Compile>
     <Compile Include="Modelo\Acceso.cs" />
     <Compile Include="Modelo\Cliente.cs" />
+    <Compile Include="Modelo\Exceptions\campoVacioException.cs" />
     <Compile Include="Modelo\Exceptions\EmptyFieldException.cs" />
+    <Compile Include="Modelo\Exceptions\valorNegativoException.cs" />
     <Compile Include="Modelo\RepoAccesos.cs" />
     <Compile Include="Modelo\ReturnForm.cs">
       <SubType>Form</SubType>

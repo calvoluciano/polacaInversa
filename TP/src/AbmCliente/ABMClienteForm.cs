@@ -11,11 +11,18 @@ using System.Windows.Forms;
 
 namespace PagoAgilFrba.AbmCliente
 {
-    public partial class ABMClienteForm : Form
+    public partial class ABMClienteForm : TablaClienteForm
     {
         public ABMClienteForm(ReturnForm caller)
+            : base(caller)
         {
             InitializeComponent();
+        }
+
+        private void buttonEditar_Click(object sender, EventArgs e)
+        {
+            DataRow fila = ((DataRowView)DataGridViewClientes.SelectedRows[0].DataBoundItem).Row;    // Obtengo fila seleccionada
+            new EditarClienteForm(this, new Cliente(fila)).abrir();        
         }
 
     }

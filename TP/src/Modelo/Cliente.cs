@@ -9,6 +9,23 @@ namespace PagoAgilFrba.Modelo
 {
     public class Cliente
     {
+        public Cliente(DataRow data)
+        {
+            id = (int)data["id_cliente"];
+            dni = (decimal)data["DNI"];
+            nombre = (String)data["Nombre"];
+            apellido = (String)data["Apellido"];
+            mail = (String)data["Mail"];
+            telefono = (decimal)data["Telefono"];
+            domicilio = (String)data["Domicilio"];
+            numero = (decimal)data["Numero"];
+            piso = (String)data["Piso"];
+            localidad = (String)data["Localidad"];
+            fechaNac = (DateTime)data["Fecha_Nac"];
+            codigoPostal = (decimal)data["Codigo_Postal"];
+            habilitado = (Boolean)data["Estado_Cliente"];
+         }
+
         public int id;
         public String nombre;
         public String apellido;

@@ -28,35 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.nombre = new System.Windows.Forms.TextBox();
+            this.textBoxNombre = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.apellido = new System.Windows.Forms.TextBox();
+            this.textBoxApellido = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dni = new System.Windows.Forms.TextBox();
+            this.textBoxDni = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.email = new System.Windows.Forms.TextBox();
+            this.textBoxEmail = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.telefono = new System.Windows.Forms.TextBox();
+            this.textBoxTelefono = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.domicilio = new System.Windows.Forms.TextBox();
+            this.textBoxDomicilio = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.codigoPostal = new System.Windows.Forms.TextBox();
+            this.textBoxCodigoPostal = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.fechaNacimiento = new System.Windows.Forms.DateTimePicker();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.dateTimePickerFechaNac = new System.Windows.Forms.DateTimePicker();
+            this.checkBoxHabilitado = new System.Windows.Forms.CheckBox();
             this.cancelar = new System.Windows.Forms.Button();
             this.aceptar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // nombre
+            // textBoxNombre
             // 
-            this.nombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nombre.Location = new System.Drawing.Point(29, 31);
-            this.nombre.MaxLength = 20;
-            this.nombre.Name = "nombre";
-            this.nombre.Size = new System.Drawing.Size(256, 24);
-            this.nombre.TabIndex = 6;
+            this.textBoxNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxNombre.Location = new System.Drawing.Point(29, 31);
+            this.textBoxNombre.MaxLength = 20;
+            this.textBoxNombre.Name = "textBoxNombre";
+            this.textBoxNombre.Size = new System.Drawing.Size(256, 24);
+            this.textBoxNombre.TabIndex = 6;
             // 
             // label2
             // 
@@ -68,14 +68,14 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Nombre";
             // 
-            // apellido
+            // textBoxApellido
             // 
-            this.apellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.apellido.Location = new System.Drawing.Point(29, 87);
-            this.apellido.MaxLength = 20;
-            this.apellido.Name = "apellido";
-            this.apellido.Size = new System.Drawing.Size(256, 24);
-            this.apellido.TabIndex = 8;
+            this.textBoxApellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxApellido.Location = new System.Drawing.Point(29, 87);
+            this.textBoxApellido.MaxLength = 20;
+            this.textBoxApellido.Name = "textBoxApellido";
+            this.textBoxApellido.Size = new System.Drawing.Size(256, 24);
+            this.textBoxApellido.TabIndex = 8;
             // 
             // label1
             // 
@@ -87,14 +87,14 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "Apellido";
             // 
-            // dni
+            // textBoxDni
             // 
-            this.dni.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dni.Location = new System.Drawing.Point(29, 144);
-            this.dni.MaxLength = 20;
-            this.dni.Name = "dni";
-            this.dni.Size = new System.Drawing.Size(256, 24);
-            this.dni.TabIndex = 10;
+            this.textBoxDni.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxDni.Location = new System.Drawing.Point(29, 144);
+            this.textBoxDni.MaxLength = 20;
+            this.textBoxDni.Name = "textBoxDni";
+            this.textBoxDni.Size = new System.Drawing.Size(256, 24);
+            this.textBoxDni.TabIndex = 10;
             // 
             // label3
             // 
@@ -106,14 +106,14 @@
             this.label3.TabIndex = 9;
             this.label3.Text = "DNI";
             // 
-            // email
+            // textBoxEmail
             // 
-            this.email.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.email.Location = new System.Drawing.Point(29, 202);
-            this.email.MaxLength = 20;
-            this.email.Name = "email";
-            this.email.Size = new System.Drawing.Size(256, 24);
-            this.email.TabIndex = 12;
+            this.textBoxEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxEmail.Location = new System.Drawing.Point(29, 202);
+            this.textBoxEmail.MaxLength = 20;
+            this.textBoxEmail.Name = "textBoxEmail";
+            this.textBoxEmail.Size = new System.Drawing.Size(256, 24);
+            this.textBoxEmail.TabIndex = 12;
             // 
             // label4
             // 
@@ -125,14 +125,14 @@
             this.label4.TabIndex = 11;
             this.label4.Text = "Email";
             // 
-            // telefono
+            // textBoxTelefono
             // 
-            this.telefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.telefono.Location = new System.Drawing.Point(29, 259);
-            this.telefono.MaxLength = 20;
-            this.telefono.Name = "telefono";
-            this.telefono.Size = new System.Drawing.Size(256, 24);
-            this.telefono.TabIndex = 14;
+            this.textBoxTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxTelefono.Location = new System.Drawing.Point(29, 259);
+            this.textBoxTelefono.MaxLength = 20;
+            this.textBoxTelefono.Name = "textBoxTelefono";
+            this.textBoxTelefono.Size = new System.Drawing.Size(256, 24);
+            this.textBoxTelefono.TabIndex = 14;
             // 
             // label5
             // 
@@ -144,14 +144,14 @@
             this.label5.TabIndex = 13;
             this.label5.Text = "Telefono";
             // 
-            // domicilio
+            // textBoxDomicilio
             // 
-            this.domicilio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.domicilio.Location = new System.Drawing.Point(29, 316);
-            this.domicilio.MaxLength = 20;
-            this.domicilio.Name = "domicilio";
-            this.domicilio.Size = new System.Drawing.Size(256, 24);
-            this.domicilio.TabIndex = 16;
+            this.textBoxDomicilio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxDomicilio.Location = new System.Drawing.Point(29, 316);
+            this.textBoxDomicilio.MaxLength = 20;
+            this.textBoxDomicilio.Name = "textBoxDomicilio";
+            this.textBoxDomicilio.Size = new System.Drawing.Size(256, 24);
+            this.textBoxDomicilio.TabIndex = 16;
             // 
             // label6
             // 
@@ -163,14 +163,14 @@
             this.label6.TabIndex = 15;
             this.label6.Text = "Domicilio";
             // 
-            // codigoPostal
+            // textBoxCodigoPostal
             // 
-            this.codigoPostal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.codigoPostal.Location = new System.Drawing.Point(29, 372);
-            this.codigoPostal.MaxLength = 20;
-            this.codigoPostal.Name = "codigoPostal";
-            this.codigoPostal.Size = new System.Drawing.Size(256, 24);
-            this.codigoPostal.TabIndex = 18;
+            this.textBoxCodigoPostal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxCodigoPostal.Location = new System.Drawing.Point(29, 372);
+            this.textBoxCodigoPostal.MaxLength = 20;
+            this.textBoxCodigoPostal.Name = "textBoxCodigoPostal";
+            this.textBoxCodigoPostal.Size = new System.Drawing.Size(256, 24);
+            this.textBoxCodigoPostal.TabIndex = 18;
             // 
             // label7
             // 
@@ -192,26 +192,26 @@
             this.label8.TabIndex = 19;
             this.label8.Text = "Fecha de nacimiento";
             // 
-            // fechaNacimiento
+            // dateTimePickerFechaNac
             // 
-            this.fechaNacimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fechaNacimiento.Location = new System.Drawing.Point(29, 430);
-            this.fechaNacimiento.Name = "fechaNacimiento";
-            this.fechaNacimiento.Size = new System.Drawing.Size(256, 24);
-            this.fechaNacimiento.TabIndex = 21;
+            this.dateTimePickerFechaNac.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerFechaNac.Location = new System.Drawing.Point(29, 430);
+            this.dateTimePickerFechaNac.Name = "dateTimePickerFechaNac";
+            this.dateTimePickerFechaNac.Size = new System.Drawing.Size(256, 24);
+            this.dateTimePickerFechaNac.TabIndex = 21;
             // 
-            // checkBox1
+            // checkBoxHabilitado
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(105, 465);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(95, 22);
-            this.checkBox1.TabIndex = 23;
-            this.checkBox1.Text = "Habilitado";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBoxHabilitado.AutoSize = true;
+            this.checkBoxHabilitado.Checked = true;
+            this.checkBoxHabilitado.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxHabilitado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxHabilitado.Location = new System.Drawing.Point(105, 465);
+            this.checkBoxHabilitado.Name = "checkBoxHabilitado";
+            this.checkBoxHabilitado.Size = new System.Drawing.Size(95, 22);
+            this.checkBoxHabilitado.TabIndex = 23;
+            this.checkBoxHabilitado.Text = "Habilitado";
+            this.checkBoxHabilitado.UseVisualStyleBackColor = true;
             // 
             // cancelar
             // 
@@ -222,6 +222,7 @@
             this.cancelar.Text = "Cancelar";
             this.cancelar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.cancelar.UseVisualStyleBackColor = true;
+            this.cancelar.Click += new System.EventHandler(this.cancelar_Click);
             // 
             // aceptar
             // 
@@ -232,6 +233,7 @@
             this.aceptar.Text = "Aceptar";
             this.aceptar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.aceptar.UseVisualStyleBackColor = true;
+            this.aceptar.Click += new System.EventHandler(this.aceptar_Click);
             // 
             // EditarClienteForm
             // 
@@ -240,22 +242,22 @@
             this.ClientSize = new System.Drawing.Size(317, 534);
             this.Controls.Add(this.cancelar);
             this.Controls.Add(this.aceptar);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.fechaNacimiento);
+            this.Controls.Add(this.checkBoxHabilitado);
+            this.Controls.Add(this.dateTimePickerFechaNac);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.codigoPostal);
+            this.Controls.Add(this.textBoxCodigoPostal);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.domicilio);
+            this.Controls.Add(this.textBoxDomicilio);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.telefono);
+            this.Controls.Add(this.textBoxTelefono);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.email);
+            this.Controls.Add(this.textBoxEmail);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.dni);
+            this.Controls.Add(this.textBoxDni);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.apellido);
+            this.Controls.Add(this.textBoxApellido);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.nombre);
+            this.Controls.Add(this.textBoxNombre);
             this.Controls.Add(this.label2);
             this.Enabled = false;
             this.Name = "EditarClienteForm";
@@ -267,23 +269,23 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox nombre;
+        private System.Windows.Forms.TextBox textBoxNombre;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox apellido;
+        private System.Windows.Forms.TextBox textBoxApellido;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox dni;
+        private System.Windows.Forms.TextBox textBoxDni;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox email;
+        private System.Windows.Forms.TextBox textBoxEmail;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox telefono;
+        private System.Windows.Forms.TextBox textBoxTelefono;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox domicilio;
+        private System.Windows.Forms.TextBox textBoxDomicilio;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox codigoPostal;
+        private System.Windows.Forms.TextBox textBoxCodigoPostal;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DateTimePicker fechaNacimiento;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.DateTimePicker dateTimePickerFechaNac;
+        private System.Windows.Forms.CheckBox checkBoxHabilitado;
         private System.Windows.Forms.Button cancelar;
         private System.Windows.Forms.Button aceptar;
     }

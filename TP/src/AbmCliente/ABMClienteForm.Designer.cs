@@ -68,10 +68,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dni);
-            this.groupBox1.Controls.Add(this.apellido);
-            this.groupBox1.Controls.Add(this.nombre);
-            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -81,6 +77,8 @@
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtro de busqueda";
+            this.groupBox1.Controls.SetChildIndex(this.label1, 0);
+            this.groupBox1.Controls.SetChildIndex(this.label2, 0);
             // 
             // dni
             // 
@@ -153,6 +151,7 @@
             this.buttonEditar.TabIndex = 8;
             this.buttonEditar.Text = "Editar";
             this.buttonEditar.UseVisualStyleBackColor = true;
+            this.buttonEditar.Click += new System.EventHandler(this.buttonEditar_Click);
             // 
             // buttonBaja
             // 
@@ -199,6 +198,14 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "ABMClienteForm";
             this.Text = "ABM Clientes";
+            this.Controls.SetChildIndex(this.groupBox1, 0);
+            this.Controls.SetChildIndex(this.buttonFiltrar, 0);
+            this.Controls.SetChildIndex(this.buttonLimpiar, 0);
+            this.Controls.SetChildIndex(this.dataGridView1, 0);
+            this.Controls.SetChildIndex(this.buttonEditar, 0);
+            this.Controls.SetChildIndex(this.buttonBaja, 0);
+            this.Controls.SetChildIndex(this.buttonNuevo, 0);
+            this.Controls.SetChildIndex(this.buttonVolver, 0);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

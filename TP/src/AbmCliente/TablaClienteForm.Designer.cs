@@ -37,9 +37,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.buttonFiltrar = new System.Windows.Forms.Button();
             this.buttonLimpiar = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridClientes = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridClientes)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -85,7 +85,6 @@
             this.dni.Name = "dni";
             this.dni.Size = new System.Drawing.Size(197, 24);
             this.dni.TabIndex = 5;
-            this.dni.TextChanged += new System.EventHandler(this.dni_TextChanged);
             // 
             // apellido
             // 
@@ -95,7 +94,6 @@
             this.apellido.Name = "apellido";
             this.apellido.Size = new System.Drawing.Size(227, 24);
             this.apellido.TabIndex = 5;
-            this.apellido.TextChanged += new System.EventHandler(this.apellido_TextChanged);
             // 
             // nombre
             // 
@@ -105,7 +103,6 @@
             this.nombre.Name = "nombre";
             this.nombre.Size = new System.Drawing.Size(228, 24);
             this.nombre.TabIndex = 4;
-            this.nombre.TextChanged += new System.EventHandler(this.nombre_TextChanged);
             // 
             // label3
             // 
@@ -134,22 +131,23 @@
             this.buttonLimpiar.TabIndex = 5;
             this.buttonLimpiar.Text = "Limpiar";
             this.buttonLimpiar.UseVisualStyleBackColor = true;
+            this.buttonLimpiar.Click += new System.EventHandler(this.buttonLimpiar_Click);
             // 
-            // dataGridView1
+            // dataGridClientes
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 145);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(746, 242);
-            this.dataGridView1.TabIndex = 6;
+            this.dataGridClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridClientes.Location = new System.Drawing.Point(12, 145);
+            this.dataGridClientes.Name = "dataGridClientes";
+            this.dataGridClientes.RowTemplate.Height = 24;
+            this.dataGridClientes.Size = new System.Drawing.Size(746, 242);
+            this.dataGridClientes.TabIndex = 6;
             // 
             // TablaClienteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(770, 430);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridClientes);
             this.Controls.Add(this.buttonLimpiar);
             this.Controls.Add(this.buttonFiltrar);
             this.Controls.Add(this.groupBox1);
@@ -157,7 +155,7 @@
             this.Text = "Tabla Clientes";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridClientes)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -173,6 +171,6 @@
         private System.Windows.Forms.TextBox apellido;
         private System.Windows.Forms.Button buttonFiltrar;
         private System.Windows.Forms.Button buttonLimpiar;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridClientes;
     }
 }
