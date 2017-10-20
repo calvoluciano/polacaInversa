@@ -29,7 +29,7 @@ namespace PagoAgilFrba
 
             try
             {
-                DB.correrProcedimiento("SPLOGIN", "Nombre_Usuario", usuario, "Password", contrasenia);  // corro procedimiento de login
+                DB.correrProcedimiento("SPLOGIN", "usuario", usuario, "contrasenia", contrasenia);  // corro procedimiento de login
 
                 Usuario.cargar(usuario);                                                            // cargo el usuario seleccionado
 

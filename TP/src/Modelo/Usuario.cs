@@ -40,7 +40,7 @@ namespace PagoAgilFrba.Modelo
 
         public static void cargar(String username)      // cargo usuario seleccionado por username
         {
-            usuarioSeleccionado = (int)DB.correrFuncion("USUARIO_GET_ID", "Nombre_Usuario", username);
+            usuarioSeleccionado = (int)DB.correrFuncion("USUARIO_GET_ID", "usuario", username);
         }
 
         public static List<Rol> getRoles()              // obtengo los roles del usuario seleccionado
