@@ -133,6 +133,18 @@
     <Compile Include="AbmRol\ABMRolForm.Designer.cs">
       <DependentUpon>ABMRolForm.cs</DependentUpon>
     </Compile>
+	<Compile Include="AbmRol\AsignarRolForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\AsignarRolForm.Designer.cs">
+      <DependentUpon>AsignarRolForm.cs</DependentUpon>
+    </Compile>
+		<Compile Include="AbmRol\EditarRolForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\EditarRolForm.Designer.cs">
+      <DependentUpon>EditarRolForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AbmSucursal\ABMSucursalForm.cs">
       <SubType>Form</SubType>
     </Compile>
