@@ -51,5 +51,26 @@ namespace PagoAgilFrba.Modelo
                         .Select(fila => new Rol(fila))
                         .ToList();
         }
+
+        public static void rolUpdate(int idUsuario, byte idRol, Boolean habilitado) // modifico el acceso de un usuario a un rol
+        {
+            DB.correrProcedimiento("USUARIO_ROL_UPDATE",
+                                    "idUsuario", idUsuario,
+                                    "idRol", idRol,
+                                    "habilitado", habilitado);
+        }
+
+        public static DataTable getTablaRolX(    // "USUARIOS" 
+                                        String nombre,
+                                        String apellido,
+                                        decimal DNI,
+                                        byte rol)           // obtengo un tipo de usuarios que cumplen con los filtros y tienen un rol determinado
+        {
+            return DB.correrFuncionDeTabla("GET_TABLA_ROL",
+                                            "nombre", nombre,
+                                            "apellido", apellido,
+                                            "DNI", DNI,
+                                            "rol", rol);
+        }
     }
 }

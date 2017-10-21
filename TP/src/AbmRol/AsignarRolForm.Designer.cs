@@ -1,6 +1,6 @@
 ﻿namespace PagoAgilFrba.AbmCliente
 {
-    partial class TablaClienteForm
+    partial class AsignarRolForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,15 +31,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dni = new System.Windows.Forms.TextBox();
-            this.apellido = new System.Windows.Forms.TextBox();
-            this.nombre = new System.Windows.Forms.TextBox();
+            this.textBoxDni = new System.Windows.Forms.TextBox();
+            this.textBoxApellido = new System.Windows.Forms.TextBox();
+            this.textBoxNombre = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.buttonFiltrar = new System.Windows.Forms.Button();
             this.buttonLimpiar = new System.Windows.Forms.Button();
-            this.dataGridClientes = new System.Windows.Forms.DataGridView();
+            this.dataGridViewUsuarios = new System.Windows.Forms.DataGridView();
+            this.buttonVolver = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridClientes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -64,9 +65,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dni);
-            this.groupBox1.Controls.Add(this.apellido);
-            this.groupBox1.Controls.Add(this.nombre);
+            this.groupBox1.Controls.Add(this.textBoxDni);
+            this.groupBox1.Controls.Add(this.textBoxApellido);
+            this.groupBox1.Controls.Add(this.textBoxNombre);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
@@ -78,31 +79,31 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtro de busqueda";
             // 
-            // dni
+            // textBoxDni
             // 
-            this.dni.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dni.Location = new System.Drawing.Point(397, 37);
-            this.dni.Name = "dni";
-            this.dni.Size = new System.Drawing.Size(197, 24);
-            this.dni.TabIndex = 5;
+            this.textBoxDni.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxDni.Location = new System.Drawing.Point(397, 37);
+            this.textBoxDni.Name = "textBoxDni";
+            this.textBoxDni.Size = new System.Drawing.Size(197, 24);
+            this.textBoxDni.TabIndex = 5;
             // 
-            // apellido
+            // textBoxApellido
             // 
-            this.apellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.apellido.Location = new System.Drawing.Point(94, 78);
-            this.apellido.MaxLength = 20;
-            this.apellido.Name = "apellido";
-            this.apellido.Size = new System.Drawing.Size(227, 24);
-            this.apellido.TabIndex = 5;
+            this.textBoxApellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxApellido.Location = new System.Drawing.Point(94, 78);
+            this.textBoxApellido.MaxLength = 20;
+            this.textBoxApellido.Name = "textBoxApellido";
+            this.textBoxApellido.Size = new System.Drawing.Size(227, 24);
+            this.textBoxApellido.TabIndex = 5;
             // 
-            // nombre
+            // textBoxNombre
             // 
-            this.nombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nombre.Location = new System.Drawing.Point(94, 37);
-            this.nombre.MaxLength = 20;
-            this.nombre.Name = "nombre";
-            this.nombre.Size = new System.Drawing.Size(228, 24);
-            this.nombre.TabIndex = 4;
+            this.textBoxNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxNombre.Location = new System.Drawing.Point(94, 37);
+            this.textBoxNombre.MaxLength = 20;
+            this.textBoxNombre.Name = "textBoxNombre";
+            this.textBoxNombre.Size = new System.Drawing.Size(228, 24);
+            this.textBoxNombre.TabIndex = 4;
             // 
             // label3
             // 
@@ -133,30 +134,40 @@
             this.buttonLimpiar.UseVisualStyleBackColor = true;
             this.buttonLimpiar.Click += new System.EventHandler(this.buttonLimpiar_Click);
             // 
-            // dataGridClientes
+            // dataGridViewUsuarios
             // 
-            this.dataGridClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridClientes.Location = new System.Drawing.Point(12, 145);
-            this.dataGridClientes.Name = "dataGridClientes";
-            this.dataGridClientes.RowTemplate.Height = 24;
-            this.dataGridClientes.Size = new System.Drawing.Size(746, 242);
-            this.dataGridClientes.TabIndex = 6;
+            this.dataGridViewUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewUsuarios.Location = new System.Drawing.Point(12, 145);
+            this.dataGridViewUsuarios.Name = "dataGridViewUsuarios";
+            this.dataGridViewUsuarios.RowTemplate.Height = 24;
+            this.dataGridViewUsuarios.Size = new System.Drawing.Size(746, 242);
+            this.dataGridViewUsuarios.TabIndex = 6;
             // 
-            // TablaClienteForm
+            // buttonVolver
+            // 
+            this.buttonVolver.Location = new System.Drawing.Point(346, 393);
+            this.buttonVolver.Name = "buttonVolver";
+            this.buttonVolver.Size = new System.Drawing.Size(99, 31);
+            this.buttonVolver.TabIndex = 9;
+            this.buttonVolver.Text = "Volver";
+            this.buttonVolver.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonVolver.UseVisualStyleBackColor = true;
+            // 
+            // AsignarRolForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(770, 430);
-            this.Controls.Add(this.dataGridClientes);
+            this.Controls.Add(this.buttonVolver);
+            this.Controls.Add(this.dataGridViewUsuarios);
             this.Controls.Add(this.buttonLimpiar);
             this.Controls.Add(this.buttonFiltrar);
             this.Controls.Add(this.groupBox1);
-            this.Name = "TablaClienteForm";
-            this.Text = "Tabla Clientes";
-            this.Load += new System.EventHandler(this.TablaClienteForm_Load);
+            this.Name = "AsignarRolForm";
+            this.Text = "Asignar Rol";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridClientes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsuarios)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -166,12 +177,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox nombre;
+        private System.Windows.Forms.TextBox textBoxNombre;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox dni;
-        private System.Windows.Forms.TextBox apellido;
+        private System.Windows.Forms.TextBox textBoxDni;
+        private System.Windows.Forms.TextBox textBoxApellido;
         private System.Windows.Forms.Button buttonFiltrar;
         private System.Windows.Forms.Button buttonLimpiar;
-        private System.Windows.Forms.DataGridView dataGridClientes;
+        private System.Windows.Forms.DataGridView dataGridViewUsuarios;
+        private System.Windows.Forms.Button buttonVolver;
     }
 }

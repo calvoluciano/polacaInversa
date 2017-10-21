@@ -90,5 +90,10 @@ namespace PagoAgilFrba.AbmCliente
             apellido.Text = "";
             CargarTabla();
         }
+
+        private void TablaClienteForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
