@@ -1,6 +1,6 @@
-﻿namespace PagoAgilFrba.AbmSucursal
+﻿namespace PagoAgilFrba.AbmEmpresa
 {
-    partial class TablaSucursalForm
+    partial class TablaEmpresaForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,11 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.nombre = new System.Windows.Forms.TextBox();
-            this.codigoPostal = new System.Windows.Forms.TextBox();
             this.direccion = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.buttonFiltrar = new System.Windows.Forms.Button();
@@ -41,16 +39,6 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 73);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Codigo Postal";
             // 
             // label2
             // 
@@ -65,11 +53,9 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.nombre);
-            this.groupBox1.Controls.Add(this.codigoPostal);
             this.groupBox1.Controls.Add(this.direccion);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
@@ -87,14 +73,6 @@
             this.nombre.Size = new System.Drawing.Size(228, 24);
             this.nombre.TabIndex = 4;
             this.nombre.TextChanged += new System.EventHandler(this.nombre_TextChanged);
-            // 
-            // codigoPostal
-            // 
-            this.codigoPostal.Location = new System.Drawing.Point(131, 66);
-            this.codigoPostal.Name = "codigoPostal";
-            this.codigoPostal.Size = new System.Drawing.Size(100, 27);
-            this.codigoPostal.TabIndex = 5;
-            this.codigoPostal.TextChanged += new System.EventHandler(this.codigoPostal_TextChanged);
             // 
             // direccion
             // 
@@ -160,11 +138,9 @@
 
         }
 
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox nombre;
-        private System.Windows.Forms.TextBox codigoPostal;
         private System.Windows.Forms.TextBox direccion;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button buttonFiltrar;

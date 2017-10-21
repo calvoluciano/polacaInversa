@@ -97,6 +97,30 @@
     <Compile Include="AbmEmpresa\ABMEmpresaForm.Designer.cs">
       <DependentUpon>ABMEmpresaForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AbmEmpresa\EditarEmpresaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmEmpresa\EditarEmpresaForm.Designer.cs">
+      <DependentUpon>EditarEmpresaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmEmpresa\NuevaEmpresaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmEmpresa\NuevaEmpresaForm.Designer.cs">
+      <DependentUpon>NuevaEmpresaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmEmpresa\SeleccionarEmpresaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmEmpresa\SeleccionarEmpresaForm.Designer.cs">
+      <DependentUpon>SeleccionarEmpresaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmEmpresa\TablaEmpresaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmEmpresa\TablaEmpresaForm.Designer.cs">
+      <DependentUpon>TablaEmpresaForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AbmFactura\ABMFacturaForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +165,7 @@
     </Compile>
     <Compile Include="Modelo\Acceso.cs" />
     <Compile Include="Modelo\Cliente.cs" />
+    <Compile Include="Modelo\Empresa.cs" />
     <Compile Include="Modelo\Exceptions\campoVacioException.cs" />
     <Compile Include="Modelo\Exceptions\EmptyFieldException.cs" />
     <Compile Include="Modelo\Exceptions\valorNegativoException.cs" />

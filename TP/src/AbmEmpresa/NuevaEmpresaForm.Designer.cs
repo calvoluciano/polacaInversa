@@ -1,6 +1,6 @@
-﻿namespace PagoAgilFrba.AbmSucursal
+﻿namespace PagoAgilFrba.AbmEmpresa
 {
-    partial class NuevaSucursalForm
+    partial class NuevaEmpresaForm
     {
         /// <summary>
         /// Required designer variable.
@@ -20,8 +20,6 @@
             base.Dispose(disposing);
         }
 
-
-
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -32,11 +30,9 @@
         {
             this.dateTimePickerFechaNac = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxNombre = new System.Windows.Forms.TextBox();
             this.textBoxDireccion = new System.Windows.Forms.TextBox();
-            this.textBoxCodigoPostal = new System.Windows.Forms.TextBox();
             this.checkBoxHabilitado = new System.Windows.Forms.CheckBox();
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonAceptar = new System.Windows.Forms.Button();
@@ -60,17 +56,6 @@
             this.label1.Size = new System.Drawing.Size(58, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "Nombre";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 95);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(95, 17);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Codigo Postal";
             // 
             // label4
             // 
@@ -98,14 +83,7 @@
             this.textBoxDireccion.Name = "textBoxDireccion";
             this.textBoxDireccion.Size = new System.Drawing.Size(265, 22);
             this.textBoxDireccion.TabIndex = 5;
-            // 
-            // textBoxCodigoPostal
-            // 
-            this.textBoxCodigoPostal.Location = new System.Drawing.Point(161, 90);
-            this.textBoxCodigoPostal.Margin = new System.Windows.Forms.Padding(4);
-            this.textBoxCodigoPostal.Name = "textBoxCodigoPostal";
-            this.textBoxCodigoPostal.Size = new System.Drawing.Size(265, 22);
-            this.textBoxCodigoPostal.TabIndex = 6;
+         
             // 
             // checkBoxHabilitado
             // 
@@ -165,15 +143,13 @@
             this.Controls.Add(this.checkBoxHabilitado);
             this.Controls.Add(this.textBoxDireccion);
             this.Controls.Add(this.textBoxNombre);
-            this.Controls.Add(this.textBoxCodigoPostal);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
-            this.Name = "NuevaSucursalForm";
+            this.Name = "NuevaEmpresaForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Nueva Sucursal";
+            this.Text = "Nueva Empresa";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -183,10 +159,8 @@
 
         private System.Windows.Forms.DateTimePicker dateTimePickerFechaNac;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBoxNombre;
-        private System.Windows.Forms.TextBox textBoxCodigoPostal;
         private System.Windows.Forms.TextBox textBoxDireccion;
         private System.Windows.Forms.CheckBox checkBoxHabilitado;
         private System.Windows.Forms.Button buttonCancelar;
