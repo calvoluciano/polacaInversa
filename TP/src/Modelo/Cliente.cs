@@ -11,19 +11,19 @@ namespace PagoAgilFrba.Modelo
     {
         public Cliente(DataRow data)
         {
-            id = (int)data["id_cliente"];
-            dni = (decimal)data["DNI"];
-            nombre = (String)data["Nombre"];
+            id = (int)data["ID_CLIENTE"];
             apellido = (String)data["Apellido"];
+            nombre = (String)data["Nombre"];
+            dni = Convert.ToDecimal(data["DNI"]);
             mail = (String)data["Mail"];
-            telefono = (decimal)data["Telefono"];
+            //telefono = (decimal)data["Telefono"];
             domicilio = (String)data["Domicilio"];
-            numero = (decimal)data["Numero"];
-            piso = (String)data["Piso"];
-            localidad = (String)data["Localidad"];
-            fechaNac = (DateTime)data["Fecha_Nac"];
-            codigoPostal = (decimal)data["Codigo_Postal"];
-            habilitado = (Boolean)data["Estado_Cliente"];
+            //numero = (decimal)data["Numero"];
+            //piso = (String)data["Piso"];
+            //localidad = (String)data["Localidad"];
+            fechaNac = (DateTime)data["Fecha Nacimiento"];
+            codigoPostal = Convert.ToDecimal(data["Codigo Postal"]);
+            habilitado = (Boolean)data["HABILITADO"];
          }
 
         public int id;
@@ -77,27 +77,26 @@ namespace PagoAgilFrba.Modelo
                                          "Estado_Cliente", habilitado);
         }
 
-         public static DataTable getXsConFiltros( String X, // "CLIENTES"
-                                                String nombre,
-                                                String apellido,
-                                                decimal DNI)        // obtengo un tipo de usuarios que cumplen con los filtros
+        public static DataTable getClientesConFiltros(  String nombre,  // "CLIENTES"
+                                                  String apellido,
+                                                  decimal DNI)        // obtengo un tipo de usuarios que cumplen con los filtros
         {
-            return DB.correrFuncionDeTabla("GET_" + X + "_CON_FILTROS",
-                               "Nombre", nombre,
-                               "Apellido", apellido,
-                               "DNI_Cliente", DNI);
+            return DB.correrFuncionDeTabla("GET_CLIENTES_CON_FILTROS",
+                               "nombre", nombre,
+                               "apellido", apellido,
+                               "dni", DNI);
         }
 
-        public void inhabilitar()    // inhabilito un usuario
+        public static void inhabilitar(int id_cliente)    // inhabilito un usuario
         {
             DB.correrProcedimiento("_INHABILITAR",
-                                            "id", id);
+                                            "id", id_cliente);
         }
 
-        public void habilitar()    // habilito un usuario
+        public static void habilitar(int id_cliente)    // habilito un usuario
         {
             DB.correrProcedimiento("_HABILITAR",
-                                            "id", id);
+                                            "id", id_cliente);
         }
     }
 }

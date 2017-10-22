@@ -45,7 +45,7 @@ namespace PagoAgilFrba.Modelo
 
         public static List<Rol> getRoles()              // obtengo los roles del usuario seleccionado
         {
-            DataTable data = DB.correrFuncionDeTabla("USUARIO_GET_ROLES", "id_Usuario", usuarioSeleccionado);
+            DataTable data = DB.correrFuncionDeTabla("USUARIO_GET_ROLES", "usuarioId", usuarioSeleccionado);
 
             return data.AsEnumerable()
                         .Select(fila => new Rol(fila))

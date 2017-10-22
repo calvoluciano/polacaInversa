@@ -21,8 +21,24 @@ namespace PagoAgilFrba.AbmCliente
 
         private void buttonEditar_Click(object sender, EventArgs e)
         {
-            DataRow fila = ((DataRowView)DataGridViewClientes.SelectedRows[0].DataBoundItem).Row;    // Obtengo fila seleccionada
+            DataRow fila = ((DataRowView)DataGridClientes.SelectedRows[0].DataBoundItem).Row;    // Obtengo fila seleccionada
             new EditarClienteForm(this, new Cliente(fila)).abrir();        
+        }
+
+        private void buttonVolver_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void buttonNuevo_Click(object sender, EventArgs e)
+        {
+            new NuevoClienteForm(this).abrir();
+        }
+
+        private void buttonBaja_Click(object sender, EventArgs e)
+        {
+            Cliente.inhabilitar((int)DataGridClientes.SelectedRows[0].Cells["ID_CLIENTE"].Value);   // Obtengo el id del cliente seleccionado y lo inhabilito
+            CargarTabla();
         }
 
     }

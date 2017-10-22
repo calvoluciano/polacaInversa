@@ -122,6 +122,7 @@
             this.buttonFiltrar.TabIndex = 4;
             this.buttonFiltrar.Text = "Filtrar";
             this.buttonFiltrar.UseVisualStyleBackColor = true;
+            this.buttonFiltrar.Click += new System.EventHandler(this.buttonFiltrar_Click_1);
             // 
             // buttonLimpiar
             // 
@@ -153,7 +154,6 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "TablaClienteForm";
             this.Text = "Tabla Clientes";
-            this.Load += new System.EventHandler(this.TablaClienteForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridClientes)).EndInit();

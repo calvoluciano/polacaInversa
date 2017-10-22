@@ -18,7 +18,7 @@ namespace PagoAgilFrba.Modelo
 
         public Rol(DataRow data)
         {
-            id = (byte)data["id_Rol"];
+            id = (byte)data["ID_ROL"];
             nombre = (String)data["Nombre"];
             //Ver si luego lo necesitamos
             //detalle = (String)data["Descripcion"];
@@ -35,10 +35,10 @@ namespace PagoAgilFrba.Modelo
 
         public List<Acceso> getAccesos() // obtengo las funcionalidades de un rol
         {
-            DataTable data = DB.correrFuncionDeTabla("ROL_GET_FUNCIONALIDADES", "rolId", id);
+            DataTable data = DB.correrFuncionDeTabla("ROL_GET_ACCESOS", "rolId", id);
 
             return data.AsEnumerable()
-                        .Select(fila => RepoAccesos.get((byte)fila["cod_func"]))
+                        .Select(fila => RepoAccesos.get((byte)fila["Id_Acceso"]))
                         .ToList();
         }
 

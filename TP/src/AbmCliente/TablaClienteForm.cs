@@ -18,7 +18,7 @@ namespace PagoAgilFrba.AbmCliente
             InitializeComponent();
         }
 
-        public DataGridView DataGridViewClientes
+        public DataGridView DataGridClientes
         {
             get { return dataGridClientes; }
         }
@@ -49,7 +49,7 @@ namespace PagoAgilFrba.AbmCliente
 
         protected virtual void CargarTabla()
         {
-            dataGridClientes.DataSource = Cliente.getXsConFiltros("Clientes", // obtengo los clientes y los cargo en la tabla
+            dataGridClientes.DataSource = Cliente.getClientesConFiltros(// obtengo los clientes y los cargo en la tabla
                                                                         Nombre,
                                                                         Apellido,
                                                                         DNI);
@@ -59,28 +59,14 @@ namespace PagoAgilFrba.AbmCliente
         {
             base.Refrescar();
             CargarTabla();
-            DataGridViewClientes.Columns["Estado_Cliente"].Visible = false;              // oculto columna que no quiero mostrar
-            DataGridViewClientes.Columns["Estado_Cliente"].HeaderText = "Habilitado";    // cambio nombre visible de columna
+            DataGridClientes.Columns["ID_CLIENTE"].Visible = false; 
+            DataGridClientes.Columns["Habilitado"].Visible = false;              // oculto columna que no quiero mostrar
+            DataGridClientes.Columns["Habilitado"].HeaderText = "Habilitado";    // cambio nombre visible de columna
         }
 
         private void validar()
         {
            if (DNI < 0) throw new ValorNegativoException("DNI");
-        }
-        
-        private void buttonFiltrar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                validar();         // valido los datos ingresados
-                CargarTabla();    // cargo la tabla
-            }
-            catch (Exception ex)
-            {
-               if (ex is FormatException || ex is ValorNegativoException) Error.show(ex.Message);
-                else throw;
-            }
-
         }
 
         private void buttonLimpiar_Click(object sender, EventArgs e)
@@ -91,9 +77,18 @@ namespace PagoAgilFrba.AbmCliente
             CargarTabla();
         }
 
-        private void TablaClienteForm_Load(object sender, EventArgs e)
+        private void buttonFiltrar_Click_1(object sender, EventArgs e)
         {
-
+            try
+            {
+                validar();                                                                      // valido los datos ingresados
+                CargarTabla();                                                                  // cargo la tabla
+            }
+            catch (Exception ex)
+            {
+                if (ex is FormatException || ex is ValorNegativoException) Error.show(ex.Message);
+                else throw;
+            }
         }
     }
 }

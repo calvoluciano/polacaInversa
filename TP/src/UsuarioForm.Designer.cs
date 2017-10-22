@@ -108,7 +108,6 @@
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonAceptar);
             this.Name = "UsuarioForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login Usuarios";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -20,6 +20,7 @@ namespace PagoAgilFrba.AbmCliente
         {
             this.clienteAEditar = clienteAEditar;
             InitializeComponent();
+
             Nombre = clienteAEditar.nombre;             // cargo los campos con los datos del cliente
             Apellido = clienteAEditar.apellido;
             DNI = clienteAEditar.dni;

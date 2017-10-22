@@ -17,13 +17,13 @@ namespace PagoAgilFrba.Modelo
         public Acceso(byte id, Type ventanaAAbrir)
         {
             this.id = id;
-            this.acceso = (String)DB.correrFuncion("FUNCIONALIDAD_GET_ACCESO", "Id_Acceso", id);
+            this.acceso = (String)DB.correrFuncion("ACCESO_GET_NOMBRE", "accesoId", id);
             this.ventanaAAbrir = ventanaAAbrir;
         }
 
         public void elegir(Form caller) // elijo una funcionalidad y abro su ventana correspondiente
         {
-            ReturnForm ventana = (ReturnForm) Activator.CreateInstance(ventanaAAbrir, caller);
+            ReturnForm ventana = (ReturnForm)Activator.CreateInstance(ventanaAAbrir, caller);
             ventana.abrir();
         }
 
@@ -34,7 +34,7 @@ namespace PagoAgilFrba.Modelo
 
         public static DataTable getTablaDe(byte idRol)  // obtengo la tabla de funcionalidades de un rol
         {
-            return DB.correrFuncionDeTabla( "FUNCIONALIDADES_GET_TABLA_DE_ROL",
+            return DB.correrFuncionDeTabla("FUNCIONALIDADES_GET_TABLA_DE_ROL",
                                             "Id_Rol", idRol);
         }
 
