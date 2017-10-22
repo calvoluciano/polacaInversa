@@ -259,9 +259,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxNombre);
             this.Controls.Add(this.label2);
-            this.Enabled = false;
             this.Name = "EditarClienteForm";
             this.Text = "Editar cliente";
+            this.Load += new System.EventHandler(this.EditarClienteForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

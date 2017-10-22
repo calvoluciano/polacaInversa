@@ -15,6 +15,8 @@ namespace PagoAgilFrba.AbmCliente
 {
     public partial class EditarClienteForm : ReturnForm
     {
+        private Cliente clienteAEditar = null;
+
         public EditarClienteForm(ReturnForm caller, Cliente clienteAEditar)
             : base(caller)
         {
@@ -31,8 +33,6 @@ namespace PagoAgilFrba.AbmCliente
             CodigoPostal = clienteAEditar.codigoPostal;
             Habilitado = clienteAEditar.habilitado;
         }
-
-        private Cliente clienteAEditar = null;
 
         public string Nombre
         {
@@ -197,6 +197,11 @@ namespace PagoAgilFrba.AbmCliente
             if (DNI <= 0) throw new ValorNegativoException("DNI");
             if (Telefono <= 0) throw new ValorNegativoException("Telefono");
             if (CodigoPostal <= 0) throw new ValorNegativoException("Codigo_Postal");
+        }
+
+        private void EditarClienteForm_Load(object sender, EventArgs e)
+        {
+
         }
 
     }
