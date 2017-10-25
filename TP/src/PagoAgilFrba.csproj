@@ -127,19 +127,43 @@
     <Compile Include="AbmFactura\ABMFacturaForm.Designer.cs">
       <DependentUpon>ABMFacturaForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AbmFactura\EditarFacturaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmFactura\EditarFacturaForm.Designer.cs">
+      <DependentUpon>EditarFacturaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmFactura\NuevaFacturaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmFactura\NuevaFacturaForm.Designer.cs">
+      <DependentUpon>NuevaFacturaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmFactura\SeleccionarFacturaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmFactura\SeleccionarFacturaForm.Designer.cs">
+      <DependentUpon>SeleccionarFacturaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmFactura\TablaFacturaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmFactura\TablaFacturaForm.Designer.cs">
+      <DependentUpon>TablaFacturaForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AbmRol\ABMRolForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AbmRol\ABMRolForm.Designer.cs">
       <DependentUpon>ABMRolForm.cs</DependentUpon>
     </Compile>
-	<Compile Include="AbmRol\AsignarRolForm.cs">
+    <Compile Include="AbmRol\AsignarRolForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AbmRol\AsignarRolForm.Designer.cs">
       <DependentUpon>AsignarRolForm.cs</DependentUpon>
     </Compile>
-		<Compile Include="AbmRol\EditarRolForm.cs">
+    <Compile Include="AbmRol\EditarRolForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AbmRol\EditarRolForm.Designer.cs">
@@ -181,6 +205,7 @@
     <Compile Include="Modelo\Exceptions\campoVacioException.cs" />
     <Compile Include="Modelo\Exceptions\EmptyFieldException.cs" />
     <Compile Include="Modelo\Exceptions\valorNegativoException.cs" />
+    <Compile Include="Modelo\Factura.cs" />
     <Compile Include="Modelo\RepoAccesos.cs" />
     <Compile Include="Modelo\ReturnForm.cs">
       <SubType>Form</SubType>
