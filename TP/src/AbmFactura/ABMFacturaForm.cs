@@ -19,7 +19,7 @@ namespace PagoAgilFrba.AbmFactura
         private void buttonEditar_Click(object sender, EventArgs e)
         {
             DataRow fila = ((DataRowView)DataGridViewUsuario.SelectedRows[0].DataBoundItem).Row;
-            new EditarFacturaForm(this, new Factura(fila)).abrir();
+            //new EditarFacturaForm(this, new Factura(fila)).abrir();
         }
         private void buttonVolver_Click(object sender, EventArgs e)
         {
@@ -27,13 +27,13 @@ namespace PagoAgilFrba.AbmFactura
         }
         private void buttonNuevo_Click(object sender, EventArgs e)
         {
-            new NuevaFacturaForm(this).abrir();
+            //new NuevaFacturaForm(this).abrir();
         }
 
         private void buttonBaja_Click(object sender, EventArgs e)
         {
             //Sucursal.inhabilitar((int)DataGridViewUsuario.SelectedRows[0].Cells["usua_id"].Value);    // Obtengo el id de la sucursal seleccionada y la inhabilita
-            CargarTabla();
+            //CargarTabla();
         }
     }
 }

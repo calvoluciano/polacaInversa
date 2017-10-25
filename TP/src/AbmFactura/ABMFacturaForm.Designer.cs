@@ -37,7 +37,7 @@
             // buttonBorrar
             // 
             this.buttonBorrar.Location = new System.Drawing.Point(373, 394);
-            this.buttonBorrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonBorrar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonBorrar.Name = "buttonBorrar";
             this.buttonBorrar.Size = new System.Drawing.Size(100, 28);
             this.buttonBorrar.TabIndex = 18;
@@ -48,7 +48,7 @@
             // buttonEditar
             // 
             this.buttonEditar.Location = new System.Drawing.Point(189, 394);
-            this.buttonEditar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonEditar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonEditar.Name = "buttonEditar";
             this.buttonEditar.Size = new System.Drawing.Size(100, 28);
             this.buttonEditar.TabIndex = 17;
@@ -59,7 +59,7 @@
             // buttonVolver
             // 
             this.buttonVolver.Location = new System.Drawing.Point(578, 394);
-            this.buttonVolver.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonVolver.Margin = new System.Windows.Forms.Padding(4);
             this.buttonVolver.Name = "buttonVolver";
             this.buttonVolver.Size = new System.Drawing.Size(100, 28);
             this.buttonVolver.TabIndex = 16;
@@ -70,7 +70,7 @@
             // buttonNuevo
             // 
             this.buttonNuevo.Location = new System.Drawing.Point(28, 394);
-            this.buttonNuevo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonNuevo.Margin = new System.Windows.Forms.Padding(4);
             this.buttonNuevo.Name = "buttonNuevo";
             this.buttonNuevo.Size = new System.Drawing.Size(100, 28);
             this.buttonNuevo.TabIndex = 15;
@@ -81,12 +81,12 @@
             // ABMFacturaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.ClientSize = new System.Drawing.Size(770, 430);
+            this.ClientSize = new System.Drawing.Size(770, 496);
             this.Controls.Add(this.buttonBorrar);
             this.Controls.Add(this.buttonEditar);
             this.Controls.Add(this.buttonVolver);
             this.Controls.Add(this.buttonNuevo);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "ABMFacturaForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

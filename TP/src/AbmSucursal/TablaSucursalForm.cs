@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PagoAgilFrba.Modelo;
 
+
 namespace PagoAgilFrba.AbmSucursal
 {
     public partial class TablaSucursalForm : ReturnForm
@@ -25,7 +26,7 @@ namespace PagoAgilFrba.AbmSucursal
         {
             base.Refrescar();
             DataGridViewUsuario.Columns["Usuario_Habilitado"].Visible = false;  // oculto columna que no quiero mostrar
-            DataGridViewUsuario.Columns["Chofer_Habilitado"].HeaderText = "Habilitado"; //  cambio nombre visible de columna
+            DataGridViewUsuario.Columns["Sucursal_Habilitada"].HeaderText = "Habilitada"; //  cambio nombre visible de columna
         }
         public DataGridView DataGridViewUsuario
         {
