@@ -16,7 +16,7 @@ namespace PagoAgilFrba.Modelo
             nombre = (String)data["Nombre"];
             dni = Convert.ToDecimal(data["DNI"]);
             mail = (String)data["Mail"];
-            //telefono = (decimal)data["Telefono"];
+            telefono = Convert.ToDecimal(data["Telefono"]);
             domicilio = (String)data["Domicilio"];
             //numero = (decimal)data["Numero"];
             //piso = (String)data["Piso"];
@@ -43,38 +43,40 @@ namespace PagoAgilFrba.Modelo
 
         public void editar()                                            // persisto los cambios
         {
-            DB.correrProcedimiento("Cliente_UPDATE",
-                                         "DNI_Cliente", dni,
-                                         "Nombre", nombre,
-                                         "Apellido", apellido,
-                                         "Mail", mail,
-                                         "Telefono", telefono,
-                                         "Domicilio", domicilio,
-                                         "Numero", numero,
-                                         "Piso", piso,
-                                         "Dpto", dpto,
-                                         "Localidad", localidad,
-                                         "Fecha_Nac", fechaNac,
-                                         "Codigo_Postal", codigoPostal,
-                                         "Estado_Cliente", habilitado);
+            DB.correrProcedimiento("CLIENTE_UPDATE",
+                                         "id", id,
+                                         "nombre", nombre,
+                                         "apellido", apellido,
+                                         "dni", dni,
+                                         "mail", mail,
+                                         "telefono", telefono,
+                                         "domicilio", domicilio,
+                                         //"Numero", numero,
+                                         //"Piso", piso,
+                                         //"Dpto", dpto,
+                                         //"Localidad", localidad,
+                                         "fechaNac", fechaNac,
+                                         "codigoPostal", codigoPostal,
+                                         "habilitado", habilitado);
         }
 
-        public void nuevo()  // persisto un cliente nuevo
+        public static void nuevo(String nombre,String apellido, Decimal dni ,String mail, Decimal telefono, String domicilio,
+                            DateTime fechaNac, Decimal codigoPostal, Boolean habilitado)  // persisto un cliente nuevo
         {
-            DB.correrProcedimiento("Cliente_NUEVO",
-                                         "DNI_Cliente", dni,
-                                         "Nombre", nombre,
-                                         "Apellido", apellido,
-                                         "Mail", mail,
-                                         "Telefono", telefono,
-                                         "Domicilio", domicilio,
-                                         "Numero", numero,
-                                         "Piso", piso,
-                                         "Dpto", dpto,
-                                         "Localidad", localidad,
-                                         "Fecha_Nac", fechaNac,
-                                         "Codigo_Postal", codigoPostal,
-                                         "Estado_Cliente", habilitado);
+            DB.correrProcedimiento("CLIENTE_NUEVO",
+                                         "nombre", nombre,
+                                         "apellido", apellido,
+                                         "dni", dni,
+                                         "mail", mail,
+                                         "telefono", telefono,
+                                         "domicilio", domicilio,
+                                         //"Numero", numero,
+                                         //"Piso", piso,
+                                         //"Dpto", dpto,
+                                         //"Localidad", localidad,
+                                         "fechaNac", fechaNac,
+                                         "codigoPostal", codigoPostal,
+                                         "habilitado", habilitado);
         }
 
         public static DataTable getClientesConFiltros(  String nombre,  // "CLIENTES"

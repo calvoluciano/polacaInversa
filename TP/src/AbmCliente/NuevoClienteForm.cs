@@ -19,27 +19,6 @@ namespace PagoAgilFrba.AbmCliente
         {
             InitializeComponent();
         }
-
-        private Cliente nuevoCliente = null;
-
-        private void buttonAceptar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                validar(); // valido los datos ingresados
-                //nuevoCliente.dni = text;
-                    // persisto el nuevo cliente
-                this.Close();
-            }
-            catch (SqlException) { }
-            catch (Exception exception)
-            {
-                if (exception is FormatException || 
-                    exception is CampoVacioException ||
-                    exception is ValorNegativoException) Error.show(exception.Message);
-                else throw;
-            }
-        }
   
         private void validar()      // valido los datos ingresados
         {
@@ -54,6 +33,28 @@ namespace PagoAgilFrba.AbmCliente
             if (decimal.Parse(textBoxDni.Text) <= 0) throw new ValorNegativoException("DNI");
             if (decimal.Parse(textBoxTelefono.Text)<= 0) throw new ValorNegativoException("Telefono");
             if (decimal.Parse(textBoxCodigoPostal.Text) <= 0) throw new ValorNegativoException("Codigo_Postal");
+        }
+
+        private void aceptar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                validar(); // valido los datos ingresados
+
+                Cliente.nuevo(textBoxNombre.Text, Convert.ToString(textBoxApellido.Text), Convert.ToDecimal(textBoxDni.Text)
+                    , Convert.ToString(textBoxEmail.Text),decimal.Parse(textBoxTelefono.Text), textBoxDomicilio.Text, dateTimePickerFechaNacimiento.Value, 
+                    decimal.Parse(textBoxCodigoPostal.Text), true);
+                // persisto el nuevo cliente
+                this.Close();
+            }
+            catch (SqlException) { }
+            catch (Exception exception)
+            {
+                if (exception is FormatException ||
+                    exception is CampoVacioException ||
+                    exception is ValorNegativoException) Error.show(exception.Message);
+                else throw;
+            }
         }
 
     }

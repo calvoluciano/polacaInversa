@@ -232,6 +232,7 @@
             this.aceptar.Text = "Aceptar";
             this.aceptar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.aceptar.UseVisualStyleBackColor = true;
+            this.aceptar.Click += new System.EventHandler(this.aceptar_Click);
             // 
             // NuevoClienteForm
             // 

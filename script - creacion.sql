@@ -40,7 +40,13 @@ IF OBJECT_ID('POLACA_INVERSA._INHABILITAR') IS NOT NULL
     DROP PROCEDURE POLACA_INVERSA._INHABILITAR;	
 	
 IF OBJECT_ID('POLACA_INVERSA._HABILITAR') IS NOT NULL
-    DROP PROCEDURE POLACA_INVERSA._HABILITAR;	
+    DROP PROCEDURE POLACA_INVERSA._HABILITAR;
+
+IF OBJECT_ID('POLACA_INVERSA.CLIENTE_UPDATE') IS NOT NULL
+    DROP PROCEDURE POLACA_INVERSA.CLIENTE_UPDATE;	
+
+IF OBJECT_ID('POLACA_INVERSA.CLIENTE_NUEVO') IS NOT NULL
+	DROP PROCEDURE POLACA_INVERSA.CLIENTE_NUEVO;
 	
 IF OBJECT_ID('POLACA_INVERSA.USUARIO_GET_ID') IS NOT NULL
     DROP FUNCTION POLACA_INVERSA.USUARIO_GET_ID;
@@ -210,7 +216,46 @@ AS
 					JOIN POLACA_INVERSA.ROL_USUARIO as R_U ON  R_U.ID_ROL= R.ID_ROL
 				WHERE R_U.ID_USUARIO = @usuarioId)
 GO
-					
+
+CREATE FUNCTION POLACA_INVERSA.ROL_GET_ACCESOS(@rolId TINYINT) RETURNS TABLE
+AS
+	RETURN	(	SELECT Id_Acceso
+				FROM POLACA_INVERSA.ROL_ACCESOS
+				WHERE ID_ROL = @rolId)
+GO
+
+CREATE FUNCTION POLACA_INVERSA.ACCESO_GET_NOMBRE(@accesoId TINYINT) RETURNS varchar(200)
+AS
+BEGIN
+	RETURN	(	SELECT Nombre
+				FROM POLACA_INVERSA.ACCESOS
+				WHERE id_acceso = @accesoId)
+END
+GO
+
+CREATE FUNCTION POLACA_INVERSA.GET_CLIENTES_CON_FILTROS (@nombre varchar(255),			
+														 @apellido varchar(255),
+														 @dni numeric(18,0))
+RETURNS TABLE
+AS 
+	RETURN	(SELECT  ID_CLIENTE,
+					 APELLIDO as Apellido,
+					 NOMBRE as Nombre,
+					 DNI as DNI,
+					 MAIL as Mail,
+					 TELEFONO as Telefono,
+					 DIRECCION as Domicilio,
+					 CODIGO_POSTAL as "Codigo Postal",
+					 FECHA_NACIMIENTO as "Fecha Nacimiento",
+					 HABILITADO
+			FROM POLACA_INVERSA.CLIENTES
+			WHERE (@nombre = '' OR CHARINDEX(@nombre, NOMBRE) > 0) AND
+				(@apellido = '' OR CHARINDEX(@apellido, APELLIDO) > 0) AND
+				(@dni = 0 OR @dni = DNI))
+GO
+
+-- Fin de Funciones
+	
 -- Procedimientos
 
 CREATE PROC POLACA_INVERSA.SPLOGIN
@@ -274,42 +319,58 @@ BEGIN
 END
 GO
 
-CREATE FUNCTION POLACA_INVERSA.ROL_GET_ACCESOS(@rolId TINYINT) RETURNS TABLE
-AS
-	RETURN	(	SELECT Id_Acceso
-				FROM POLACA_INVERSA.ROL_ACCESOS
-				WHERE ID_ROL = @rolId)
-GO
-
-CREATE FUNCTION POLACA_INVERSA.ACCESO_GET_NOMBRE(@accesoId TINYINT) RETURNS varchar(200)
+CREATE PROC POLACA_INVERSA.CLIENTE_UPDATE(	@id INT,
+											@nombre VARCHAR(255),
+											@apellido VARCHAR(255),
+											@dni NUMERIC(18,0),
+											@mail VARCHAR(255),
+											@telefono NUMERIC(18,0),
+											@domicilio VARCHAR(255),
+											@fechaNac DATETIME,
+											@codigoPostal NUMERIC(18,0),
+											@habilitado BIT)
 AS
 BEGIN
-	RETURN	(	SELECT Nombre
-				FROM POLACA_INVERSA.ACCESOS
-				WHERE id_acceso = @accesoId)
+		
+	UPDATE POLACA_INVERSA.CLIENTES SET	HABILITADO = @habilitado,
+										CODIGO_POSTAL = @codigoPostal,
+										NOMBRE = @nombre, 
+										APELLIDO = @apellido,
+										DNI = @dni,
+										FECHA_NACIMIENTO = @fechaNac,
+										MAIL = @mail,
+										TELEFONO = @telefono,
+										DIRECCION = @domicilio
+	WHERE ID_CLIENTE = @id
 END
 GO
 
-CREATE FUNCTION POLACA_INVERSA.GET_CLIENTES_CON_FILTROS (@nombre varchar(255),			
-														 @apellido varchar(255),
-														 @dni numeric(18,0))
-RETURNS TABLE
-AS 
-	RETURN	(SELECT  ID_CLIENTE,
-					 APELLIDO as Apellido,
-					 NOMBRE as Nombre,
-					 DNI as DNI,
-					 MAIL as Mail,
-					 TELEFONO as Telefono,
-					 DIRECCION as Domicilio,
-					 CODIGO_POSTAL as "Codigo Postal",
-					 FECHA_NACIMIENTO as "Fecha Nacimiento",
-					 HABILITADO
-			FROM POLACA_INVERSA.CLIENTES
-			WHERE (@nombre = '' OR CHARINDEX(@nombre, NOMBRE) > 0) AND
-				(@apellido = '' OR CHARINDEX(@apellido, APELLIDO) > 0) AND
-				(@dni = 0 OR @dni = DNI))
+CREATE PROC POLACA_INVERSA.CLIENTE_NUEVO(	@nombre VARCHAR(255),
+											@apellido VARCHAR(255),
+											@dni NUMERIC(18,0),
+											@mail VARCHAR(255),
+											@telefono NUMERIC(18,0),
+											@domicilio VARCHAR(255),
+											@fechaNac DATETIME,
+											@codigoPostal NUMERIC(18,0),
+											@habilitado BIT)
+AS
+BEGIN
+		
+	INSERT INTO POLACA_INVERSA.CLIENTES VALUES (@habilitado,
+												@codigoPostal,
+												@nombre, 
+												@apellido,
+												@dni,
+												@fechaNac,
+												@mail,
+												@telefono,
+												@domicilio)
+END
 GO
+
+-- Fin de Procedimientos
+
 /* -- MIGRACION -- */
 
 /*Para ejecutar las procedures una vez creadas, ejecutar: [POLACA_INVERSA].NombreProcedure */
@@ -358,3 +419,4 @@ VALUES (1,1)
 
 EXEC [POLACA_INVERSA].MigrarClientes
 go
+
