@@ -10,19 +10,19 @@ namespace PagoAgilFrba.Modelo
 {
     public class Factura : Usuario
     {
-        int numFactura;
-        int cuit;
-        int dniCliente;
+        public int numFactura;
+        public int cuit;
+        public int dniCliente;
 
-        int idDetalle;
-        int idPago;
-        int idRendicion;
-        int idDevolucion;
+        public int idDetalle;
+        public int idPago;
+        public int idRendicion;
+        public int idDevolucion;
 
 
-        DateTime fechaAlta;
-        DateTime fechaVencimiento;
-        int total;
+        public DateTime fechaAlta;
+        public DateTime fechaVencimiento;
+        public int total;
 
          public Factura(DataRow data)
         {

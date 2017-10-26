@@ -36,7 +36,7 @@
             // 
             // buttonBorrar
             // 
-            this.buttonBorrar.Location = new System.Drawing.Point(373, 394);
+            this.buttonBorrar.Location = new System.Drawing.Point(364, 487);
             this.buttonBorrar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonBorrar.Name = "buttonBorrar";
             this.buttonBorrar.Size = new System.Drawing.Size(100, 28);
@@ -47,7 +47,7 @@
             // 
             // buttonEditar
             // 
-            this.buttonEditar.Location = new System.Drawing.Point(189, 394);
+            this.buttonEditar.Location = new System.Drawing.Point(173, 487);
             this.buttonEditar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonEditar.Name = "buttonEditar";
             this.buttonEditar.Size = new System.Drawing.Size(100, 28);
@@ -58,7 +58,7 @@
             // 
             // buttonVolver
             // 
-            this.buttonVolver.Location = new System.Drawing.Point(578, 394);
+            this.buttonVolver.Location = new System.Drawing.Point(562, 487);
             this.buttonVolver.Margin = new System.Windows.Forms.Padding(4);
             this.buttonVolver.Name = "buttonVolver";
             this.buttonVolver.Size = new System.Drawing.Size(100, 28);
@@ -69,7 +69,7 @@
             // 
             // buttonNuevo
             // 
-            this.buttonNuevo.Location = new System.Drawing.Point(28, 394);
+            this.buttonNuevo.Location = new System.Drawing.Point(22, 487);
             this.buttonNuevo.Margin = new System.Windows.Forms.Padding(4);
             this.buttonNuevo.Name = "buttonNuevo";
             this.buttonNuevo.Size = new System.Drawing.Size(100, 28);
@@ -81,7 +81,7 @@
             // ABMFacturaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.ClientSize = new System.Drawing.Size(770, 496);
+            this.ClientSize = new System.Drawing.Size(770, 528);
             this.Controls.Add(this.buttonBorrar);
             this.Controls.Add(this.buttonEditar);
             this.Controls.Add(this.buttonVolver);

@@ -19,7 +19,7 @@ namespace PagoAgilFrba.AbmFactura
         private void buttonEditar_Click(object sender, EventArgs e)
         {
             DataRow fila = ((DataRowView)DataGridViewUsuario.SelectedRows[0].DataBoundItem).Row;
-            //new EditarFacturaForm(this, new Factura(fila)).abrir();
+            new EditarFacturaForm(this, new Factura(fila)).abrir();
         }
         private void buttonVolver_Click(object sender, EventArgs e)
         {
