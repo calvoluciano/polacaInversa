@@ -127,6 +127,30 @@
     <Compile Include="AbmFactura\ABMFacturaForm.Designer.cs">
       <DependentUpon>ABMFacturaForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AbmFactura\EditarFacturaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmFactura\EditarFacturaForm.Designer.cs">
+      <DependentUpon>EditarFacturaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmFactura\NuevaFacturaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmFactura\NuevaFacturaForm.Designer.cs">
+      <DependentUpon>NuevaFacturaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmFactura\SeleccionarFacturaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmFactura\SeleccionarFacturaForm.Designer.cs">
+      <DependentUpon>SeleccionarFacturaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmFactura\TablaFacturaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmFactura\TablaFacturaForm.Designer.cs">
+      <DependentUpon>TablaFacturaForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AbmRol\ABMRolForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,7 +204,9 @@
     <Compile Include="Modelo\Empresa.cs" />
     <Compile Include="Modelo\Exceptions\campoVacioException.cs" />
     <Compile Include="Modelo\Exceptions\EmptyFieldException.cs" />
+    <Compile Include="Modelo\Exceptions\ExpireDateBeforeException.cs" />
     <Compile Include="Modelo\Exceptions\valorNegativoException.cs" />
+    <Compile Include="Modelo\Factura.cs" />
     <Compile Include="Modelo\RepoAccesos.cs" />
     <Compile Include="Modelo\ReturnForm.cs">
       <SubType>Form</SubType>
@@ -245,6 +271,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AbmCliente\NuevoClienteForm.resx">
       <DependentUpon>NuevoClienteForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmFactura\ABMFacturaForm.resx">
+      <DependentUpon>ABMFacturaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmFactura\EditarFacturaForm.resx">
+      <DependentUpon>EditarFacturaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmFactura\TablaFacturaForm.resx">
+      <DependentUpon>TablaFacturaForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmSucursal\ABMSucursalForm.resx">
       <DependentUpon>ABMSucursalForm.cs</DependentUpon>

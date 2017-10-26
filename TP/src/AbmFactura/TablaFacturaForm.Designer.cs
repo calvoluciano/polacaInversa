@@ -1,6 +1,6 @@
-﻿namespace PagoAgilFrba.AbmSucursal
+﻿namespace PagoAgilFrba.AbmFactura
 {
-    partial class TablaSucursalForm
+    partial class TablaFacturaForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,11 +30,13 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.nombre = new System.Windows.Forms.TextBox();
-            this.codigoPostal = new System.Windows.Forms.TextBox();
-            this.direccion = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.numeroFactura = new System.Windows.Forms.TextBox();
+            this.cuit = new System.Windows.Forms.TextBox();
+            this.dniCliente = new System.Windows.Forms.TextBox();
+            this.total = new System.Windows.Forms.TextBox();
             this.buttonFiltrar = new System.Windows.Forms.Button();
             this.buttonLimpiar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -46,74 +48,93 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 73);
+            this.label1.Location = new System.Drawing.Point(6, 30);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 20);
+            this.label1.Size = new System.Drawing.Size(130, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Codigo Postal";
+            this.label1.Text = "Numero Factura";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 36);
+            this.label2.Location = new System.Drawing.Point(6, 65);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 20);
+            this.label2.Size = new System.Drawing.Size(95, 20);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Nombre";
+            this.label2.Text = "DNI Cliente";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(6, 95);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(47, 20);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "CUIT";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(6, 127);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(46, 20);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Total";
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.nombre);
-            this.groupBox1.Controls.Add(this.codigoPostal);
-            this.groupBox1.Controls.Add(this.direccion);
+            this.groupBox1.Controls.Add(this.cuit);
+            this.groupBox1.Controls.Add(this.dniCliente);
+            this.groupBox1.Controls.Add(this.total);
+            this.groupBox1.Controls.Add(this.numeroFactura);
+            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(613, 127);
+            this.groupBox1.Size = new System.Drawing.Size(613, 170);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtro de busqueda";
             // 
-            // nombre
+            // numeroFactura
             // 
-            this.nombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nombre.Location = new System.Drawing.Point(131, 33);
-            this.nombre.MaxLength = 20;
-            this.nombre.Name = "nombre";
-            this.nombre.Size = new System.Drawing.Size(228, 24);
-            this.nombre.TabIndex = 4;
-            this.nombre.TextChanged += new System.EventHandler(this.nombre_TextChanged);
+            this.numeroFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numeroFactura.Location = new System.Drawing.Point(151, 33);
+            this.numeroFactura.MaxLength = 20;
+            this.numeroFactura.Name = "numeroFactura";
+            this.numeroFactura.Size = new System.Drawing.Size(228, 24);
+            this.numeroFactura.TabIndex = 4;
             // 
-            // codigoPostal
+            // cuit
             // 
-            this.codigoPostal.Location = new System.Drawing.Point(131, 66);
-            this.codigoPostal.Name = "codigoPostal";
-            this.codigoPostal.Size = new System.Drawing.Size(100, 27);
-            this.codigoPostal.TabIndex = 5;
-            this.codigoPostal.TextChanged += new System.EventHandler(this.codigoPostal_TextChanged);
+            this.cuit.Location = new System.Drawing.Point(151, 127);
+            this.cuit.Name = "cuit";
+            this.cuit.Size = new System.Drawing.Size(228, 27);
+            this.cuit.TabIndex = 5;
             // 
-            // direccion
+            // dniCliente
             // 
-            this.direccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.direccion.Location = new System.Drawing.Point(131, 97);
-            this.direccion.MaxLength = 20;
-            this.direccion.Name = "direccion";
-            this.direccion.Size = new System.Drawing.Size(228, 24);
-            this.direccion.TabIndex = 4;
+            this.dniCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dniCliente.Location = new System.Drawing.Point(151, 63);
+            this.dniCliente.MaxLength = 20;
+            this.dniCliente.Name = "dniCliente";
+            this.dniCliente.Size = new System.Drawing.Size(228, 24);
+            this.dniCliente.TabIndex = 4;
             // 
-            // label3
+            // total
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 104);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 20);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Direccion";
+            this.total.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.total.Location = new System.Drawing.Point(151, 93);
+            this.total.MaxLength = 20;
+            this.total.Name = "total";
+            this.total.Size = new System.Drawing.Size(228, 24);
+            this.total.TabIndex = 4;
             // 
             // buttonFiltrar
             // 
@@ -136,22 +157,22 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 145);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 188);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(746, 242);
+            this.dataGridView1.Size = new System.Drawing.Size(746, 296);
             this.dataGridView1.TabIndex = 6;
             // 
-            // TablaSucursalForm
+            // TablaFacturaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(846, 479);
+            this.ClientSize = new System.Drawing.Size(786, 510);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.buttonLimpiar);
             this.Controls.Add(this.buttonFiltrar);
             this.Controls.Add(this.groupBox1);
-            this.Name = "TablaSucursalForm";
+            this.Name = "TablaFacturaForm";
             this.Text = "Tabla Sucursal";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -162,11 +183,13 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox nombre;
-        private System.Windows.Forms.TextBox codigoPostal;
-        private System.Windows.Forms.TextBox direccion;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox numeroFactura;
+        private System.Windows.Forms.TextBox cuit;
+        private System.Windows.Forms.TextBox dniCliente;
+        private System.Windows.Forms.TextBox total;
         private System.Windows.Forms.Button buttonFiltrar;
         private System.Windows.Forms.Button buttonLimpiar;
         private System.Windows.Forms.DataGridView dataGridView1;
