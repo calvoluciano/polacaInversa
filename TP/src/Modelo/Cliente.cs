@@ -60,7 +60,7 @@ namespace PagoAgilFrba.Modelo
                                          "habilitado", habilitado);
         }
 
-        public static void nuevo(String nombre,String apellido, Decimal dni ,String mail, Decimal telefono, String domicilio,
+        public static void nuevo(String nombre, String apellido, Decimal dni ,String mail, Decimal telefono, String domicilio,
                             DateTime fechaNac, Decimal codigoPostal, Boolean habilitado)  // persisto un cliente nuevo
         {
             DB.correrProcedimiento("CLIENTE_NUEVO",

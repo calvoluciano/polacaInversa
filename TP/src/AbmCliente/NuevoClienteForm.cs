@@ -41,9 +41,15 @@ namespace PagoAgilFrba.AbmCliente
             {
                 validar(); // valido los datos ingresados
 
-                Cliente.nuevo(textBoxNombre.Text, Convert.ToString(textBoxApellido.Text), Convert.ToDecimal(textBoxDni.Text)
-                    , Convert.ToString(textBoxEmail.Text),decimal.Parse(textBoxTelefono.Text), textBoxDomicilio.Text, dateTimePickerFechaNacimiento.Value, 
-                    decimal.Parse(textBoxCodigoPostal.Text), true);
+                Cliente.nuevo(  Convert.ToString(textBoxNombre.Text), 
+                                Convert.ToString(textBoxApellido.Text), 
+                                Convert.ToDecimal(textBoxDni.Text),
+                                Convert.ToString(textBoxEmail.Text),
+                                Convert.ToDecimal(textBoxTelefono.Text), 
+                                Convert.ToString(textBoxDomicilio.Text), 
+                                dateTimePickerFechaNacimiento.Value, 
+                                Convert.ToDecimal(textBoxCodigoPostal.Text), 
+                                true);
                 // persisto el nuevo cliente
                 this.Close();
             }
@@ -55,6 +61,11 @@ namespace PagoAgilFrba.AbmCliente
                     exception is ValorNegativoException) Error.show(exception.Message);
                 else throw;
             }
+        }
+
+        private void cancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
     }

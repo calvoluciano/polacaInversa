@@ -25,7 +25,7 @@ namespace PagoAgilFrba.AbmRol
             accesos = Acceso.getTablaDe(0);
             dataGridViewRol.DataSource = accesos;
             dataGridViewRol.Columns["Id_Acceso"].Visible = false;
-            dataGridViewRol.Columns["Acceso"].ReadOnly = true;
+            dataGridViewRol.Columns["Nombre"].ReadOnly = true;
         }
 
         public EditarRolForm(ReturnForm caller, Rol rolEditar)
@@ -37,10 +37,10 @@ namespace PagoAgilFrba.AbmRol
             accesos = Acceso.getTablaDe(rolEditar.id);
             dataGridViewRol.DataSource = accesos;
             dataGridViewRol.Columns["Id_Acceso"].Visible = false;
-            dataGridViewRol.Columns["Acceso"].ReadOnly = true;
+            dataGridViewRol.ReadOnly = true;
+            dataGridViewRol.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
             Nombre = rolEditar.nombre;
-            Descripcion = rolEditar.detalle;
             Habilitado = rolEditar.habilitado;
         }
 
@@ -54,19 +54,6 @@ namespace PagoAgilFrba.AbmRol
             set
             {
                 textBoxNombre.Text = value;
-            }
-        }
-
-        public string Descripcion
-        {
-            get
-            {
-                return textBoxDescripcion.Text;
-            }
-
-            set
-            {
-                textBoxDescripcion.Text = value;
             }
         }
 
@@ -89,7 +76,6 @@ namespace PagoAgilFrba.AbmRol
             {
                 validar();
                 rolEditar.nombre = Nombre;
-                rolEditar.detalle = Descripcion;
                 rolEditar.habilitado = Habilitado;
 
                 if (edicion)

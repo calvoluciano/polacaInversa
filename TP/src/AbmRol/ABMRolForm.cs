@@ -44,7 +44,7 @@ namespace PagoAgilFrba.AbmRol
         public override void Refrescar()
         {
             CargarTabla();
-            dataGridViewRoles.Columns["id"].Visible = false;                                  // oculto columna que no quiero mostrar
+            dataGridViewRoles.Columns["id_Rol"].Visible = false;                                  // oculto columna que no quiero mostrar
         }
 
         protected void CargarTabla()

@@ -30,12 +30,14 @@
         {
             this.textBoxNombre = new System.Windows.Forms.TextBox();
             this.labelNombre = new System.Windows.Forms.Label();
-            this.textBoxDescripcion = new System.Windows.Forms.TextBox();
             this.labelDescripcion = new System.Windows.Forms.Label();
             this.dataGridViewRol = new System.Windows.Forms.DataGridView();
             this.buttonAceptar = new System.Windows.Forms.Button();
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.checkBoxHabilitado = new System.Windows.Forms.CheckBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRol)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,29 +60,20 @@
             this.labelNombre.TabIndex = 5;
             this.labelNombre.Text = "Nombre";
             // 
-            // textBoxDescripcion
-            // 
-            this.textBoxDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxDescripcion.Location = new System.Drawing.Point(41, 105);
-            this.textBoxDescripcion.MaxLength = 20;
-            this.textBoxDescripcion.Name = "textBoxDescripcion";
-            this.textBoxDescripcion.Size = new System.Drawing.Size(271, 24);
-            this.textBoxDescripcion.TabIndex = 8;
-            // 
             // labelDescripcion
             // 
             this.labelDescripcion.AutoSize = true;
             this.labelDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDescripcion.Location = new System.Drawing.Point(37, 82);
+            this.labelDescripcion.Location = new System.Drawing.Point(37, 78);
             this.labelDescripcion.Name = "labelDescripcion";
-            this.labelDescripcion.Size = new System.Drawing.Size(99, 20);
+            this.labelDescripcion.Size = new System.Drawing.Size(112, 20);
             this.labelDescripcion.TabIndex = 7;
-            this.labelDescripcion.Text = "Descripcion";
+            this.labelDescripcion.Text = "Funcionalidad";
             // 
             // dataGridViewRol
             // 
             this.dataGridViewRol.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewRol.Location = new System.Drawing.Point(30, 150);
+            this.dataGridViewRol.Location = new System.Drawing.Point(29, 172);
             this.dataGridViewRol.Name = "dataGridViewRol";
             this.dataGridViewRol.RowTemplate.Height = 24;
             this.dataGridViewRol.Size = new System.Drawing.Size(295, 185);
@@ -88,7 +81,7 @@
             // 
             // buttonAceptar
             // 
-            this.buttonAceptar.Location = new System.Drawing.Point(56, 369);
+            this.buttonAceptar.Location = new System.Drawing.Point(46, 397);
             this.buttonAceptar.Name = "buttonAceptar";
             this.buttonAceptar.Size = new System.Drawing.Size(99, 31);
             this.buttonAceptar.TabIndex = 10;
@@ -99,7 +92,7 @@
             // 
             // buttonCancelar
             // 
-            this.buttonCancelar.Location = new System.Drawing.Point(212, 369);
+            this.buttonCancelar.Location = new System.Drawing.Point(202, 397);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(99, 31);
             this.buttonCancelar.TabIndex = 11;
@@ -114,23 +107,53 @@
             this.checkBoxHabilitado.Checked = true;
             this.checkBoxHabilitado.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxHabilitado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxHabilitado.Location = new System.Drawing.Point(128, 341);
+            this.checkBoxHabilitado.Location = new System.Drawing.Point(118, 369);
             this.checkBoxHabilitado.Name = "checkBoxHabilitado";
             this.checkBoxHabilitado.Size = new System.Drawing.Size(95, 22);
             this.checkBoxHabilitado.TabIndex = 24;
             this.checkBoxHabilitado.Text = "Habilitado";
             this.checkBoxHabilitado.UseVisualStyleBackColor = true;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(41, 105);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(269, 24);
+            this.comboBox1.TabIndex = 25;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(79, 135);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(70, 31);
+            this.button1.TabIndex = 26;
+            this.button1.Text = "Agregar";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(202, 135);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(73, 31);
+            this.button2.TabIndex = 27;
+            this.button2.Text = "Eliminar";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // EditarRolForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(354, 409);
+            this.ClientSize = new System.Drawing.Size(349, 442);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.checkBoxHabilitado);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonAceptar);
             this.Controls.Add(this.dataGridViewRol);
-            this.Controls.Add(this.textBoxDescripcion);
             this.Controls.Add(this.labelDescripcion);
             this.Controls.Add(this.textBoxNombre);
             this.Controls.Add(this.labelNombre);
@@ -146,11 +169,13 @@
 
         private System.Windows.Forms.TextBox textBoxNombre;
         private System.Windows.Forms.Label labelNombre;
-        private System.Windows.Forms.TextBox textBoxDescripcion;
         private System.Windows.Forms.Label labelDescripcion;
         private System.Windows.Forms.DataGridView dataGridViewRol;
         private System.Windows.Forms.Button buttonAceptar;
         private System.Windows.Forms.Button buttonCancelar;
         private System.Windows.Forms.CheckBox checkBoxHabilitado;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

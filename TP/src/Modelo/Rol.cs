@@ -79,7 +79,7 @@ namespace PagoAgilFrba.Modelo
         public static DataTable getRoles()              // obtengo todos los roles
         {
             return DB.correrQuery(@"SELECT  id_Rol,
-                                            Nombre AS Nombre, 
+                                            Nombre_Rol AS Nombre, 
                                             Habilitado AS Habilitado
                                     FROM POLACA_INVERSA.Roles");
         }

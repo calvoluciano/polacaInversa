@@ -281,6 +281,9 @@
     <EmbeddedResource Include="AbmFactura\TablaFacturaForm.resx">
       <DependentUpon>TablaFacturaForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\EditarRolForm.resx">
+      <DependentUpon>EditarRolForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AbmSucursal\ABMSucursalForm.resx">
       <DependentUpon>ABMSucursalForm.cs</DependentUpon>
     </EmbeddedResource>
