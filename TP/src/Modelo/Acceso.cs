@@ -38,5 +38,11 @@ namespace PagoAgilFrba.Modelo
                                             "Id_Rol", idRol);
         }
 
+        public static DataTable getTablaDeDisponibles(byte idRol)
+        {
+            return DB.correrFuncionDeTabla("FUNCIONALIDADES_GET_TABLA_DE_ROL_DISPONIBLES",
+                                            "Id_Rol", idRol);
+        }
+
     }
 }

@@ -48,10 +48,9 @@ namespace PagoAgilFrba.Modelo
             SqlCommand comando = DB.nuevoProcedimiento("ROL_UPDATE",
                                                         "id", id,
                                                         "nombre", nombre,
-                                                        "detalle", detalle,
                                                         "habilitado", habilitado);
             SqlParameter parametroFuncionalidades = new SqlParameter("@funcionalidades", SqlDbType.Structured); // dado que uno de los parametros es una tabla tengo que hacer un poco de magia
-            parametroFuncionalidades.TypeName = "POLACA_INVERSA.TABLA_ROL_X_FUNCIONALIDAD";
+            parametroFuncionalidades.TypeName = "POLACA_INVERSA.TABLA_ROL_X_ACCESO";
             parametroFuncionalidades.Value = accesos;
             comando.Parameters.Add(parametroFuncionalidades);
             DB.ejecutarProcedimiento(comando);
@@ -61,10 +60,9 @@ namespace PagoAgilFrba.Modelo
         {
             SqlCommand comando = DB.nuevoProcedimiento("ROL_NUEVO",
                                                         "nombre", nombre,
-                                                        "detalle", detalle,
                                                         "habilitado", habilitado);
             SqlParameter parametroFuncionalidades = new SqlParameter("@funcionalidades", SqlDbType.Structured); // dado que uno de los parametros es una tabla tengo que hacer un poco de magia
-            parametroFuncionalidades.TypeName = "POLACA_INVERSA.TABLA_ROL_X_FUNCIONALIDAD";
+            parametroFuncionalidades.TypeName = "POLACA_INVERSA.TABLA_ROL_X_ACCESO";
             parametroFuncionalidades.Value = accesos;
             comando.Parameters.Add(parametroFuncionalidades);
             DB.ejecutarProcedimiento(comando);

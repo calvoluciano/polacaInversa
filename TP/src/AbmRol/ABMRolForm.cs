@@ -52,16 +52,9 @@ namespace PagoAgilFrba.AbmRol
             dataGridViewRoles.DataSource = Rol.getRoles();
         }
 
-        private void buttonAsignar_Click(object sender, EventArgs e)
+        private void buttonVolver_Click(object sender, EventArgs e)
         {
-            DataRow fila = ((DataRowView)dataGridViewRoles.SelectedRows[0].DataBoundItem).Row;        // obtengo fila seleccionada
-            Rol rol = new Rol(fila);                                                                // creo rol a partir de la fila
-            if (!rol.habilitado)
-            {                                                                  // si esta deshabilitado...
-                Error.show("No se puede asignar usuarios a un rol inhabilitado!");
-                return;
-            }
-            new AsignarRolForm(this, rol).abrir();    
+            this.Close();
         }
 
     }

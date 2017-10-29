@@ -157,12 +157,6 @@
     <Compile Include="AbmRol\ABMRolForm.Designer.cs">
       <DependentUpon>ABMRolForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmRol\AsignarRolForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AbmRol\AsignarRolForm.Designer.cs">
-      <DependentUpon>AsignarRolForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="AbmRol\EditarRolForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -280,6 +274,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AbmFactura\TablaFacturaForm.resx">
       <DependentUpon>TablaFacturaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\ABMRolForm.resx">
+      <DependentUpon>ABMRolForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmRol\EditarRolForm.resx">
       <DependentUpon>EditarRolForm.cs</DependentUpon>
