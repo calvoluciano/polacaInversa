@@ -12,19 +12,23 @@ namespace PagoAgilFrba.AbmEmpresa
 {
     public partial class ABMEmpresaForm : PagoAgilFrba.AbmEmpresa.TablaEmpresaForm
     {
-       public ABMEmpresaForm()
+        public ABMEmpresaForm(ReturnForm caller)
+            : base(caller)
         {
             InitializeComponent();
         }
+
         private void buttonEditar_Click(object sender, EventArgs e)
         {
-            DataRow fila = ((DataRowView)DataGridViewUsuario.SelectedRows[0].DataBoundItem).Row;
+            DataRow fila = ((DataRowView)DataGridViewEmpresas.SelectedRows[0].DataBoundItem).Row;
             new EditarEmpresaForm(this, new Empresa(fila)).abrir();
         }
+
         private void buttonVolver_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
         private void buttonNuevo_Click(object sender, EventArgs e)
         {
             new NuevaEmpresaForm(this).abrir();

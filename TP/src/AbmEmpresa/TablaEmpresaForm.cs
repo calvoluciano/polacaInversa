@@ -8,14 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PagoAgilFrba.Modelo;
+using PagoAgilFrba.Modelo.Exceptions;
 
 namespace PagoAgilFrba.AbmEmpresa
 {
     public partial class TablaEmpresaForm : ReturnForm
     {
+
         public TablaEmpresaForm(ReturnForm caller) : base(caller)
         {
             InitializeComponent();
+            comboBoxRubro.Items.Add("");
+            Empresa.getDetalle().ForEach(detalle => comboBoxRubro.Items.Add(detalle));
         }
 
 
@@ -27,33 +31,47 @@ namespace PagoAgilFrba.AbmEmpresa
         public override void Refrescar()
         {
             base.Refrescar();
-            DataGridViewUsuario.Columns["Usuario_Habilitado"].Visible = false;  // oculto columna que no quiero mostrar
-            DataGridViewUsuario.Columns["Chofer_Habilitado"].HeaderText = "Habilitado"; //  cambio nombre visible de columna
+            CargarTabla();
+            DataGridViewEmpresas.Columns["ID_EMPRESA"].Visible = false;  // oculto columna que no quiero mostrar
+            DataGridViewEmpresas.Columns["ESTADO_EMPRESA"].HeaderText = "Habilitado"; //  cambio nombre visible de columna
+            DataGridViewEmpresas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
-        public DataGridView DataGridViewUsuario
+        public DataGridView DataGridViewEmpresas
         {
-            get { return dataGridView1; }
+            get { return dataGridViewEmpresas; }
         }
         public string Nombre
         {
             get
             {
-                return nombre.Text;
+                return textBoxNombre.Text;
             }
         }
-        public string Direccion
+        public Decimal Cuit
         {
             get
             {
-                return direccion.Text;
+                if (string.IsNullOrWhiteSpace(textBoxCuit.Text)) return 0;
+
+                return Convert.ToDecimal(textBoxCuit.Text);
             }
         }
+        public String Rubro
+        {
+            get
+            {
+               return (String)comboBoxRubro.SelectedValue;
+            }
+        }
+
         protected virtual void CargarTabla()
         {
-            dataGridView1.DataSource = Empresa.getXsConFiltros("Empresas", // obtengo las empresas y las cargo en la tabla
-                                                                        Nombre,
-                                                                        Direccion);
+            dataGridViewEmpresas.DataSource = Empresa.getXsConFiltros(  // obtengo las empresas y las cargo en la tabla
+                                                                Nombre,
+                                                                Cuit,
+                                                                Rubro);
         }
+
         private void nombre_TextChanged(object sender, EventArgs e)
         {
 
@@ -62,6 +80,32 @@ namespace PagoAgilFrba.AbmEmpresa
         private void codigoPostal_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void validar()
+        {
+            if (Cuit > 0) throw new ValorNegativoException("Cuit");
+        }
+
+        private void buttonFiltrar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                validar();                                                                      // valido los datos ingresados
+                CargarTabla();                                                                  // cargo la tabla
+            }
+            catch (Exception ex)
+            {
+                if (ex is FormatException || ex is ValorNegativoException) Error.show(ex.Message);
+                else throw;
+            }
+        }
+
+        private void buttonLimpiar_Click(object sender, EventArgs e)
+        {
+            textBoxNombre.Text = "";
+            textBoxCuit.Text = "";
+            comboBoxRubro.SelectedItem = null;
         }
     }
 }

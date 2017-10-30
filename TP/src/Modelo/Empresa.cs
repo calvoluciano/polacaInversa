@@ -4,59 +4,77 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace PagoAgilFrba.Modelo
 {
-    public class Empresa : Usuario
+    public class Empresa
     {
-        public String nombre;
-        public String direccion;
-
         public Empresa(DataRow data)
         {
-            New(data);
-            habilitado = (Boolean)data["Sucursal_Habilitada"];
-            direccion = (String)data["Direccion"];
+            id = (int)data["id_empresa"];
             nombre = (String)data["Nombre"];
+            cuit = Convert.ToDecimal(data["Cuit"]);
+            direccion = (String)data["Direccion"];
+            rubro = (String)data["rubro"];
+            habilitado = (Boolean)data["Habilitada"];
         }
-        public Empresa() { }
+
+        public int id;
+        public String nombre;
+        public Decimal cuit;
+        public String direccion;
+        public String rubro;
+        public Boolean habilitado;
 
         public void editar()                                            // persisto los cambios
         {
-            DB.correrProcedimiento("SUCURSAL_UPDATE",
-                                         "id_sucursal", id,
+            DB.correrProcedimiento("EMPRESA_UPDATE",
+                                         "id_empresa", id,
                                          "nombre", nombre,
+                                         "cuit", cuit,
                                          "direccion", direccion,
-                                         "estado_sucursal", habilitado);
-        }
-
-        public static void nuevo(int id, decimal codigoPostal, Boolean habilitado, String nombre, String direccion)  // persisto una sucursal nueva
-        {
-            DB.correrProcedimiento("Sucursal_NUEVO",
-                                         "id", id,
-                                         "nombre", nombre,
-                                         "direccion", direccion,
+                                         "rubro", rubro,
                                          "habilitado", habilitado);
         }
-        public static DataTable getXsConFiltros(String X, // "EMPRESAS"
-                                              String nombre,
-                                              String direccion)        // obtengo un tipo de usuarios que cumplen con los filtros
+
+        public static void nuevo(int id, String nombre, Decimal cuit, String direccion, String rubro, Boolean habilitado)  // persisto una sucursal nueva
         {
-            return DB.correrFuncionDeTabla("GET_" + X + "_CON_FILTROS",
-                               "Nombre", nombre,
-                               "Direccion", direccion);
+            DB.correrProcedimiento("EMPRESA_NUEVO",
+                                         "nombre", nombre,
+                                         "cuit", cuit,
+                                         "direccion", direccion,
+                                         "rubro", rubro,
+                                         "habilitado", habilitado);
+        }
+        public static DataTable getXsConFiltros(String nombre,
+                                                 Decimal cuit,
+                                                 String rubro)        // obtengo un tipo de usuarios que cumplen con los filtros
+        {
+            return DB.correrFuncionDeTabla("GET_EMPRESAS_CON_FILTROS",
+                               "nombre", nombre,
+                               "cuit", cuit,
+                               "rubro", rubro);
         }
 
-        public void inhabilitar(int id)    // inhabilito la sucursal
+        public void inhabilitar(int id)    // inhabilito la Empresa
         {
             DB.correrProcedimiento("_INHABILITAR",
                                             "id", id);
         }
-        public void habilitar(int id)    // habilito la sucursal
+
+        public void habilitar(int id)    // habilito la Empresa
         {
             DB.correrProcedimiento("_HABILITAR",
                                             "id", id);
+        }
+
+        public static List<String> getDetalle()                                  // obtengo las marcas
+        {
+            return DB.correrQuery(@"SELECT detalle
+                                    FROM POLACA_INVERSA.RUBRO")
+                    .AsEnumerable()
+                    .Select(fila => fila.Field<string>("detalle"))
+                    .ToList();
         }
 
     }

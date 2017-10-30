@@ -27,7 +27,7 @@ namespace PagoAgilFrba.AbmEmpresa
 
         private void buttonSeleccionar_Click(object sender, EventArgs e)
         {
-            DataRow fila = ((DataRowView)DataGridViewUsuario.SelectedRows[0].DataBoundItem).Row;    // obtengo la fila seleccionada
+            DataRow fila = ((DataRowView)DataGridViewEmpresas.SelectedRows[0].DataBoundItem).Row;    // obtengo la fila seleccionada
 
             if (!(Boolean)fila["Sucursal_Habilitada"])    // si la sucursal no está habilitada...
             {

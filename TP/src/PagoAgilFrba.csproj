@@ -266,6 +266,15 @@
     <EmbeddedResource Include="AbmCliente\NuevoClienteForm.resx">
       <DependentUpon>NuevoClienteForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AbmEmpresa\ABMEmpresaForm.resx">
+      <DependentUpon>ABMEmpresaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmEmpresa\SeleccionarEmpresaForm.resx">
+      <DependentUpon>SeleccionarEmpresaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmEmpresa\TablaEmpresaForm.resx">
+      <DependentUpon>TablaEmpresaForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AbmFactura\ABMFacturaForm.resx">
       <DependentUpon>ABMFacturaForm.cs</DependentUpon>
     </EmbeddedResource>

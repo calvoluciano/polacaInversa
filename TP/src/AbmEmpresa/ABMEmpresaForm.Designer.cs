@@ -36,8 +36,8 @@
             // 
             // buttonBorrar
             // 
-            this.buttonBorrar.Location = new System.Drawing.Point(373, 394);
-            this.buttonBorrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonBorrar.Location = new System.Drawing.Point(421, 394);
+            this.buttonBorrar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonBorrar.Name = "buttonBorrar";
             this.buttonBorrar.Size = new System.Drawing.Size(100, 28);
             this.buttonBorrar.TabIndex = 18;
@@ -47,8 +47,8 @@
             // 
             // buttonEditar
             // 
-            this.buttonEditar.Location = new System.Drawing.Point(189, 394);
-            this.buttonEditar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonEditar.Location = new System.Drawing.Point(223, 394);
+            this.buttonEditar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonEditar.Name = "buttonEditar";
             this.buttonEditar.Size = new System.Drawing.Size(100, 28);
             this.buttonEditar.TabIndex = 17;
@@ -58,8 +58,8 @@
             // 
             // buttonVolver
             // 
-            this.buttonVolver.Location = new System.Drawing.Point(578, 394);
-            this.buttonVolver.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonVolver.Location = new System.Drawing.Point(621, 394);
+            this.buttonVolver.Margin = new System.Windows.Forms.Padding(4);
             this.buttonVolver.Name = "buttonVolver";
             this.buttonVolver.Size = new System.Drawing.Size(100, 28);
             this.buttonVolver.TabIndex = 16;
@@ -70,7 +70,7 @@
             // buttonNuevo
             // 
             this.buttonNuevo.Location = new System.Drawing.Point(28, 394);
-            this.buttonNuevo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonNuevo.Margin = new System.Windows.Forms.Padding(4);
             this.buttonNuevo.Name = "buttonNuevo";
             this.buttonNuevo.Size = new System.Drawing.Size(100, 28);
             this.buttonNuevo.TabIndex = 15;
@@ -78,7 +78,7 @@
             this.buttonNuevo.UseVisualStyleBackColor = true;
             this.buttonNuevo.Click += new System.EventHandler(this.buttonNuevo_Click);
             // 
-            // ABMSucursalForm
+            // ABMEmpresaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.ClientSize = new System.Drawing.Size(770, 430);
@@ -86,7 +86,7 @@
             this.Controls.Add(this.buttonEditar);
             this.Controls.Add(this.buttonVolver);
             this.Controls.Add(this.buttonNuevo);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "ABMEmpresaForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -96,6 +96,7 @@
             this.Controls.SetChildIndex(this.buttonEditar, 0);
             this.Controls.SetChildIndex(this.buttonBorrar, 0);
             this.ResumeLayout(false);
+
         }
 
         #endregion
