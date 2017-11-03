@@ -60,7 +60,9 @@ namespace PagoAgilFrba.AbmEmpresa
         {
             get
             {
-               return (String)comboBoxRubro.SelectedValue;
+                if (string.IsNullOrWhiteSpace((string)comboBoxRubro.SelectedItem)) return "";
+
+                return (String)comboBoxRubro.SelectedItem;
             }
         }
 
@@ -84,7 +86,7 @@ namespace PagoAgilFrba.AbmEmpresa
 
         private void validar()
         {
-            if (Cuit > 0) throw new ValorNegativoException("Cuit");
+            if (Cuit < 0) throw new ValorNegativoException("Cuit");
         }
 
         private void buttonFiltrar_Click(object sender, EventArgs e)

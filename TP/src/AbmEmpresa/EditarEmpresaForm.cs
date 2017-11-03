@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -10,23 +9,45 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PagoAgilFrba.Modelo;
 using PagoAgilFrba.Modelo.Exceptions;
+using System.Data.SqlClient;
 
 namespace PagoAgilFrba.AbmEmpresa
 {
     public partial class EditarEmpresaForm : ReturnForm
     {
-        public EditarEmpresaForm(ReturnForm caller, Empresa empresaAEditar) : base(caller)       
+        private Boolean edicion = false;
+        private Empresa editarEmpresa = null;
+
+        private String nombre;
+        private Decimal cuit;
+        private String direccion;
+
+
+         public EditarEmpresaForm(ReturnForm caller) : base(caller)
         {
-            this.empresaAEditar = empresaAEditar;
-
             InitializeComponent();
-
-            Nombre = empresaAEditar.nombre;      // cargo los campos con los datos de la sucursal
-            Direccion = empresaAEditar.direccion;
-            Habilitado = empresaAEditar.habilitado;
+            this.Text = "Nueva Empresa";
+            comboBoxRubro.Items.Add("");
+            Empresa.getDetalle().ForEach(detalle => comboBoxRubro.Items.Add(detalle));
         }
 
-          private Empresa empresaAEditar = null;
+         public EditarEmpresaForm(ReturnForm caller, Empresa empresaAEditar)
+             : base(caller)
+         {
+             edicion = true;
+             this.editarEmpresa = empresaAEditar;
+             InitializeComponent();
+             this.Text = "Editar Empresa";
+
+             comboBoxRubro.Items.Add("");
+             Empresa.getDetalle().ForEach(detalle => comboBoxRubro.Items.Add(detalle));
+
+             Nombre = empresaAEditar.nombre;             // cargo los campos con los datos del cliente
+             Cuit = empresaAEditar.cuit;
+             Direccion = empresaAEditar.direccion;
+             Rubro = empresaAEditar.rubro;
+             Habilitado = empresaAEditar.habilitado;
+         }
 
         public string Nombre
         {
@@ -34,71 +55,103 @@ namespace PagoAgilFrba.AbmEmpresa
             {
                 return textBoxNombre.Text;
             }
-
             set
             {
                 textBoxNombre.Text = value;
             }
         }
-     
+
         public string Direccion
         {
             get
             {
                 return textBoxDireccion.Text;
             }
-
             set
             {
-                textBoxDireccion.Text = value;
+                textBoxDireccion.Text = value.ToString();
             }
         }
 
+        public Decimal Cuit
+        {
+            get
+            {
+                return Convert.ToDecimal(textBoxCuit.Text);
+            }
+            set
+            {
+                textBoxCuit.Text = value.ToString();
+            }
+        }
+
+        public string Rubro
+        {
+            get
+            {
+                return (String)comboBoxRubro.SelectedItem;
+            }
+            set
+            {
+                comboBoxRubro.SelectedItem = value;
+            }
+        }
+      
         public bool Habilitado
         {
             get
             {
                 return checkBoxHabilitado.Checked;
             }
-
             set
             {
                 checkBoxHabilitado.Checked = value;
             }
         }
 
+        private void validar()
+        {
+            if (string.IsNullOrWhiteSpace(Nombre)) throw new CampoVacioException("Nombre");
+            if (Cuit < 0) throw new ValorNegativoException("Cuit");
+            if (string.IsNullOrWhiteSpace(Direccion)) throw new CampoVacioException("Direccion");
+            if (string.IsNullOrWhiteSpace(Rubro)) throw new CampoVacioException("Rubro");   
+        }
+
         private void buttonAceptar_Click(object sender, EventArgs e)
         {
             try
             {
-                validar();                              //valido los datos ingresados
-                empresaAEditar.nombre = Nombre;          //edito la sucursal
-                empresaAEditar.direccion = Direccion;
-                empresaAEditar.habilitado = Habilitado;
+                validar();
+                if (edicion)
+                {
+                    editarEmpresa.nombre = Nombre;
+                    editarEmpresa.cuit = Cuit;
+                    editarEmpresa.direccion = Direccion;
+                    editarEmpresa.rubro = Rubro;
+                    editarEmpresa.habilitado = Habilitado;
 
-                empresaAEditar.editar();                 //persisto los cambios
-
+                    editarEmpresa.editar();
+                }
+                else
+                {
+                    Empresa.nuevo(Nombre, Cuit, Direccion, Rubro, Habilitado);
+                }
                 this.Close();
             }
             catch (SqlException) { }
             catch (Exception exception)
             {
-                if (exception is FormatException ||
-                    exception is EmptyFieldException) Error.show(exception.Message);
+                if (exception is FormatException || 
+                    exception is CampoVacioException ||
+                    exception is ValorNegativoException) Error.show(exception.Message);
                 else throw;
-            }
-        }
-
-        private void validar()  // valido los datos ingresados
-        {
-            if (string.IsNullOrWhiteSpace(Nombre)) throw new EmptyFieldException("Nombre");
-            if (string.IsNullOrWhiteSpace(Direccion)) throw new EmptyFieldException("Domicilio");
-
+            } 
         }
 
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
     }
 }

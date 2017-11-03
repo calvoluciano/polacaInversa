@@ -11,12 +11,12 @@ namespace PagoAgilFrba.Modelo
     {
         public Empresa(DataRow data)
         {
-            id = (int)data["id_empresa"];
+            id = (int)data["ID_EMPRESA"];
             nombre = (String)data["Nombre"];
             cuit = Convert.ToDecimal(data["Cuit"]);
             direccion = (String)data["Direccion"];
             rubro = (String)data["rubro"];
-            habilitado = (Boolean)data["Habilitada"];
+            habilitado = (Boolean)data["ESTADO_EMPRESA"];
         }
 
         public int id;
@@ -29,7 +29,7 @@ namespace PagoAgilFrba.Modelo
         public void editar()                                            // persisto los cambios
         {
             DB.correrProcedimiento("EMPRESA_UPDATE",
-                                         "id_empresa", id,
+                                         "id", id,
                                          "nombre", nombre,
                                          "cuit", cuit,
                                          "direccion", direccion,
@@ -37,9 +37,9 @@ namespace PagoAgilFrba.Modelo
                                          "habilitado", habilitado);
         }
 
-        public static void nuevo(int id, String nombre, Decimal cuit, String direccion, String rubro, Boolean habilitado)  // persisto una sucursal nueva
+        public static void nuevo(String nombre, Decimal cuit, String direccion, String rubro, Boolean habilitado)  // persisto una sucursal nueva
         {
-            DB.correrProcedimiento("EMPRESA_NUEVO",
+            DB.correrProcedimiento("EMPRESA_NUEVA",
                                          "nombre", nombre,
                                          "cuit", cuit,
                                          "direccion", direccion,
@@ -56,15 +56,15 @@ namespace PagoAgilFrba.Modelo
                                "rubro", rubro);
         }
 
-        public void inhabilitar(int id)    // inhabilito la Empresa
+        public static void inhabilitar(int id)    // inhabilito la Empresa
         {
-            DB.correrProcedimiento("_INHABILITAR",
+            DB.correrProcedimiento("INHABILITAR_EMPRESA",
                                             "id", id);
         }
 
-        public void habilitar(int id)    // habilito la Empresa
+        public static void habilitar(int id)    // habilito la Empresa
         {
-            DB.correrProcedimiento("_HABILITAR",
+            DB.correrProcedimiento("HABILITAR_EMPRESA",
                                             "id", id);
         }
 

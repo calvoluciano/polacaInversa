@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using PagoAgilFrba.Modelo;
 using PagoAgilFrba.AbmSucursal;
+using System.Data.SqlClient;
 
 namespace PagoAgilFrba.AbmEmpresa
 {
@@ -31,13 +32,16 @@ namespace PagoAgilFrba.AbmEmpresa
 
         private void buttonNuevo_Click(object sender, EventArgs e)
         {
-            new NuevaEmpresaForm(this).abrir();
+            new EditarEmpresaForm(this).abrir();
         }
 
         private void buttonBaja_Click(object sender, EventArgs e)
         {
-            //Sucursal.inhabilitar((int)DataGridViewUsuario.SelectedRows[0].Cells["usua_id"].Value);    // Obtengo el id de la sucursal seleccionada y la inhabilita
-            CargarTabla();
+             try{        
+                Empresa.inhabilitar((int)DataGridViewEmpresas.SelectedRows[0].Cells["ID_EMPRESA"].Value);    // Obtengo el id de la sucursal seleccionada y la inhabilita
+                CargarTabla();
+            }
+            catch (SqlException) { }
         }
     }
 }
