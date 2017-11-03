@@ -33,15 +33,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.numeroFactura = new System.Windows.Forms.TextBox();
-            this.cuit = new System.Windows.Forms.TextBox();
-            this.dniCliente = new System.Windows.Forms.TextBox();
-            this.total = new System.Windows.Forms.TextBox();
+            this.textBoxTotal = new System.Windows.Forms.TextBox();
+            this.textBoxDniCliente = new System.Windows.Forms.TextBox();
+            this.textBoxCuit = new System.Windows.Forms.TextBox();
+            this.textBoxNumeroFactura = new System.Windows.Forms.TextBox();
             this.buttonFiltrar = new System.Windows.Forms.Button();
             this.buttonLimpiar = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewFacturas = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFacturas)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -86,10 +86,10 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cuit);
-            this.groupBox1.Controls.Add(this.dniCliente);
-            this.groupBox1.Controls.Add(this.total);
-            this.groupBox1.Controls.Add(this.numeroFactura);
+            this.groupBox1.Controls.Add(this.textBoxTotal);
+            this.groupBox1.Controls.Add(this.textBoxDniCliente);
+            this.groupBox1.Controls.Add(this.textBoxCuit);
+            this.groupBox1.Controls.Add(this.textBoxNumeroFactura);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
@@ -102,39 +102,39 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtro de busqueda";
             // 
-            // numeroFactura
+            // textBoxTotal
             // 
-            this.numeroFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numeroFactura.Location = new System.Drawing.Point(151, 33);
-            this.numeroFactura.MaxLength = 20;
-            this.numeroFactura.Name = "numeroFactura";
-            this.numeroFactura.Size = new System.Drawing.Size(228, 24);
-            this.numeroFactura.TabIndex = 4;
+            this.textBoxTotal.Location = new System.Drawing.Point(151, 127);
+            this.textBoxTotal.Name = "textBoxTotal";
+            this.textBoxTotal.Size = new System.Drawing.Size(228, 27);
+            this.textBoxTotal.TabIndex = 5;
             // 
-            // cuit
+            // textBoxDniCliente
             // 
-            this.cuit.Location = new System.Drawing.Point(151, 127);
-            this.cuit.Name = "cuit";
-            this.cuit.Size = new System.Drawing.Size(228, 27);
-            this.cuit.TabIndex = 5;
+            this.textBoxDniCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxDniCliente.Location = new System.Drawing.Point(151, 63);
+            this.textBoxDniCliente.MaxLength = 20;
+            this.textBoxDniCliente.Name = "textBoxDniCliente";
+            this.textBoxDniCliente.Size = new System.Drawing.Size(228, 24);
+            this.textBoxDniCliente.TabIndex = 4;
             // 
-            // dniCliente
+            // textBoxCuit
             // 
-            this.dniCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dniCliente.Location = new System.Drawing.Point(151, 63);
-            this.dniCliente.MaxLength = 20;
-            this.dniCliente.Name = "dniCliente";
-            this.dniCliente.Size = new System.Drawing.Size(228, 24);
-            this.dniCliente.TabIndex = 4;
+            this.textBoxCuit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxCuit.Location = new System.Drawing.Point(151, 93);
+            this.textBoxCuit.MaxLength = 20;
+            this.textBoxCuit.Name = "textBoxCuit";
+            this.textBoxCuit.Size = new System.Drawing.Size(228, 24);
+            this.textBoxCuit.TabIndex = 4;
             // 
-            // total
+            // textBoxNumeroFactura
             // 
-            this.total.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.total.Location = new System.Drawing.Point(151, 93);
-            this.total.MaxLength = 20;
-            this.total.Name = "total";
-            this.total.Size = new System.Drawing.Size(228, 24);
-            this.total.TabIndex = 4;
+            this.textBoxNumeroFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxNumeroFactura.Location = new System.Drawing.Point(151, 33);
+            this.textBoxNumeroFactura.MaxLength = 20;
+            this.textBoxNumeroFactura.Name = "textBoxNumeroFactura";
+            this.textBoxNumeroFactura.Size = new System.Drawing.Size(228, 24);
+            this.textBoxNumeroFactura.TabIndex = 4;
             // 
             // buttonFiltrar
             // 
@@ -144,6 +144,7 @@
             this.buttonFiltrar.TabIndex = 4;
             this.buttonFiltrar.Text = "Filtrar";
             this.buttonFiltrar.UseVisualStyleBackColor = true;
+            this.buttonFiltrar.Click += new System.EventHandler(this.buttonFiltrar_Click);
             // 
             // buttonLimpiar
             // 
@@ -153,30 +154,31 @@
             this.buttonLimpiar.TabIndex = 5;
             this.buttonLimpiar.Text = "Limpiar";
             this.buttonLimpiar.UseVisualStyleBackColor = true;
+            this.buttonLimpiar.Click += new System.EventHandler(this.buttonLimpiar_Click);
             // 
-            // dataGridView1
+            // dataGridViewFacturas
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 188);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(746, 296);
-            this.dataGridView1.TabIndex = 6;
+            this.dataGridViewFacturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewFacturas.Location = new System.Drawing.Point(12, 188);
+            this.dataGridViewFacturas.Name = "dataGridViewFacturas";
+            this.dataGridViewFacturas.RowTemplate.Height = 24;
+            this.dataGridViewFacturas.Size = new System.Drawing.Size(746, 296);
+            this.dataGridViewFacturas.TabIndex = 6;
             // 
             // TablaFacturaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(786, 510);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridViewFacturas);
             this.Controls.Add(this.buttonLimpiar);
             this.Controls.Add(this.buttonFiltrar);
             this.Controls.Add(this.groupBox1);
             this.Name = "TablaFacturaForm";
-            this.Text = "Tabla Sucursal";
+            this.Text = "Tabla Facturas";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFacturas)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -186,13 +188,13 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox numeroFactura;
-        private System.Windows.Forms.TextBox cuit;
-        private System.Windows.Forms.TextBox dniCliente;
-        private System.Windows.Forms.TextBox total;
+        private System.Windows.Forms.TextBox textBoxNumeroFactura;
+        private System.Windows.Forms.TextBox textBoxTotal;
+        private System.Windows.Forms.TextBox textBoxDniCliente;
+        private System.Windows.Forms.TextBox textBoxCuit;
         private System.Windows.Forms.Button buttonFiltrar;
         private System.Windows.Forms.Button buttonLimpiar;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewFacturas;
 
         #endregion
     }

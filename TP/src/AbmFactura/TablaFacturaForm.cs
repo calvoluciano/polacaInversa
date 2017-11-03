@@ -8,68 +8,131 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PagoAgilFrba.Modelo;
+using PagoAgilFrba.Modelo.Exceptions;
 
 namespace PagoAgilFrba.AbmFactura
 {
     public partial class TablaFacturaForm : ReturnForm
     {
+        public TablaFacturaForm(ReturnForm caller)
+            : base(caller)
+        {
+            InitializeComponent();
+        }
+
         public TablaFacturaForm()
         {
             InitializeComponent();
         }
-        public TablaFacturaForm(ReturnForm caller): base(caller)
-        {
-            InitializeComponent();
-        }
+
+        private Cliente cliente;
+        private DateTime fechaAlta;
+        private DateTime fechaVencimiento;
+        private decimal total;
 
         public override void Refrescar()
         {
             base.Refrescar();
-            DataGridViewUsuario.Columns["Usuario_Habilitado"].Visible = false;  // oculto columna que no quiero mostrar
-            DataGridViewUsuario.Columns["Chofer_Habilitado"].HeaderText = "Habilitado"; //  cambio nombre visible de columna
+            CargarTabla();
+            DataGridViewFactura.Columns["ID_FACTURA"].HeaderText = "Num Fctura";  // oculto columna que no quiero mostrar
+            //DataGridViewUsuario.Columns["Chofer_Habilitado"].HeaderText = "Habilitado"; //  cambio nombre visible de columna
+            DataGridViewFactura.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
-        public DataGridView DataGridViewUsuario
+
+        public DataGridView DataGridViewFactura
         {
-            get { return dataGridView1; }
+            get { return dataGridViewFacturas; }
         }
-        public String NumeroFactura
+
+        internal Cliente Cliente
         {
             get
             {
-                return numeroFactura.Text;
+                return cliente;
             }
-        }
-        public String CUIT
-        {
-            get
+            set
             {
-                return cuit.Text;
+                cliente = value;
+                
             }
         }
 
-        public String DNICliente
+        public int NumeroFactura
         {
             get
             {
-                return dniCliente.Text;
+                if (string.IsNullOrWhiteSpace(textBoxNumeroFactura.Text)) return 0;
+
+                return Convert.ToInt32(textBoxNumeroFactura.Text);
             }
         }
-        public String Total
+        public Decimal CUIT
         {
             get
             {
-                return total.Text;
+                if (string.IsNullOrWhiteSpace(textBoxCuit.Text)) return 0;
+
+                return Convert.ToDecimal(textBoxCuit.Text);
             }
         }
-       
-       
-        /*protected virtual void CargarTabla()
+
+        public Decimal DNICliente
         {
-            dataGridView1.DataSource = Factura.getXsConFiltros("Facturas", // obtengo las sucursales y las cargo en la tabla
-                                                                        NumeroFactura,
-                                                                        CUIT,
+            get
+            {
+                if (string.IsNullOrWhiteSpace(textBoxDniCliente.Text)) return 0;
+
+                return Convert.ToDecimal(textBoxDniCliente.Text);
+            }
+        }
+        public Decimal Total
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(textBoxTotal.Text)) return 0;
+
+                return Convert.ToDecimal(textBoxTotal.Text);
+            }
+        }
+
+
+        protected virtual void CargarTabla()
+        {
+            dataGridViewFacturas.DataSource = Factura.getXsConFiltros(NumeroFactura, // obtengo las Facturas y las cargo en la tabla
                                                                         DNICliente,
-                                                                        Total);*/
+                                                                        CUIT,
+                                                                        Total);
         }
+
+        private void validar()
+        {
+            if (NumeroFactura < 0) throw new ValorNegativoException("Numero Factura");
+            if (CUIT < 0) throw new ValorNegativoException("Cuit Empresa");
+            if (DNICliente < 0) throw new ValorNegativoException("DNI Cliente");
+            if (Total < 0) throw new ValorNegativoException("Total");
+        }
+
+        private void buttonFiltrar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                validar();                                                                      // valido los datos ingresados
+                CargarTabla();                                                                  // cargo la tabla
+            }
+            catch (Exception ex)
+            {
+                if (ex is FormatException || ex is ValorNegativoException) Error.show(ex.Message);
+                else throw;
+            }
+        }
+
+        private void buttonLimpiar_Click(object sender, EventArgs e)
+        {
+            textBoxCuit.Text = "";
+            textBoxDniCliente.Text = "";
+            textBoxNumeroFactura.Text = "";
+            textBoxTotal.Text = "";
+        }
+    }
 }
 

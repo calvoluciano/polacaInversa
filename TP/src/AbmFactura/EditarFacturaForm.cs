@@ -30,7 +30,7 @@ namespace PagoAgilFrba.AbmFactura
 
             InitializeComponent();
 
-            CUITCliente = facturaAEditar.cuit.ToString();      // cargo los campos con los datos de la sucursal
+            //CUITCliente = facturaAEditar.cuitEmpresa.ToString();      // cargo los campos con los datos de la sucursal
             DNICliente = facturaAEditar.dniCliente.ToString();
             FechaAlta = facturaAEditar.fechaAlta;
             FechaVencimiento = facturaAEditar.fechaVencimiento;
@@ -93,7 +93,7 @@ namespace PagoAgilFrba.AbmFactura
             try
             {
                 validar();                              //valido los datos ingresados
-                facturaAEditar.cuit = Int32.Parse(CUITCliente);          //edito la sucursal
+                //facturaAEditar.cuit = Int32.Parse(CUITCliente);          //edito la sucursal
                 facturaAEditar.dniCliente = Int32.Parse(DNICliente);
                 facturaAEditar.fechaAlta = Convert.ToDateTime(FechaAlta);
                 facturaAEditar.fechaVencimiento = Convert.ToDateTime(FechaVencimiento);

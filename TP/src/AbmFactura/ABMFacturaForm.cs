@@ -12,13 +12,15 @@ namespace PagoAgilFrba.AbmFactura
 {
     public partial class ABMFacturaForm : PagoAgilFrba.AbmFactura.TablaFacturaForm
     {
-       public ABMFacturaForm()
+
+       public ABMFacturaForm(ReturnForm caller)
+           : base(caller)
         {
             InitializeComponent();
         }
         private void buttonEditar_Click(object sender, EventArgs e)
         {
-            DataRow fila = ((DataRowView)DataGridViewUsuario.SelectedRows[0].DataBoundItem).Row;
+            DataRow fila = ((DataRowView)DataGridViewFactura.SelectedRows[0].DataBoundItem).Row;
             new EditarFacturaForm(this, new Factura(fila)).abrir();
         }
         private void buttonVolver_Click(object sender, EventArgs e)
