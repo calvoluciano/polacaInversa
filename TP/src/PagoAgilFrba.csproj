@@ -127,6 +127,18 @@
     <Compile Include="AbmFactura\EditarFacturaForm.Designer.cs">
       <DependentUpon>EditarFacturaForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AbmFactura\FacturaDetalleEditarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmFactura\FacturaDetalleEditarForm.Designer.cs">
+      <DependentUpon>FacturaDetalleEditarForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmFactura\NuevaFacturaDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmFactura\NuevaFacturaDetalle.Designer.cs">
+      <DependentUpon>NuevaFacturaDetalle.cs</DependentUpon>
+    </Compile>
     <Compile Include="AbmFactura\NuevaFacturaForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -191,6 +203,7 @@
     <Compile Include="Modelo\Cliente.cs" />
     <Compile Include="Modelo\Empresa.cs" />
     <Compile Include="Modelo\Exceptions\campoVacioException.cs" />
+    <Compile Include="Modelo\Exceptions\EmpresaNoSeleccionadaException.cs" />
     <Compile Include="Modelo\Exceptions\EmptyFieldException.cs" />
     <Compile Include="Modelo\Exceptions\ExpireDateBeforeException.cs" />
     <Compile Include="Modelo\Exceptions\valorNegativoException.cs" />
@@ -277,6 +290,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AbmFactura\EditarFacturaForm.resx">
       <DependentUpon>EditarFacturaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmFactura\FacturaDetalleEditarForm.resx">
+      <DependentUpon>FacturaDetalleEditarForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmFactura\NuevaFacturaDetalle.resx">
+      <DependentUpon>NuevaFacturaDetalle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmFactura\NuevaFacturaForm.resx">
+      <DependentUpon>NuevaFacturaForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmFactura\TablaFacturaForm.resx">
       <DependentUpon>TablaFacturaForm.cs</DependentUpon>

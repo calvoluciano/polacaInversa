@@ -21,7 +21,12 @@ namespace PagoAgilFrba.AbmFactura
         private void buttonEditar_Click(object sender, EventArgs e)
         {
             DataRow fila = ((DataRowView)DataGridViewFactura.SelectedRows[0].DataBoundItem).Row;
-            new EditarFacturaForm(this, new Factura(fila)).abrir();
+            Factura facturaSeleccionada = new Factura(fila);
+
+            if (!facturaSeleccionada.estaCobrada())
+                new EditarFacturaForm(this, facturaSeleccionada).abrir();
+            else
+                Error.show("La Factura seleccionada esta cobrada, por lo tanto no puede ser modificada!");
         }
         private void buttonVolver_Click(object sender, EventArgs e)
         {
@@ -29,7 +34,7 @@ namespace PagoAgilFrba.AbmFactura
         }
         private void buttonNuevo_Click(object sender, EventArgs e)
         {
-            //new NuevaFacturaForm(this).abrir();
+            new NuevaFacturaForm(this).abrir();
         }
 
         private void buttonBaja_Click(object sender, EventArgs e)

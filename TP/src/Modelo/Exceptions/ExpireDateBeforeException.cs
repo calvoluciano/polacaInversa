@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PagoAgilFrba.Modelo.Exceptions
 {
-    class ExpireDateBeforeException : Exception
+    public class ExpireDateBeforeException : Exception
     {
         public ExpireDateBeforeException(String campo)
             : base("La fecha de vencimiento es anterior a la fecha de alta") { }

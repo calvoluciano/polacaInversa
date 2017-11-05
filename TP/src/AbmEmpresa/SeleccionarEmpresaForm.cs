@@ -29,9 +29,9 @@ namespace PagoAgilFrba.AbmEmpresa
         {
             DataRow fila = ((DataRowView)DataGridViewEmpresas.SelectedRows[0].DataBoundItem).Row;    // obtengo la fila seleccionada
 
-            if (!(Boolean)fila["Sucursal_Habilitada"])    // si la sucursal no está habilitada...
+            if (!(Boolean)fila["ESTADO_EMPRESA"])    // si la sucursal no está habilitada...
             {
-                Error.show("No se puede seleccionar una sucursal inhabilitada.");
+                Error.show("No se puede seleccionar una empresa inhabilitada.");
                 return;
             }
 

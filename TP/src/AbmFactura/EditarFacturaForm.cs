@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PagoAgilFrba.Modelo;
 using PagoAgilFrba.Modelo.Exceptions;
+using PagoAgilFrba.AbmEmpresa;
 
 
 namespace PagoAgilFrba.AbmFactura
@@ -29,25 +30,25 @@ namespace PagoAgilFrba.AbmFactura
             this.facturaAEditar = facturaAEditar;
 
             InitializeComponent();
-
-            //CUITCliente = facturaAEditar.cuitEmpresa.ToString();      // cargo los campos con los datos de la sucursal
+            
             DNICliente = facturaAEditar.dniCliente.ToString();
+            idFactura = facturaAEditar.idFactura;
+            Empresa = new Empresa(Empresa.getXsConFiltros("",facturaAEditar.cuitEmpresa,"").Rows[0]);
             FechaAlta = facturaAEditar.fechaAlta;
             FechaVencimiento = facturaAEditar.fechaVencimiento;
         }
 
-        public string CUITCliente
-        {
-            get
-            {
-                return textBoxCUITCliente.Text;
-            }
+        private Empresa empresa = null;
 
+        public decimal idFactura
+        {
             set
             {
-                textBoxCUITCliente.Text = value;
+                textBoxNumeroFactura.Text = value.ToString();
+                textBoxNumeroFactura.ReadOnly = true;
             }
         }
+
         public string DNICliente
         {
             get
@@ -88,17 +89,31 @@ namespace PagoAgilFrba.AbmFactura
             }
         }
 
+        public Empresa Empresa
+        {
+            get
+            {
+                return empresa;
+            }
+            set
+            {
+                empresa = value;
+                textBoxNombreEmpresa.Text = empresa.nombre;
+            }
+        }
+
         private void buttonAceptar_Click(object sender, EventArgs e)
         {
             try
             {
-                validar();                              //valido los datos ingresados
-                //facturaAEditar.cuit = Int32.Parse(CUITCliente);          //edito la sucursal
+                validar();                              
+                facturaAEditar.idEmpresa = Empresa.id;          
                 facturaAEditar.dniCliente = Int32.Parse(DNICliente);
                 facturaAEditar.fechaAlta = Convert.ToDateTime(FechaAlta);
                 facturaAEditar.fechaVencimiento = Convert.ToDateTime(FechaVencimiento);
 
                 facturaAEditar.editar();                 //persisto los cambios
+                new NuevaFacturaDetalle(this, facturaAEditar, true).abrir();
 
                 this.Close();
             }
@@ -106,17 +121,21 @@ namespace PagoAgilFrba.AbmFactura
             catch (Exception exception)
             {
                 if (exception is FormatException ||
-                    exception is EmptyFieldException) Error.show(exception.Message);
+                    exception is EmptyFieldException ||
+                    exception is CampoVacioException ||
+                    exception is ExpireDateBeforeException ||
+                    exception is EmpresaNoSeleccionadaException) Error.show(exception.Message);
                 else throw;
             }
         }
 
         private void validar()  // valido los datos ingresados
         {
-            if (string.IsNullOrWhiteSpace(CUITCliente)) throw new EmptyFieldException("Nombre");
-            if (string.IsNullOrWhiteSpace(DNICliente)) throw new EmptyFieldException("Domicilio");
-            //if (dateTimePickerFechaVencimiento.) throw new EmptyFieldException("Codigo Postal");
-            //if (string.IsNullOrWhiteSpace(FechaVencimiento)) throw new EmptyFieldException("Codigo Postal");
+
+            if (string.IsNullOrWhiteSpace(textBoxDNICliente.Text)) throw new CampoVacioException("DNI Cliente");
+            if (Empresa == null) throw new EmpresaNoSeleccionadaException();    // valido los datos ingresados     
+            if (dateTimePickerFechaAlta == null) throw new CampoVacioException("Fecha de Alta");
+            if (dateTimePickerFechaVencimiento == null) throw new CampoVacioException("Fecha de Vencimiento");
             if (FechaAlta > FechaVencimiento) throw new ExpireDateBeforeException("Corrija las fechas");
         }
 
@@ -125,9 +144,15 @@ namespace PagoAgilFrba.AbmFactura
             this.Close();
         }
 
-        private void dateTimePickerFechaAlta_ValueChanged(object sender, EventArgs e)
+        private void buttonSeleccionarEmpresa_Click(object sender, EventArgs e)
         {
-        
+            Empresa seleccionado = new SeleccionarEmpresaForm(this).getEmpresa();   // selecciono cliente
+            if (seleccionado != null) Empresa = seleccionado;    
+        }
+
+        private void EditarFacturaForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

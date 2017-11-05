@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PagoAgilFrba.Modelo;
+using PagoAgilFrba.AbmEmpresa;
+using PagoAgilFrba.Modelo.Exceptions;
+using System.Data.SqlClient;
 
 namespace PagoAgilFrba.AbmFactura
 {
@@ -21,34 +24,34 @@ namespace PagoAgilFrba.AbmFactura
         {           
             InitializeComponent();
         }
-        private Usuario usuarioSeleccionado = null;
+        private Empresa empresa = null;
 
 
-
-        private Sucursal sucursalAEditar = null;
-
-        public string CUITCliente
+        public Empresa Empresa
         {
             get
             {
-                return textBoxCUITCliente.Text;
+                return empresa;
             }
-
             set
             {
-                textBoxCUITCliente.Text = value;
+                empresa = value;
+                textBoxCUITCliente.Text = empresa.nombre;
             }
         }
-        public string DNICliente
+        public decimal DNICliente
         {
             get
             {
-                return textBoxDNICliente.Text;
+                return Convert.ToDecimal(textBoxDNICliente.Text);
             }
+        }
 
-            set
+        public decimal idFactura
+        {
+            get
             {
-                textBoxDNICliente.Text = value;
+                return Convert.ToDecimal(textBoxNumeroFactura.Text);
             }
         }
 
@@ -81,19 +84,28 @@ namespace PagoAgilFrba.AbmFactura
 
         private void buttonAceptar_Click(object sender, EventArgs e)
         {
-            /* try
+            try
              {
-                 if (usuarioSeleccionado == null) throw new UsuarioNoSeleccionadoException();    // valido los datos ingresados
-                 else Sucursal.nuevo(usuarioSeleccionado.id, checkBoxHabilitado.Checked);          // persisto el nuevo chofer
+                if (string.IsNullOrWhiteSpace(textBoxDNICliente.Text)) throw new CampoVacioException("DNI Cliente");
+                if (string.IsNullOrWhiteSpace(textBoxNumeroFactura.Text)) throw new CampoVacioException("Numero de Factura");
+                if (Empresa == null) throw new EmpresaNoSeleccionadaException();    // valido los datos ingresados
+                if (dateTimePickerFechaAlta == null) throw new CampoVacioException("Fecha de Alta");
+                if (dateTimePickerFechaVencimiento == null) throw new CampoVacioException("Fecha de Vencimiento");
+                if (FechaAlta > FechaVencimiento) throw new ExpireDateBeforeException("Corrija las fechas");
+                else Factura.nuevo(DNICliente, idFactura, Empresa.id, FechaAlta, FechaVencimiento);          // persisto el nuevo chofer
 
-                 this.Close();
+                DataRow fila = cargarFila();
+
+                new NuevaFacturaDetalle(this,new Factura(fila), false).abrir();
+                this.Close();
              }
              catch (SqlException) { }
              catch (Exception exception)
              {
-                 if (exception is FormatException || exception is UsuarioNoSeleccionadoException) Error.show(exception.Message);
+                 if (exception is FormatException 
+                     || exception is EmpresaNoSeleccionadaException) Error.show(exception.Message);
                  else throw;
-             } */
+             } 
         }
 
         private void buttonCancelar_Click(object sender, EventArgs e)
@@ -101,15 +113,39 @@ namespace PagoAgilFrba.AbmFactura
             this.Close();
         }
 
-        private void buttonSeleccionarUsuario_Click(object sender, EventArgs e)
+        private void buttonSeleccionarEmpresa_Click(object sender, EventArgs e)
         {
-            /*Usuario seleccionado = new SeleccionarUsuarioForm(this).getNoSucursal();  // Selecciono una sucursal
-            if(seleccionado != null)                                                // Si es null(porque cancelaron) no hago nada
-            {
-                usuarioSeleccionado = seleccionado;                                 // en caso contrario lleno los campos
-                Nombre = seleccionado.nombre;
-                Direccion = seleccionado.direccion;           
-            }*/
+            Empresa seleccionado = new SeleccionarEmpresaForm(this).getEmpresa();   // selecciono cliente
+            if (seleccionado != null) Empresa = seleccionado;     
         }
+
+        private DataRow cargarFila()
+        {
+
+            DataTable dt = new DataTable();
+            DataRow fila = dt.NewRow();
+
+            dt.Columns.Add(new DataColumn("ID_FACTURA", System.Type.GetType("System.Int32")));
+            dt.Columns.Add(new DataColumn("Nombre Empresa", System.Type.GetType("System.String")));
+            dt.Columns.Add(new DataColumn("Cuit Empresa", System.Type.GetType("System.Decimal")));
+            dt.Columns.Add(new DataColumn("Nombre Cliente", System.Type.GetType("System.String")));
+            dt.Columns.Add(new DataColumn("DNI", System.Type.GetType("System.Decimal")));
+            dt.Columns.Add(new DataColumn("Fecha Alta", System.Type.GetType("System.DateTime")));
+            dt.Columns.Add(new DataColumn("Fecha Vencimiento", System.Type.GetType("System.DateTime")));
+            dt.Columns.Add(new DataColumn("Total", System.Type.GetType("System.Decimal")));
+
+            fila["ID_FACTURA"] = textBoxNumeroFactura.Text;
+            fila["Nombre Empresa"] = Empresa.nombre;
+            fila["Cuit Empresa"] = Empresa.cuit;
+            fila["Nombre Cliente"] = "";
+            fila["DNI"] = textBoxDNICliente.Text;
+            fila["Fecha Alta"] = dateTimePickerFechaAlta.Value;
+            fila["Fecha Vencimiento"] = dateTimePickerFechaVencimiento.Value;
+            fila["Total"] = 0;
+
+            return fila;
+
+        }
+
     }
 }

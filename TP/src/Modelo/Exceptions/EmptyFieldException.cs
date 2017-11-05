@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PagoAgilFrba.Modelo.Exceptions
 {
-    class EmptyFieldException: Exception
+    public class EmptyFieldException: Exception
     {
         public EmptyFieldException(String campo)
             : base("El campo " + campo + " no contiene datos."){ }
