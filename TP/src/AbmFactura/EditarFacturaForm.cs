@@ -1,4 +1,7 @@
-﻿using System;
+﻿using PagoAgilFrba.AbmEmpresa;
+using PagoAgilFrba.Modelo;
+using PagoAgilFrba.Modelo.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,61 +11,121 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using PagoAgilFrba.Modelo;
-using PagoAgilFrba.Modelo.Exceptions;
-using PagoAgilFrba.AbmEmpresa;
-
 
 namespace PagoAgilFrba.AbmFactura
 {
-    
     public partial class EditarFacturaForm : ReturnForm
     {
-        private Factura facturaAEditar = null;
         public EditarFacturaForm()
         {
             InitializeComponent();
         }
 
-        public EditarFacturaForm(ReturnForm caller, Factura facturaAEditar)
+        public EditarFacturaForm(ReturnForm caller)
             : base(caller)
         {
-            this.facturaAEditar = facturaAEditar;
-
             InitializeComponent();
-            
-            DNICliente = facturaAEditar.dniCliente.ToString();
-            idFactura = facturaAEditar.idFactura;
-            Empresa = new Empresa(Empresa.getXsConFiltros("",facturaAEditar.cuitEmpresa,"").Rows[0]);
-            FechaAlta = facturaAEditar.fechaAlta;
-            FechaVencimiento = facturaAEditar.fechaVencimiento;
+            DataRow fila = cargarFila();
+            facturaAEditar = new Factura(fila);
+
+            dt = new DataTable();
+            dt.Columns.Add(new DataColumn("Cantidad", System.Type.GetType("System.Int32")));
+            dt.Columns.Add(new DataColumn("Monto", System.Type.GetType("System.Decimal")));
         }
+
+        public EditarFacturaForm(ReturnForm caller, Factura factura) : base(caller)
+        {
+            InitializeComponent();
+            Factura = factura;
+            edicion = true;
+
+            dt = new DataTable();
+            dt.Columns.Add(new DataColumn("Cantidad", System.Type.GetType("System.Int32")));
+            dt.Columns.Add(new DataColumn("Monto", System.Type.GetType("System.Decimal")));
+
+            Empresa = new Empresa(Empresa.getXsConFiltros("", factura.cuitEmpresa, "").Rows[0]);
+
+            dt= Factura.getDetalle();
+            textBoxNumeroFactura.ReadOnly = true;
+
+            DataGridViewDetalleFactura.DataSource = dt;
+        }
+
+        private Factura facturaAEditar = null;
+        private DataTable dt;
+        private Boolean edicion = false;
 
         private Empresa empresa = null;
 
-        public decimal idFactura
-        {
-            set
-            {
-                textBoxNumeroFactura.Text = value.ToString();
-                textBoxNumeroFactura.ReadOnly = true;
-            }
-        }
-
-        public string DNICliente
+        public decimal DNICliente
         {
             get
             {
-                return textBoxDNICliente.Text;
-            }
+                if (string.IsNullOrWhiteSpace(textBoxDNICliente.Text)) return 0;
 
+                return decimal.Parse(textBoxDNICliente.Text);
+            }
             set
             {
-                textBoxDNICliente.Text = value;
+                textBoxDNICliente.Text = value.ToString();
             }
         }
 
-     
+        public decimal idFactura
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(textBoxNumeroFactura.Text)) return 0;
+
+                return decimal.Parse(textBoxNumeroFactura.Text);
+            }
+        }
+
+        public Empresa Empresa
+        {
+            get
+            {
+                return empresa;
+            }
+            set
+            {
+                empresa = value;
+                textBoxNombreEmpresa.Text = empresa.nombre;
+            }
+        }
+
+        internal Factura Factura
+        {
+            get
+            {
+                return facturaAEditar;
+            }
+            set
+            {
+                facturaAEditar = value;
+                textBoxDNICliente.Text = Factura.dniCliente.ToString();
+                textBoxNombreEmpresa.Text = Factura.nombreEmpresa;
+                textBoxNumeroFactura.Text = Factura.idFactura.ToString();
+                dateTimePickerFechaAlta.Value = Factura.fechaAlta;
+                dateTimePickerFechaVencimiento.Value = Factura.fechaVencimiento;
+                labelTotal.Text += "Total: " + Factura.total;
+            }
+        }
+
+        public override void Refrescar()
+        {
+            base.Refrescar();
+            dataGridViewDetalleFactura.DataSource = dt;
+        }
+
+        internal DataGridView DataGridViewDetalleFactura
+        {
+            get
+            {
+                return dataGridViewDetalleFactura;
+            }
+        }
+
         public DateTime FechaAlta
         {
             get
@@ -88,55 +151,52 @@ namespace PagoAgilFrba.AbmFactura
                 dateTimePickerFechaVencimiento.Value = value;
             }
         }
-
-        public Empresa Empresa
-        {
-            get
-            {
-                return empresa;
-            }
-            set
-            {
-                empresa = value;
-                textBoxNombreEmpresa.Text = empresa.nombre;
-            }
-        }
-
         private void buttonAceptar_Click(object sender, EventArgs e)
         {
             try
             {
-                validar();                              
-                facturaAEditar.idEmpresa = Empresa.id;          
-                facturaAEditar.dniCliente = Int32.Parse(DNICliente);
-                facturaAEditar.fechaAlta = Convert.ToDateTime(FechaAlta);
-                facturaAEditar.fechaVencimiento = Convert.ToDateTime(FechaVencimiento);
+                validar();
+                Factura.dniCliente = DNICliente;
+                Factura.fechaAlta = FechaAlta;
+                Factura.fechaVencimiento = FechaVencimiento;
+                Factura.idEmpresa = Empresa.id;
 
-                facturaAEditar.editar();                 //persisto los cambios
-                new NuevaFacturaDetalle(this, facturaAEditar, true).abrir();
+                if(edicion){
+                    Factura.detalleFactura = dt;
+                    Factura.editar();
+                }else{
+                    Factura.idFactura = idFactura;
+                    Factura.nuevo();
+                }
 
+                Factura.guardarDetalle();
                 this.Close();
             }
             catch (SqlException) { }
             catch (Exception exception)
             {
-                if (exception is FormatException ||
-                    exception is EmptyFieldException ||
-                    exception is CampoVacioException ||
-                    exception is ExpireDateBeforeException ||
-                    exception is EmpresaNoSeleccionadaException) Error.show(exception.Message);
+                if (exception is FormatException
+                    || exception is EmpresaNoSeleccionadaException
+                    || exception is CampoVacioException
+                    || exception is ExpireDateBeforeException) Error.show(exception.Message);
                 else throw;
-            }
+            } 
         }
 
-        private void validar()  // valido los datos ingresados
+        private void button2_Click(object sender, EventArgs e)
         {
+            DataRow item = dt.NewRow();
+            item = new ItemEditarForm(this,item).getItem();   // selecciono cliente
+            if (item != null) dt.Rows.Add(item);
+            Factura.total += Convert.ToDecimal(item["Monto"]);
+            labelTotal.Text = "Total: " + Factura.total;
+        }
 
-            if (string.IsNullOrWhiteSpace(textBoxDNICliente.Text)) throw new CampoVacioException("DNI Cliente");
-            if (Empresa == null) throw new EmpresaNoSeleccionadaException();    // valido los datos ingresados     
-            if (dateTimePickerFechaAlta == null) throw new CampoVacioException("Fecha de Alta");
-            if (dateTimePickerFechaVencimiento == null) throw new CampoVacioException("Fecha de Vencimiento");
-            if (FechaAlta > FechaVencimiento) throw new ExpireDateBeforeException("Corrija las fechas");
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Factura.total -= Convert.ToDecimal(DataGridViewDetalleFactura.SelectedRows[0].DataGridView["Monto",0].Value);
+            dt.Rows.RemoveAt((DataGridViewDetalleFactura.SelectedRows[0].Index));
+            labelTotal.Text = "Total: " + Factura.total;
         }
 
         private void buttonCancelar_Click(object sender, EventArgs e)
@@ -144,14 +204,47 @@ namespace PagoAgilFrba.AbmFactura
             this.Close();
         }
 
+        private void validar()
+        {
+                if (string.IsNullOrWhiteSpace(textBoxDNICliente.Text)) throw new CampoVacioException("DNI Cliente");
+                if (string.IsNullOrWhiteSpace(textBoxNumeroFactura.Text)) throw new CampoVacioException("Numero de Factura");
+                if (Empresa == null) throw new EmpresaNoSeleccionadaException();    // valido los datos ingresados
+                if (dateTimePickerFechaAlta == null) throw new CampoVacioException("Fecha de Alta");
+                if (dateTimePickerFechaVencimiento == null) throw new CampoVacioException("Fecha de Vencimiento");
+                if (FechaAlta > FechaVencimiento) throw new ExpireDateBeforeException("Corrija las fechas");
+        }
+
         private void buttonSeleccionarEmpresa_Click(object sender, EventArgs e)
         {
             Empresa seleccionado = new SeleccionarEmpresaForm(this).getEmpresa();   // selecciono cliente
-            if (seleccionado != null) Empresa = seleccionado;    
+            if (seleccionado != null) Empresa = seleccionado;  
         }
 
-        private void EditarFacturaForm_Load(object sender, EventArgs e)
+        private DataRow cargarFila()
         {
+
+            DataTable dt = new DataTable();
+            DataRow fila = dt.NewRow();
+
+            dt.Columns.Add(new DataColumn("ID_FACTURA", System.Type.GetType("System.Decimal")));
+            dt.Columns.Add(new DataColumn("Nombre Empresa", System.Type.GetType("System.String")));
+            dt.Columns.Add(new DataColumn("Cuit Empresa", System.Type.GetType("System.Decimal")));
+            dt.Columns.Add(new DataColumn("Nombre Cliente", System.Type.GetType("System.String")));
+            dt.Columns.Add(new DataColumn("DNI", System.Type.GetType("System.Decimal")));
+            dt.Columns.Add(new DataColumn("Fecha Alta", System.Type.GetType("System.DateTime")));
+            dt.Columns.Add(new DataColumn("Fecha Vencimiento", System.Type.GetType("System.DateTime")));
+            dt.Columns.Add(new DataColumn("Total", System.Type.GetType("System.Decimal")));
+
+            fila["ID_FACTURA"] = DNICliente;
+            fila["Nombre Empresa"] = "";
+            fila["Cuit Empresa"] = 0;
+            fila["Nombre Cliente"] = "";
+            fila["DNI"] = DNICliente;
+            fila["Fecha Alta"] = FechaAlta;
+            fila["Fecha Vencimiento"] = FechaVencimiento;
+            fila["Total"] = 0;
+
+            return fila;
 
         }
     }

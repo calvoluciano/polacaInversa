@@ -121,29 +121,17 @@
     <Compile Include="AbmFactura\ABMFacturaForm.Designer.cs">
       <DependentUpon>ABMFacturaForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AbmFactura\ItemEditarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmFactura\ItemEditarForm.Designer.cs">
+      <DependentUpon>ItemEditarForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AbmFactura\EditarFacturaForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AbmFactura\EditarFacturaForm.Designer.cs">
       <DependentUpon>EditarFacturaForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AbmFactura\FacturaDetalleEditarForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AbmFactura\FacturaDetalleEditarForm.Designer.cs">
-      <DependentUpon>FacturaDetalleEditarForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AbmFactura\NuevaFacturaDetalle.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AbmFactura\NuevaFacturaDetalle.Designer.cs">
-      <DependentUpon>NuevaFacturaDetalle.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AbmFactura\NuevaFacturaForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AbmFactura\NuevaFacturaForm.Designer.cs">
-      <DependentUpon>NuevaFacturaForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AbmFactura\SeleccionarFacturaForm.cs">
       <SubType>Form</SubType>
@@ -288,17 +276,11 @@
     <EmbeddedResource Include="AbmFactura\ABMFacturaForm.resx">
       <DependentUpon>ABMFacturaForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AbmFactura\ItemEditarForm.resx">
+      <DependentUpon>ItemEditarForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AbmFactura\EditarFacturaForm.resx">
       <DependentUpon>EditarFacturaForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AbmFactura\FacturaDetalleEditarForm.resx">
-      <DependentUpon>FacturaDetalleEditarForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AbmFactura\NuevaFacturaDetalle.resx">
-      <DependentUpon>NuevaFacturaDetalle.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AbmFactura\NuevaFacturaForm.resx">
-      <DependentUpon>NuevaFacturaForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmFactura\TablaFacturaForm.resx">
       <DependentUpon>TablaFacturaForm.cs</DependentUpon>

@@ -1,6 +1,6 @@
 ﻿namespace PagoAgilFrba.AbmFactura
 {
-    partial class FacturaDetalleEditarForm
+    partial class ItemEditarForm
     {
         /// <summary>
         /// Required designer variable.

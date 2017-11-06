@@ -32,7 +32,7 @@ namespace PagoAgilFrba.Modelo
 
          public Factura(DataRow data)
         {
-            idFactura = (Decimal)data["ID_FACTURA"];
+            idFactura = Convert.ToDecimal(data["ID_FACTURA"]);
             //idEmpresa = (int)data["ID_EMPRESA"];
             //idCliente = (int)data["ID_CLIENTE"];
             nombreEmpresa = (string)data["Nombre Empresa"];
@@ -57,10 +57,10 @@ namespace PagoAgilFrba.Modelo
                                          "fechaVencimiento", fechaVencimiento);
         }
 
-        public static void nuevo(decimal dniCliente,decimal numFactura, decimal idEmpresa, DateTime fechaAlta, DateTime fechaVencimiento)  // persisto una factura nueva
+        public void nuevo()  // persisto una factura nueva
         {
             DB.correrProcedimiento("FACTURA_NUEVA",
-                                         "numeroFactura",numFactura,
+                                         "numeroFactura",idFactura,
                                          "idEmpresa", idEmpresa,
                                          "dniCliente", dniCliente,
                                          "fechaAlta", fechaAlta,

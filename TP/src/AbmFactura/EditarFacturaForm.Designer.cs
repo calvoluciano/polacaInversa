@@ -28,172 +28,218 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBoxNumeroFactura = new System.Windows.Forms.TextBox();
-            this.buttonSeleccionarEmpresa = new System.Windows.Forms.Button();
-            this.textBoxDNICliente = new System.Windows.Forms.TextBox();
-            this.textBoxNombreEmpresa = new System.Windows.Forms.TextBox();
-            this.dateTimePickerFechaAlta = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerFechaVencimiento = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerFechaAlta = new System.Windows.Forms.DateTimePicker();
+            this.textBoxNumeroFactura = new System.Windows.Forms.TextBox();
+            this.textBoxNombreEmpresa = new System.Windows.Forms.TextBox();
+            this.textBoxDNICliente = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonAceptar = new System.Windows.Forms.Button();
+            this.labelTotal = new System.Windows.Forms.Label();
+            this.dataGridViewDetalleFactura = new System.Windows.Forms.DataGridView();
+            this.labelFechaVencimiento = new System.Windows.Forms.Label();
+            this.labelFechaAlta = new System.Windows.Forms.Label();
+            this.labelIdFactura = new System.Windows.Forms.Label();
+            this.labelEmpresa = new System.Windows.Forms.Label();
+            this.labelDniCliente = new System.Windows.Forms.Label();
+            this.buttonSeleccionarEmpresa = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDetalleFactura)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(36, 208);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(134, 18);
-            this.label10.TabIndex = 40;
-            this.label10.Text = "Fecha Vencimiento";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(36, 161);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(77, 18);
-            this.label9.TabIndex = 39;
-            this.label9.Text = "Fecha Alta";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(36, 113);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(116, 18);
-            this.label8.TabIndex = 38;
-            this.label8.Text = "Numero Factura";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(36, 65);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(68, 18);
-            this.label7.TabIndex = 37;
-            this.label7.Text = "Empresa";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(36, 20);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(82, 18);
-            this.label6.TabIndex = 36;
-            this.label6.Text = "DNI Cliente";
-            // 
-            // textBoxNumeroFactura
-            // 
-            this.textBoxNumeroFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxNumeroFactura.Location = new System.Drawing.Point(188, 110);
-            this.textBoxNumeroFactura.Name = "textBoxNumeroFactura";
-            this.textBoxNumeroFactura.Size = new System.Drawing.Size(266, 24);
-            this.textBoxNumeroFactura.TabIndex = 35;
-            // 
-            // buttonSeleccionarEmpresa
-            // 
-            this.buttonSeleccionarEmpresa.Location = new System.Drawing.Point(386, 62);
-            this.buttonSeleccionarEmpresa.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonSeleccionarEmpresa.Name = "buttonSeleccionarEmpresa";
-            this.buttonSeleccionarEmpresa.Size = new System.Drawing.Size(67, 28);
-            this.buttonSeleccionarEmpresa.TabIndex = 34;
-            this.buttonSeleccionarEmpresa.Text = "...";
-            this.buttonSeleccionarEmpresa.UseVisualStyleBackColor = true;
-            this.buttonSeleccionarEmpresa.Click += new System.EventHandler(this.buttonSeleccionarEmpresa_Click);
-            // 
-            // textBoxDNICliente
-            // 
-            this.textBoxDNICliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxDNICliente.Location = new System.Drawing.Point(187, 17);
-            this.textBoxDNICliente.Name = "textBoxDNICliente";
-            this.textBoxDNICliente.Size = new System.Drawing.Size(266, 24);
-            this.textBoxDNICliente.TabIndex = 28;
-            // 
-            // textBoxNombreEmpresa
-            // 
-            this.textBoxNombreEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxNombreEmpresa.Location = new System.Drawing.Point(187, 62);
-            this.textBoxNombreEmpresa.Margin = new System.Windows.Forms.Padding(4);
-            this.textBoxNombreEmpresa.Name = "textBoxNombreEmpresa";
-            this.textBoxNombreEmpresa.ReadOnly = true;
-            this.textBoxNombreEmpresa.Size = new System.Drawing.Size(191, 24);
-            this.textBoxNombreEmpresa.TabIndex = 31;
-            // 
-            // dateTimePickerFechaAlta
-            // 
-            this.dateTimePickerFechaAlta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerFechaAlta.Location = new System.Drawing.Point(188, 156);
-            this.dateTimePickerFechaAlta.Margin = new System.Windows.Forms.Padding(4);
-            this.dateTimePickerFechaAlta.Name = "dateTimePickerFechaAlta";
-            this.dateTimePickerFechaAlta.Size = new System.Drawing.Size(266, 24);
-            this.dateTimePickerFechaAlta.TabIndex = 29;
             // 
             // dateTimePickerFechaVencimiento
             // 
             this.dateTimePickerFechaVencimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerFechaVencimiento.Location = new System.Drawing.Point(188, 202);
-            this.dateTimePickerFechaVencimiento.Margin = new System.Windows.Forms.Padding(4);
+            this.dateTimePickerFechaVencimiento.Location = new System.Drawing.Point(155, 401);
             this.dateTimePickerFechaVencimiento.Name = "dateTimePickerFechaVencimiento";
-            this.dateTimePickerFechaVencimiento.Size = new System.Drawing.Size(265, 24);
-            this.dateTimePickerFechaVencimiento.TabIndex = 30;
+            this.dateTimePickerFechaVencimiento.Size = new System.Drawing.Size(221, 24);
+            this.dateTimePickerFechaVencimiento.TabIndex = 46;
+            // 
+            // dateTimePickerFechaAlta
+            // 
+            this.dateTimePickerFechaAlta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerFechaAlta.Location = new System.Drawing.Point(155, 137);
+            this.dateTimePickerFechaAlta.Name = "dateTimePickerFechaAlta";
+            this.dateTimePickerFechaAlta.Size = new System.Drawing.Size(221, 24);
+            this.dateTimePickerFechaAlta.TabIndex = 44;
+            // 
+            // textBoxNumeroFactura
+            // 
+            this.textBoxNumeroFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxNumeroFactura.Location = new System.Drawing.Point(155, 97);
+            this.textBoxNumeroFactura.Name = "textBoxNumeroFactura";
+            this.textBoxNumeroFactura.Size = new System.Drawing.Size(221, 24);
+            this.textBoxNumeroFactura.TabIndex = 43;
+            // 
+            // textBoxNombreEmpresa
+            // 
+            this.textBoxNombreEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxNombreEmpresa.Location = new System.Drawing.Point(155, 55);
+            this.textBoxNombreEmpresa.Name = "textBoxNombreEmpresa";
+            this.textBoxNombreEmpresa.ReadOnly = true;
+            this.textBoxNombreEmpresa.Size = new System.Drawing.Size(183, 24);
+            this.textBoxNombreEmpresa.TabIndex = 42;
+            // 
+            // textBoxDNICliente
+            // 
+            this.textBoxDNICliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxDNICliente.Location = new System.Drawing.Point(155, 20);
+            this.textBoxDNICliente.Name = "textBoxDNICliente";
+            this.textBoxDNICliente.Size = new System.Drawing.Size(221, 24);
+            this.textBoxDNICliente.TabIndex = 41;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(276, 282);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(100, 28);
+            this.button3.TabIndex = 40;
+            this.button3.Text = "Borrar";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(276, 227);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(100, 28);
+            this.button2.TabIndex = 38;
+            this.button2.Text = "Agregar";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // buttonCancelar
             // 
-            this.buttonCancelar.Location = new System.Drawing.Point(278, 254);
+            this.buttonCancelar.Location = new System.Drawing.Point(233, 454);
             this.buttonCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(100, 28);
-            this.buttonCancelar.TabIndex = 17;
+            this.buttonCancelar.TabIndex = 37;
             this.buttonCancelar.Text = "Cancelar";
             this.buttonCancelar.UseVisualStyleBackColor = true;
             this.buttonCancelar.Click += new System.EventHandler(this.buttonCancelar_Click);
             // 
             // buttonAceptar
             // 
-            this.buttonAceptar.Location = new System.Drawing.Point(98, 254);
+            this.buttonAceptar.Location = new System.Drawing.Point(70, 454);
             this.buttonAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAceptar.Name = "buttonAceptar";
             this.buttonAceptar.Size = new System.Drawing.Size(100, 28);
-            this.buttonAceptar.TabIndex = 16;
-            this.buttonAceptar.Text = "Aceptar";
+            this.buttonAceptar.TabIndex = 36;
+            this.buttonAceptar.Text = "Guardar";
             this.buttonAceptar.UseVisualStyleBackColor = true;
             this.buttonAceptar.Click += new System.EventHandler(this.buttonAceptar_Click);
             // 
-            // EditarFacturaForm
+            // labelTotal
+            // 
+            this.labelTotal.AutoSize = true;
+            this.labelTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTotal.Location = new System.Drawing.Point(26, 373);
+            this.labelTotal.Name = "labelTotal";
+            this.labelTotal.Size = new System.Drawing.Size(49, 18);
+            this.labelTotal.TabIndex = 34;
+            this.labelTotal.Text = "Total: ";
+            // 
+            // dataGridViewDetalleFactura
+            // 
+            this.dataGridViewDetalleFactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewDetalleFactura.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.dataGridViewDetalleFactura.Location = new System.Drawing.Point(28, 183);
+            this.dataGridViewDetalleFactura.Name = "dataGridViewDetalleFactura";
+            this.dataGridViewDetalleFactura.ReadOnly = true;
+            this.dataGridViewDetalleFactura.RowTemplate.Height = 24;
+            this.dataGridViewDetalleFactura.Size = new System.Drawing.Size(245, 171);
+            this.dataGridViewDetalleFactura.TabIndex = 33;
+            // 
+            // labelFechaVencimiento
+            // 
+            this.labelFechaVencimiento.AutoSize = true;
+            this.labelFechaVencimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFechaVencimiento.Location = new System.Drawing.Point(26, 407);
+            this.labelFechaVencimiento.Name = "labelFechaVencimiento";
+            this.labelFechaVencimiento.Size = new System.Drawing.Size(86, 18);
+            this.labelFechaVencimiento.TabIndex = 32;
+            this.labelFechaVencimiento.Text = "Fecha Ven: ";
+            // 
+            // labelFechaAlta
+            // 
+            this.labelFechaAlta.AutoSize = true;
+            this.labelFechaAlta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFechaAlta.Location = new System.Drawing.Point(26, 142);
+            this.labelFechaAlta.Name = "labelFechaAlta";
+            this.labelFechaAlta.Size = new System.Drawing.Size(85, 18);
+            this.labelFechaAlta.TabIndex = 31;
+            this.labelFechaAlta.Text = "Fecha Alta: ";
+            // 
+            // labelIdFactura
+            // 
+            this.labelIdFactura.AutoSize = true;
+            this.labelIdFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelIdFactura.Location = new System.Drawing.Point(25, 100);
+            this.labelIdFactura.Name = "labelIdFactura";
+            this.labelIdFactura.Size = new System.Drawing.Size(124, 18);
+            this.labelIdFactura.TabIndex = 30;
+            this.labelIdFactura.Text = "Numero Factura: ";
+            // 
+            // labelEmpresa
+            // 
+            this.labelEmpresa.AutoSize = true;
+            this.labelEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEmpresa.Location = new System.Drawing.Point(26, 61);
+            this.labelEmpresa.Name = "labelEmpresa";
+            this.labelEmpresa.Size = new System.Drawing.Size(76, 18);
+            this.labelEmpresa.TabIndex = 29;
+            this.labelEmpresa.Text = "Empresa: ";
+            // 
+            // labelDniCliente
+            // 
+            this.labelDniCliente.AutoSize = true;
+            this.labelDniCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDniCliente.Location = new System.Drawing.Point(26, 23);
+            this.labelDniCliente.Name = "labelDniCliente";
+            this.labelDniCliente.Size = new System.Drawing.Size(90, 18);
+            this.labelDniCliente.TabIndex = 28;
+            this.labelDniCliente.Text = "DNI Cliente: ";
+            // 
+            // buttonSeleccionarEmpresa
+            // 
+            this.buttonSeleccionarEmpresa.Location = new System.Drawing.Point(345, 55);
+            this.buttonSeleccionarEmpresa.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonSeleccionarEmpresa.Name = "buttonSeleccionarEmpresa";
+            this.buttonSeleccionarEmpresa.Size = new System.Drawing.Size(31, 28);
+            this.buttonSeleccionarEmpresa.TabIndex = 47;
+            this.buttonSeleccionarEmpresa.Text = "...";
+            this.buttonSeleccionarEmpresa.UseVisualStyleBackColor = true;
+            this.buttonSeleccionarEmpresa.Click += new System.EventHandler(this.buttonSeleccionarEmpresa_Click);
+            // 
+            // NuevaFacturaDetalle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(490, 295);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBoxNumeroFactura);
+            this.ClientSize = new System.Drawing.Size(406, 501);
             this.Controls.Add(this.buttonSeleccionarEmpresa);
-            this.Controls.Add(this.textBoxDNICliente);
-            this.Controls.Add(this.textBoxNombreEmpresa);
-            this.Controls.Add(this.dateTimePickerFechaAlta);
             this.Controls.Add(this.dateTimePickerFechaVencimiento);
+            this.Controls.Add(this.dateTimePickerFechaAlta);
+            this.Controls.Add(this.textBoxNumeroFactura);
+            this.Controls.Add(this.textBoxNombreEmpresa);
+            this.Controls.Add(this.textBoxDNICliente);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonAceptar);
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.MaximizeBox = false;
-            this.Name = "EditarFacturaForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Editar Factura";
-            this.Load += new System.EventHandler(this.EditarFacturaForm_Load);
+            this.Controls.Add(this.labelTotal);
+            this.Controls.Add(this.dataGridViewDetalleFactura);
+            this.Controls.Add(this.labelFechaVencimiento);
+            this.Controls.Add(this.labelFechaAlta);
+            this.Controls.Add(this.labelIdFactura);
+            this.Controls.Add(this.labelEmpresa);
+            this.Controls.Add(this.labelDniCliente);
+            this.Name = "NuevaFacturaDetalle";
+            this.Text = "Cargar Factura";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDetalleFactura)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,28 +247,22 @@
 
         #endregion
 
-
+        private System.Windows.Forms.Label labelFechaVencimiento;
+        private System.Windows.Forms.Label labelFechaAlta;
+        private System.Windows.Forms.Label labelIdFactura;
+        private System.Windows.Forms.Label labelEmpresa;
+        private System.Windows.Forms.Label labelDniCliente;
+        private System.Windows.Forms.DataGridView dataGridViewDetalleFactura;
+        private System.Windows.Forms.Label labelTotal;
         private System.Windows.Forms.Button buttonCancelar;
         private System.Windows.Forms.Button buttonAceptar;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBoxNumeroFactura;
-        private System.Windows.Forms.Button buttonSeleccionarEmpresa;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox textBoxDNICliente;
         private System.Windows.Forms.TextBox textBoxNombreEmpresa;
+        private System.Windows.Forms.TextBox textBoxNumeroFactura;
         private System.Windows.Forms.DateTimePicker dateTimePickerFechaAlta;
         private System.Windows.Forms.DateTimePicker dateTimePickerFechaVencimiento;
-
-        #region Windows Form Designer generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-
-        #endregion
+        private System.Windows.Forms.Button buttonSeleccionarEmpresa;
     }
 }

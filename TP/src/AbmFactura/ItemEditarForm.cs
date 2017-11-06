@@ -12,14 +12,14 @@ using System.Windows.Forms;
 
 namespace PagoAgilFrba.AbmFactura
 {
-    public partial class FacturaDetalleEditarForm : ReturnForm
+    public partial class ItemEditarForm : ReturnForm
     {
-        public FacturaDetalleEditarForm()
+        public ItemEditarForm()
         {
             InitializeComponent();
         }
 
-        public FacturaDetalleEditarForm(ReturnForm caller, DataRow item) : base(caller)
+        public ItemEditarForm(ReturnForm caller, DataRow item) : base(caller)
         {
             InitializeComponent();
             Item = item;

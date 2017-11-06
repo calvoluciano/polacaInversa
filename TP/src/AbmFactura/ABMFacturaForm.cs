@@ -34,7 +34,7 @@ namespace PagoAgilFrba.AbmFactura
         }
         private void buttonNuevo_Click(object sender, EventArgs e)
         {
-            new NuevaFacturaForm(this).abrir();
+            new EditarFacturaForm(this).abrir();
         }
 
         private void buttonBaja_Click(object sender, EventArgs e)
