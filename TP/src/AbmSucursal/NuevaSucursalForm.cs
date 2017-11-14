@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PagoAgilFrba.Modelo;
+using System.Data.SqlClient;
+using PagoAgilFrba.Modelo.Exceptions;
 
 namespace PagoAgilFrba.AbmSucursal
 {
@@ -17,7 +19,7 @@ namespace PagoAgilFrba.AbmSucursal
         {
             InitializeComponent();
         }
-        private Usuario usuarioSeleccionado = null;
+        private Sucursal usuarioSeleccionado = null;
 
         public string Nombre
         {
@@ -53,21 +55,35 @@ namespace PagoAgilFrba.AbmSucursal
             }
         }
 
+        public void validar()
+        {
+            if (string.IsNullOrWhiteSpace(textBoxNombre.Text)) throw new CampoVacioException("Nombre");
+            if (string.IsNullOrWhiteSpace(textBoxDireccion.Text)) throw new CampoVacioException("Direccion");
+            if (string.IsNullOrWhiteSpace(textBoxCodigoPostal.Text)) throw new CampoVacioException("Codigo Postal");
+            if (decimal.Parse(textBoxCodigoPostal.Text) <= 0) throw new ValorNegativoException("Codigo Postal");
+        }
+
         private void buttonAceptar_Click(object sender, EventArgs e)
         {
-           /* try
+           try
             {
-                if (usuarioSeleccionado == null) throw new UsuarioNoSeleccionadoException();    // valido los datos ingresados
-                else Sucursal.nuevo(usuarioSeleccionado.id, checkBoxHabilitado.Checked);          // persisto el nuevo chofer
+                validar();    // valido los datos ingresados
+
+                Sucursal.nuevo( Convert.ToString(textBoxNombre.Text),
+                                Convert.ToString(textBoxDireccion.Text),
+                                Convert.ToDecimal(textBoxCodigoPostal.Text),
+                                Convert.ToBoolean(checkBoxHabilitado.Checked));          // persisto el nuevo chofer
 
                 this.Close();
             }
             catch (SqlException) { }
             catch (Exception exception)
             {
-                if (exception is FormatException || exception is UsuarioNoSeleccionadoException) Error.show(exception.Message);
+                if (exception is FormatException ||
+                    exception is CampoVacioException ||
+                    exception is ValorNegativoException) Error.show(exception.Message);
                 else throw;
-            } */
+            }
         }
 
         private void buttonCancelar_Click(object sender, EventArgs e)
@@ -75,26 +91,6 @@ namespace PagoAgilFrba.AbmSucursal
             this.Close();
         }
 
-        private void buttonSeleccionarUsuario_Click(object sender, EventArgs e)
-        {
-            /*Usuario seleccionado = new SeleccionarUsuarioForm(this).getNoSucursal();  // Selecciono una sucursal
-            if(seleccionado != null)                                                // Si es null(porque cancelaron) no hago nada
-            {
-                usuarioSeleccionado = seleccionado;                                 // en caso contrario lleno los campos
-                Nombre = seleccionado.nombre;
-                Direccion = seleccionado.direccion;           
-            }*/
-        }
-
-        private void textBoxNombre_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
 

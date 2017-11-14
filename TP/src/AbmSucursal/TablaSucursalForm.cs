@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PagoAgilFrba.Modelo;
+using PagoAgilFrba.Modelo.Exceptions;
 
 
 namespace PagoAgilFrba.AbmSucursal
@@ -25,50 +26,70 @@ namespace PagoAgilFrba.AbmSucursal
         public override void Refrescar()
         {
             base.Refrescar();
-            DataGridViewUsuario.Columns["Usuario_Habilitado"].Visible = false;  // oculto columna que no quiero mostrar
-            DataGridViewUsuario.Columns["Sucursal_Habilitada"].HeaderText = "Habilitada"; //  cambio nombre visible de columna
+            CargarTabla();
+            DataGridViewSucursal.Columns["ID_SUCURSAL"].Visible = false;  // oculto columna que no quiero mostrar
+            //DataGridViewSucursal.Columns["Habilitado"].Visible = false; //  cambio nombre visible de columna
         }
-        public DataGridView DataGridViewUsuario
+        public DataGridView DataGridViewSucursal
         {
-            get { return dataGridView1; }
+            get { return dataGridViewSucursal; }
         }
         public string Nombre
         {
             get
             {
-                return nombre.Text;
+                return textBoxNombre.Text;
             }
         }
         public string Direccion
         {
             get
             {
-                return direccion.Text;
+                return textBoxDireccion.Text;
             }
         }
-        public string Codigo_Postal
+        public Decimal Codigo_Postal
         {
             get
             {
-                return codigoPostal.Text;
+                if (string.IsNullOrWhiteSpace(textBoxCodigoPostal.Text)) return 0;
+
+                return Convert.ToDecimal(textBoxCodigoPostal.Text);
 ;
             }
         }
         protected virtual void CargarTabla()
         {
-            dataGridView1.DataSource = Sucursal.getXsConFiltros("Sucursales", // obtengo las sucursales y las cargo en la tabla
+            dataGridViewSucursal.DataSource = Sucursal.getXsConFiltros( // obtengo las sucursales y las cargo en la tabla
                                                                         Nombre,
                                                                         Direccion,
                                                                         Codigo_Postal);
         }
-        private void nombre_TextChanged(object sender, EventArgs e)
-        {
 
+        private void buttonFiltrar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                validar();                                                                      // valido los datos ingresados
+                CargarTabla();                                                                  // cargo la tabla
+            }
+            catch (Exception ex)
+            {
+                if (ex is FormatException || ex is ValorNegativoException) Error.show(ex.Message);
+                else throw;
+            }
         }
 
-        private void codigoPostal_TextChanged(object sender, EventArgs e)
+        private void validar()
         {
+            if (Codigo_Postal < 0) throw new ValorNegativoException("Codigo Postal");
+        }
 
+        private void buttonLimpiar_Click(object sender, EventArgs e)
+        {
+            textBoxNombre.Text = "";
+            textBoxDireccion.Text = "";
+            textBoxCodigoPostal.Text = "";
         }
     }
 }

@@ -21,8 +21,13 @@ namespace PagoAgilFrba.AbmCliente
 
         private void buttonEditar_Click(object sender, EventArgs e)
         {
-            DataRow fila = ((DataRowView)DataGridClientes.SelectedRows[0].DataBoundItem).Row;    // Obtengo fila seleccionada
-            new EditarClienteForm(this, new Cliente(fila)).abrir();        
+            try
+            {
+                DataRow fila = ((DataRowView)DataGridClientes.SelectedRows[0].DataBoundItem).Row;    // Obtengo fila seleccionada
+                new EditarClienteForm(this, new Cliente(fila)).abrir();
+            }
+            catch (ArgumentOutOfRangeException) { Error.show("Seleccion un elemento de la Tabla"); }
+
         }
 
         private void buttonVolver_Click(object sender, EventArgs e)
@@ -37,8 +42,11 @@ namespace PagoAgilFrba.AbmCliente
 
         private void buttonBaja_Click(object sender, EventArgs e)
         {
-            Cliente.inhabilitar((int)DataGridClientes.SelectedRows[0].Cells["ID_CLIENTE"].Value);   // Obtengo el id del cliente seleccionado y lo inhabilito
-            CargarTabla();
+            try{
+                Cliente.inhabilitar((int)DataGridClientes.SelectedRows[0].Cells["ID_CLIENTE"].Value);   // Obtengo el id del cliente seleccionado y lo inhabilito
+                CargarTabla();
+             }catch (ArgumentOutOfRangeException) 
+            { Error.show("Seleccion un elemento de la Tabla"); }
         }
 
     }

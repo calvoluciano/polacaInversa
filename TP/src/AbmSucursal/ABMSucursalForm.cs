@@ -12,14 +12,18 @@ namespace PagoAgilFrba.AbmSucursal
 {
     public partial class ABMSucursalForm : PagoAgilFrba.AbmSucursal.TablaSucursalForm
     {
-        public ABMSucursalForm()
+        public ABMSucursalForm(ReturnForm caller)
+            : base(caller)
         {
             InitializeComponent();
         }
         private void buttonEditar_Click(object sender, EventArgs e)
         {
-            DataRow fila = ((DataRowView)DataGridViewUsuario.SelectedRows[0].DataBoundItem).Row;
-            new EditarSucursalForm(this, new Sucursal(fila)).abrir();
+            try{
+                DataRow fila = ((DataRowView)DataGridViewSucursal.SelectedRows[0].DataBoundItem).Row;
+                new EditarSucursalForm(this, new Sucursal(fila)).abrir();
+            }catch (ArgumentOutOfRangeException) 
+            { Error.show("Seleccion un elemento de la Tabla"); }
         }
         private void buttonVolver_Click(object sender, EventArgs e)
         {
@@ -32,8 +36,11 @@ namespace PagoAgilFrba.AbmSucursal
 
         private void buttonBaja_Click(object sender, EventArgs e)
         {
-            //Sucursal.inhabilitar((int)DataGridViewUsuario.SelectedRows[0].Cells["usua_id"].Value);    // Obtengo el id de la sucursal seleccionada y la inhabilita
-            CargarTabla();
+            try{
+                Sucursal.inhabilitar((int)DataGridViewSucursal.SelectedRows[0].Cells["ID_SUCURSAL"].Value);    // Obtengo el id de la sucursal seleccionada y la inhabilita
+                CargarTabla();
+            }catch (ArgumentOutOfRangeException) 
+            { Error.show("Seleccion un elemento de la Tabla"); }
         }
     }
 }

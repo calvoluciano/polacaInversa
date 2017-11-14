@@ -8,61 +8,68 @@ using System.Windows.Forms;
 
 namespace PagoAgilFrba.Modelo
 {
-    public class Sucursal : Usuario
+    public class Sucursal
     {
-        public String nombre;
+        public int id;
+        public String nombre { get; set; }
         public String direccion;
-        public String codigoPostal;
+        public Decimal codigoPostal { get; set; }
+        public Boolean habilitado;
 
         public Sucursal(DataRow data)
         {
-            New(data);
-            habilitado = (Boolean)data["Sucursal_Habilitada"];
-            codigoPostal = (String)data["Codigo_Postal"];
+            id = (int)data["ID_SUCURSAL"];
+            codigoPostal = Convert.ToDecimal(data["Codigo_Postal"]);
             direccion = (String)data["Direccion"];
             nombre = (String)data["Nombre"];
+            habilitado = (Boolean)data["Habilitado"];
         }
         public Sucursal() { }
 
         public void editar()                                            // persisto los cambios
         {
             DB.correrProcedimiento("SUCURSAL_UPDATE",
-                                         "id_sucursal", id,
+                                         "idSucursal", id,
                                          "nombre", nombre,
                                          "direccion",direccion,
                                          "codigoPostal", codigoPostal,
-                                         "estado_sucursal", habilitado);
+                                         "habilitado", habilitado);
         }
 
-        public static void nuevo(int id, decimal codigoPostal, Boolean habilitado,String nombre, String direccion)  // persisto una sucursal nueva
+        public static void nuevo(String nombre, String direccion, decimal codigoPostal, Boolean habilitado)  // persisto una sucursal nueva
         {
-            DB.correrProcedimiento("Sucursal_NUEVO",
-                                         "id", id,
+            DB.correrProcedimiento("SUCURSAL_NUEVO",
                                          "nombre", nombre,
                                          "direccion", direccion,
                                          "codigoPostal", codigoPostal,
                                          "habilitado", habilitado);
         }
-        public static DataTable getXsConFiltros(String X, // "SUCURSALES"
+        public static DataTable getXsConFiltros( // "SUCURSALES"
                                               String nombre,
                                               String direccion,
-                                              String codigoPostal)        // obtengo un tipo de usuarios que cumplen con los filtros
+                                              Decimal codigoPostal)        // obtengo un tipo de usuarios que cumplen con los filtros
         {
-            return DB.correrFuncionDeTabla("GET_" + X + "_CON_FILTROS",
+            return DB.correrFuncionDeTabla("GET_SUCURSAL_CON_FILTROS",
                                "Nombre", nombre,
                                "Direccion", direccion,
                                "Codigo_Postal", codigoPostal);
         }
 
-        public void inhabilitar(int id)    // inhabilito la sucursal
+        public static void inhabilitar(int id)    // inhabilito la sucursal
         {
-            DB.correrProcedimiento("_INHABILITAR",
+            DB.correrProcedimiento("INHABILITAR_SUCURSAL",
                                             "id", id);
         }
-        public void habilitar(int id)    // habilito la sucursal
+        public static void habilitar(int id)    // habilito la sucursal
         {
-            DB.correrProcedimiento("_HABILITAR",
+            DB.correrProcedimiento("HABILITAR_SUCURSAL",
                                             "id", id);
         }
+
+        public static Boolean validarSucursalHabilitada(int id)
+        {
+            return (Boolean)DB.correrFuncion("SUCURSAL_ESTA_HABILITADA", "id", id);
+        }
+
     }
 }

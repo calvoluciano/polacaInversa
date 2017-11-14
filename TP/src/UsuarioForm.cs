@@ -33,18 +33,27 @@ namespace PagoAgilFrba
 
                 Usuario.cargar(usuario);                                                            // cargo el usuario seleccionado
 
-                List<Rol> roles = Usuario.getRoles();                                               // consigo los roles del usuario                                     
+                List<Rol> roles = Usuario.getRoles();   // consigo los roles del usuario
+                List<Sucursal> sucursales = Usuario.getSucursales();                   
                 int cantidadDeRoles = roles.Count;
+                int cantidadDeSucursales = sucursales.Count;
 
                 if (cantidadDeRoles == 0) Error.show("El usuario seleccionado no tiene ningún rol asignado!");  // si no tiene roles muestro un error
                 else if (cantidadDeRoles > 1)                                                                   // si tiene mas de uno doy a elegir
                 {
-                    new SeleccionarRolForm(this).abrir();
+                    if (cantidadDeSucursales <= 1)
+                        new SeleccionarRolForm(this).abrir();
+                    else
+                        new SeleccionarRolYSucursalForm(this).abrir();
                 }
                 else
-                {                                                                                          // caso contrario elijo el unico directamente
+                {   
+                    // caso contrario elijo el unico directamente
                     Rol.rolSeleccionado = roles.First();
-                    new SeleccionarFuncionalidadForm(this).abrir();
+                    if (cantidadDeSucursales <= 1)
+                        new SeleccionarFuncionalidadForm(this).abrir();
+                    else
+                        new SeleccionarSucursalForm(this).abrir();
                 }
             }
             catch (SqlException) { }

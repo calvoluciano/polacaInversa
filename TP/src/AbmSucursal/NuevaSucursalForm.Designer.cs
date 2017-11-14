@@ -40,7 +40,6 @@
             this.checkBoxHabilitado = new System.Windows.Forms.CheckBox();
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonAceptar = new System.Windows.Forms.Button();
-            this.buttonSeleccionarUsuario = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // dateTimePickerFechaNac
@@ -54,18 +53,17 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 38);
+            this.label1.Location = new System.Drawing.Point(22, 36);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "Nombre";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 95);
+            this.label2.Location = new System.Drawing.Point(22, 106);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(95, 17);
@@ -75,7 +73,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 156);
+            this.label4.Location = new System.Drawing.Point(22, 70);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(67, 17);
@@ -89,11 +87,10 @@
             this.textBoxNombre.Name = "textBoxNombre";
             this.textBoxNombre.Size = new System.Drawing.Size(265, 22);
             this.textBoxNombre.TabIndex = 4;
-            this.textBoxNombre.TextChanged += new System.EventHandler(this.textBoxNombre_TextChanged);
             // 
             // textBoxDireccion
             // 
-            this.textBoxDireccion.Location = new System.Drawing.Point(161, 151);
+            this.textBoxDireccion.Location = new System.Drawing.Point(161, 67);
             this.textBoxDireccion.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxDireccion.Name = "textBoxDireccion";
             this.textBoxDireccion.Size = new System.Drawing.Size(265, 22);
@@ -101,7 +98,7 @@
             // 
             // textBoxCodigoPostal
             // 
-            this.textBoxCodigoPostal.Location = new System.Drawing.Point(161, 90);
+            this.textBoxCodigoPostal.Location = new System.Drawing.Point(161, 103);
             this.textBoxCodigoPostal.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxCodigoPostal.Name = "textBoxCodigoPostal";
             this.textBoxCodigoPostal.Size = new System.Drawing.Size(265, 22);
@@ -113,7 +110,7 @@
             this.checkBoxHabilitado.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBoxHabilitado.Checked = true;
             this.checkBoxHabilitado.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxHabilitado.Location = new System.Drawing.Point(16, 206);
+            this.checkBoxHabilitado.Location = new System.Drawing.Point(181, 146);
             this.checkBoxHabilitado.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxHabilitado.Name = "checkBoxHabilitado";
             this.checkBoxHabilitado.Size = new System.Drawing.Size(93, 21);
@@ -123,7 +120,7 @@
             // 
             // buttonCancelar
             // 
-            this.buttonCancelar.Location = new System.Drawing.Point(161, 245);
+            this.buttonCancelar.Location = new System.Drawing.Point(250, 188);
             this.buttonCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(100, 28);
@@ -134,7 +131,7 @@
             // 
             // buttonAceptar
             // 
-            this.buttonAceptar.Location = new System.Drawing.Point(8, 245);
+            this.buttonAceptar.Location = new System.Drawing.Point(97, 188);
             this.buttonAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAceptar.Name = "buttonAceptar";
             this.buttonAceptar.Size = new System.Drawing.Size(100, 28);
@@ -143,23 +140,11 @@
             this.buttonAceptar.UseVisualStyleBackColor = true;
             this.buttonAceptar.Click += new System.EventHandler(this.buttonAceptar_Click);
             // 
-            // buttonSeleccionarUsuario
-            // 
-            this.buttonSeleccionarUsuario.Location = new System.Drawing.Point(282, 245);
-            this.buttonSeleccionarUsuario.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonSeleccionarUsuario.Name = "buttonSeleccionarUsuario";
-            this.buttonSeleccionarUsuario.Size = new System.Drawing.Size(163, 28);
-            this.buttonSeleccionarUsuario.TabIndex = 10;
-            this.buttonSeleccionarUsuario.Text = "Seleccionar Usuario";
-            this.buttonSeleccionarUsuario.UseVisualStyleBackColor = true;
-            this.buttonSeleccionarUsuario.Click += new System.EventHandler(this.buttonSeleccionarUsuario_Click);
-            // 
             // NuevaSucursalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(464, 348);
-            this.Controls.Add(this.buttonSeleccionarUsuario);
+            this.ClientSize = new System.Drawing.Size(445, 238);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonAceptar);
             this.Controls.Add(this.checkBoxHabilitado);
@@ -191,6 +176,5 @@
         private System.Windows.Forms.CheckBox checkBoxHabilitado;
         private System.Windows.Forms.Button buttonCancelar;
         private System.Windows.Forms.Button buttonAceptar;
-        private System.Windows.Forms.Button buttonSeleccionarUsuario;
     }
 }

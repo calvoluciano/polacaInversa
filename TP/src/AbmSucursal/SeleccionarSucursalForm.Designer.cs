@@ -35,7 +35,7 @@
             // buttonSeleccionar
             // 
             this.buttonSeleccionar.Location = new System.Drawing.Point(28, 406);
-            this.buttonSeleccionar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonSeleccionar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSeleccionar.Name = "buttonSeleccionar";
             this.buttonSeleccionar.Size = new System.Drawing.Size(100, 28);
             this.buttonSeleccionar.TabIndex = 15;
@@ -46,7 +46,7 @@
             // buttonCancelar
             // 
             this.buttonCancelar.Location = new System.Drawing.Point(638, 406);
-            this.buttonCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(100, 28);
             this.buttonCancelar.TabIndex = 16;
@@ -57,10 +57,10 @@
             // SeleccionarSucursalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.ClientSize = new System.Drawing.Size(775, 527);
+            this.ClientSize = new System.Drawing.Size(775, 447);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonSeleccionar);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "SeleccionarSucursalForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

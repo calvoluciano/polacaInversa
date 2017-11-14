@@ -44,16 +44,16 @@ namespace PagoAgilFrba.AbmSucursal
                 textBoxNombre.Text = value;
             }
         }
-        public string Codigo_Postal
+        public Decimal Codigo_Postal
         {
             get
             {
-                return textBoxCodigoPostal.Text;
+                return Convert.ToDecimal(textBoxCodigoPostal.Text);
             }
 
             set
             {
-                textBoxCodigoPostal.Text = value;
+                textBoxCodigoPostal.Text = value.ToString();
             }
         }
 
@@ -91,6 +91,7 @@ namespace PagoAgilFrba.AbmSucursal
                 validar();                              //valido los datos ingresados
                 sucursalAEditar.nombre = Nombre;          //edito la sucursal
                 sucursalAEditar.direccion = Direccion;
+                sucursalAEditar.codigoPostal = Codigo_Postal;
                 sucursalAEditar.habilitado = Habilitado;
 
                 sucursalAEditar.editar();                 //persisto los cambios
@@ -110,7 +111,7 @@ namespace PagoAgilFrba.AbmSucursal
         {
             if (string.IsNullOrWhiteSpace(Nombre)) throw new EmptyFieldException("Nombre");
             if (string.IsNullOrWhiteSpace(Direccion)) throw new EmptyFieldException("Domicilio");
-            if (string.IsNullOrWhiteSpace(Codigo_Postal)) throw new EmptyFieldException("Codigo Postal");
+            if (Codigo_Postal <= 0) throw new ValorNegativoException("Codigo_Postal");
 
         }
 

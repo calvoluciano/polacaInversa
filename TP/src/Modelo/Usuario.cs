@@ -17,6 +17,7 @@ namespace PagoAgilFrba.Modelo
         public String nombreDeUsuario;
         public byte[] contrasenia;
         public Boolean habilitado;
+        public static Sucursal sucursalSeleccionada;
 
         public Usuario(DataRow data)
         {
@@ -49,6 +50,15 @@ namespace PagoAgilFrba.Modelo
 
             return data.AsEnumerable()
                         .Select(fila => new Rol(fila))
+                        .ToList();
+        }
+
+        public static List<Sucursal> getSucursales()              // obtengo las Sucursales del usuario seleccionado
+        {
+            DataTable data = DB.correrFuncionDeTabla("USUARIO_GET_SUCURSALES", "usuarioId", usuarioSeleccionado);
+
+            return data.AsEnumerable()
+                        .Select(fila => new Sucursal(fila))
                         .ToList();
         }
 

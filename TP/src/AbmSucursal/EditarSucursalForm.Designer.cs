@@ -31,18 +31,17 @@
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonAceptar = new System.Windows.Forms.Button();
             this.checkBoxHabilitado = new System.Windows.Forms.CheckBox();
+            this.textBoxNombre = new System.Windows.Forms.TextBox();
             this.textBoxDireccion = new System.Windows.Forms.TextBox();
             this.textBoxCodigoPostal = new System.Windows.Forms.TextBox();
-            this.textBoxNombre = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePickerFechaNac = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // buttonCancelar
             // 
-            this.buttonCancelar.Location = new System.Drawing.Point(178, 283);
+            this.buttonCancelar.Location = new System.Drawing.Point(207, 171);
             this.buttonCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(100, 28);
@@ -53,7 +52,7 @@
             // 
             // buttonAceptar
             // 
-            this.buttonAceptar.Location = new System.Drawing.Point(46, 283);
+            this.buttonAceptar.Location = new System.Drawing.Point(75, 171);
             this.buttonAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAceptar.Name = "buttonAceptar";
             this.buttonAceptar.Size = new System.Drawing.Size(100, 28);
@@ -66,7 +65,7 @@
             // 
             this.checkBoxHabilitado.AutoSize = true;
             this.checkBoxHabilitado.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.checkBoxHabilitado.Location = new System.Drawing.Point(114, 255);
+            this.checkBoxHabilitado.Location = new System.Drawing.Point(143, 143);
             this.checkBoxHabilitado.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxHabilitado.Name = "checkBoxHabilitado";
             this.checkBoxHabilitado.Size = new System.Drawing.Size(93, 21);
@@ -74,27 +73,27 @@
             this.checkBoxHabilitado.Text = "Habilitado";
             this.checkBoxHabilitado.UseVisualStyleBackColor = true;
             // 
+            // textBoxNombre
+            // 
+            this.textBoxNombre.Location = new System.Drawing.Point(114, 23);
+            this.textBoxNombre.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxNombre.Name = "textBoxNombre";
+            this.textBoxNombre.Size = new System.Drawing.Size(236, 22);
+            this.textBoxNombre.TabIndex = 9;
+            // 
             // textBoxDireccion
             // 
             this.textBoxDireccion.Location = new System.Drawing.Point(114, 95);
             this.textBoxDireccion.Name = "textBoxDireccion";
-            this.textBoxDireccion.Size = new System.Drawing.Size(200, 22);
+            this.textBoxDireccion.Size = new System.Drawing.Size(236, 22);
             this.textBoxDireccion.TabIndex = 14;
             // 
             // textBoxCodigoPostal
             // 
             this.textBoxCodigoPostal.Location = new System.Drawing.Point(115, 57);
             this.textBoxCodigoPostal.Name = "textBoxCodigoPostal";
-            this.textBoxCodigoPostal.Size = new System.Drawing.Size(199, 22);
+            this.textBoxCodigoPostal.Size = new System.Drawing.Size(235, 22);
             this.textBoxCodigoPostal.TabIndex = 0;
-            // 
-            // textBoxNombre
-            // 
-            this.textBoxNombre.Location = new System.Drawing.Point(114, 23);
-            this.textBoxNombre.Margin = new System.Windows.Forms.Padding(4);
-            this.textBoxNombre.Name = "textBoxNombre";
-            this.textBoxNombre.Size = new System.Drawing.Size(200, 22);
-            this.textBoxNombre.TabIndex = 9;
             // 
             // label5
             // 
@@ -125,26 +124,17 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Codigo Postal";
             // 
-            // dateTimePickerFechaNac
-            // 
-            this.dateTimePickerFechaNac.Location = new System.Drawing.Point(24, 163);
-            this.dateTimePickerFechaNac.Margin = new System.Windows.Forms.Padding(4);
-            this.dateTimePickerFechaNac.Name = "dateTimePickerFechaNac";
-            this.dateTimePickerFechaNac.Size = new System.Drawing.Size(265, 22);
-            this.dateTimePickerFechaNac.TabIndex = 0;
-            // 
             // EditarSucursalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(328, 331);
+            this.ClientSize = new System.Drawing.Size(373, 212);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonAceptar);
             this.Controls.Add(this.checkBoxHabilitado);
             this.Controls.Add(this.textBoxNombre);
             this.Controls.Add(this.textBoxDireccion);
             this.Controls.Add(this.textBoxCodigoPostal);
-            this.Controls.Add(this.dateTimePickerFechaNac);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
@@ -159,7 +149,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.DateTimePicker dateTimePickerFechaNac;
+
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
