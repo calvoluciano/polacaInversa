@@ -318,6 +318,9 @@
     <EmbeddedResource Include="AbmSucursal\TablaSucursalForm.resx">
       <DependentUpon>TablaSucursalForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RegistroPago\RegistroPagoForm.resx">
+      <DependentUpon>RegistroPagoForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SeleccionarFuncionalidad\SeleccionarFuncionalidadForm.resx">
       <DependentUpon>SeleccionarFuncionalidadForm.cs</DependentUpon>
     </EmbeddedResource>

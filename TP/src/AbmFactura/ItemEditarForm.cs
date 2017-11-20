@@ -71,6 +71,7 @@ namespace PagoAgilFrba.AbmFactura
 
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
+            Item = null;
             this.Close();
         }
     }

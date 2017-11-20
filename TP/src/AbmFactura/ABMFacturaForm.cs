@@ -20,13 +20,16 @@ namespace PagoAgilFrba.AbmFactura
         }
         private void buttonEditar_Click(object sender, EventArgs e)
         {
-            DataRow fila = ((DataRowView)DataGridViewFactura.SelectedRows[0].DataBoundItem).Row;
-            Factura facturaSeleccionada = new Factura(fila);
+            try{
+                DataRow fila = ((DataRowView)DataGridViewFactura.SelectedRows[0].DataBoundItem).Row;
+                Factura facturaSeleccionada = new Factura(fila);
 
-            if (!facturaSeleccionada.estaCobrada())
-                new EditarFacturaForm(this, facturaSeleccionada).abrir();
-            else
-                Error.show("La Factura seleccionada esta cobrada, por lo tanto no puede ser modificada!");
+                if (!facturaSeleccionada.estaCobrada())
+                    new EditarFacturaForm(this, facturaSeleccionada).abrir();
+                else
+                    Error.show("La Factura seleccionada esta cobrada, por lo tanto no puede ser modificada!");
+            }catch (ArgumentOutOfRangeException) 
+            { Error.show("Seleccion un elemento de la Tabla"); }
         }
         private void buttonVolver_Click(object sender, EventArgs e)
         {

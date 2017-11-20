@@ -160,9 +160,8 @@ namespace PagoAgilFrba.AbmFactura
                 Factura.fechaAlta = FechaAlta;
                 Factura.fechaVencimiento = FechaVencimiento;
                 Factura.idEmpresa = Empresa.id;
-
+                Factura.detalleFactura = dt;
                 if(edicion){
-                    Factura.detalleFactura = dt;
                     Factura.editar();
                 }else{
                     Factura.idFactura = idFactura;
@@ -187,14 +186,18 @@ namespace PagoAgilFrba.AbmFactura
         {
             DataRow item = dt.NewRow();
             item = new ItemEditarForm(this,item).getItem();   // selecciono cliente
-            if (item != null) dt.Rows.Add(item);
-            Factura.total += Convert.ToDecimal(item["Monto"]);
-            labelTotal.Text = "Total: " + Factura.total;
+            if (item != null)
+            {
+                dt.Rows.Add(item);
+                Factura.total += Convert.ToDecimal(item["Monto"]) * Convert.ToInt32(item["Cantidad"]);
+                labelTotal.Text = "Total: " + Factura.total;
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Factura.total -= Convert.ToDecimal(DataGridViewDetalleFactura.SelectedRows[0].DataGridView["Monto",0].Value);
+            DataRow item = ((DataRowView)DataGridViewDetalleFactura.SelectedRows[0].DataBoundItem).Row;
+            Factura.total -= Convert.ToDecimal(item["Monto"]) * Convert.ToInt32(item["Cantidad"]);
             dt.Rows.RemoveAt((DataGridViewDetalleFactura.SelectedRows[0].Index));
             labelTotal.Text = "Total: " + Factura.total;
         }

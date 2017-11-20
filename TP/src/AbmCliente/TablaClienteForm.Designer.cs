@@ -138,7 +138,9 @@
             // 
             this.dataGridClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridClientes.Location = new System.Drawing.Point(12, 145);
+            this.dataGridClientes.MultiSelect = false;
             this.dataGridClientes.Name = "dataGridClientes";
+            this.dataGridClientes.ReadOnly = true;
             this.dataGridClientes.RowTemplate.Height = 24;
             this.dataGridClientes.Size = new System.Drawing.Size(746, 242);
             this.dataGridClientes.TabIndex = 6;
