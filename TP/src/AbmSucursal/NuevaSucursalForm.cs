@@ -19,7 +19,6 @@ namespace PagoAgilFrba.AbmSucursal
         {
             InitializeComponent();
         }
-        private Sucursal usuarioSeleccionado = null;
 
         public string Nombre
         {
