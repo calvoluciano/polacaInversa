@@ -101,7 +101,12 @@ namespace PagoAgilFrba.Modelo
             return DB.correrFuncionDeTabla("FACTURA_GET_DETALLE",
                                             "idFactura",idFactura);
         }
-        
+
+        public static DataTable getFacturasPendientesDeRendicionEmpresa(int idEmpresa)
+        {
+            return DB.correrFuncionDeTabla("BUSCAR_FACTURAS_PENDIENTES_DE_RENDICION_EMPRESA",
+                                            "idEmpresa", idEmpresa);
+        }
 
     }
 }

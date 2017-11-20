@@ -18,10 +18,6 @@ namespace PagoAgilFrba.AbmEmpresa
         private Boolean edicion = false;
         private Empresa editarEmpresa = null;
 
-        private String nombre;
-        private Decimal cuit;
-        private String direccion;
-
 
          public EditarEmpresaForm(ReturnForm caller) : base(caller)
         {

@@ -138,9 +138,13 @@
             // 
             // dataGridViewEmpresas
             // 
+            this.dataGridViewEmpresas.AllowUserToAddRows = false;
+            this.dataGridViewEmpresas.AllowUserToDeleteRows = false;
             this.dataGridViewEmpresas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewEmpresas.Location = new System.Drawing.Point(12, 145);
+            this.dataGridViewEmpresas.MultiSelect = false;
             this.dataGridViewEmpresas.Name = "dataGridViewEmpresas";
+            this.dataGridViewEmpresas.ReadOnly = true;
             this.dataGridViewEmpresas.RowTemplate.Height = 24;
             this.dataGridViewEmpresas.Size = new System.Drawing.Size(746, 242);
             this.dataGridViewEmpresas.TabIndex = 6;

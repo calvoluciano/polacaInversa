@@ -42,17 +42,17 @@
             this.label5 = new System.Windows.Forms.Label();
             this.comboBoxEmpresa = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBoxEmpresa = new System.Windows.Forms.TextBox();
+            this.textBoxNumeroFactura = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.buttonEditar = new System.Windows.Forms.Button();
             this.buttonNuevo = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerFechaCobro = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
             this.textBoxTotal = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.labelSucursal = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -131,7 +131,7 @@
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.comboBoxEmpresa);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.textBoxEmpresa);
+            this.groupBox2.Controls.Add(this.textBoxNumeroFactura);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(12, 135);
@@ -150,6 +150,7 @@
             this.buttonBorrar.TabIndex = 19;
             this.buttonBorrar.Text = "Agregar";
             this.buttonBorrar.UseVisualStyleBackColor = true;
+            this.buttonBorrar.Click += new System.EventHandler(this.buttonBorrar_Click);
             // 
             // textBoxImporte
             // 
@@ -195,6 +196,7 @@
             this.comboBoxEmpresa.Name = "comboBoxEmpresa";
             this.comboBoxEmpresa.Size = new System.Drawing.Size(241, 26);
             this.comboBoxEmpresa.TabIndex = 6;
+            this.comboBoxEmpresa.SelectionChangeCommitted += new System.EventHandler(this.comboBoxEmpresa_SelectionChangeCommitted);
             // 
             // label3
             // 
@@ -206,14 +208,14 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Empresa";
             // 
-            // textBoxEmpresa
+            // textBoxNumeroFactura
             // 
-            this.textBoxEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxEmpresa.Location = new System.Drawing.Point(175, 36);
-            this.textBoxEmpresa.MaxLength = 20;
-            this.textBoxEmpresa.Name = "textBoxEmpresa";
-            this.textBoxEmpresa.Size = new System.Drawing.Size(228, 24);
-            this.textBoxEmpresa.TabIndex = 4;
+            this.textBoxNumeroFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxNumeroFactura.Location = new System.Drawing.Point(175, 36);
+            this.textBoxNumeroFactura.MaxLength = 20;
+            this.textBoxNumeroFactura.Name = "textBoxNumeroFactura";
+            this.textBoxNumeroFactura.Size = new System.Drawing.Size(228, 24);
+            this.textBoxNumeroFactura.TabIndex = 4;
             // 
             // label4
             // 
@@ -246,6 +248,7 @@
             this.buttonEditar.TabIndex = 19;
             this.buttonEditar.Text = "Cancelar";
             this.buttonEditar.UseVisualStyleBackColor = true;
+            this.buttonEditar.Click += new System.EventHandler(this.buttonEditar_Click);
             // 
             // buttonNuevo
             // 
@@ -277,13 +280,13 @@
             this.label7.TabIndex = 21;
             this.label7.Text = "Fecha Cobro";
             // 
-            // dateTimePicker1
+            // dateTimePickerFechaCobro
             // 
-            this.dateTimePicker1.Enabled = false;
-            this.dateTimePicker1.Location = new System.Drawing.Point(575, 9);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(194, 22);
-            this.dateTimePicker1.TabIndex = 22;
+            this.dateTimePickerFechaCobro.Enabled = false;
+            this.dateTimePickerFechaCobro.Location = new System.Drawing.Point(575, 9);
+            this.dateTimePickerFechaCobro.Name = "dateTimePickerFechaCobro";
+            this.dateTimePickerFechaCobro.Size = new System.Drawing.Size(194, 22);
+            this.dateTimePickerFechaCobro.TabIndex = 22;
             // 
             // label8
             // 
@@ -304,25 +307,25 @@
             this.textBoxTotal.Size = new System.Drawing.Size(136, 24);
             this.textBoxTotal.TabIndex = 24;
             // 
-            // label9
+            // labelSucursal
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(24, 9);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(85, 20);
-            this.label9.TabIndex = 25;
-            this.label9.Text = "Sucursal: ";
+            this.labelSucursal.AutoSize = true;
+            this.labelSucursal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSucursal.Location = new System.Drawing.Point(24, 9);
+            this.labelSucursal.Name = "labelSucursal";
+            this.labelSucursal.Size = new System.Drawing.Size(85, 20);
+            this.labelSucursal.TabIndex = 25;
+            this.labelSucursal.Text = "Sucursal: ";
             // 
             // RegistroPagoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(781, 597);
-            this.Controls.Add(this.label9);
+            this.Controls.Add(this.labelSucursal);
             this.Controls.Add(this.textBoxTotal);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dateTimePickerFechaCobro);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonEditar);
@@ -354,7 +357,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboBoxEmpresa;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBoxEmpresa;
+        private System.Windows.Forms.TextBox textBoxNumeroFactura;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button buttonBorrar;
         private System.Windows.Forms.DataGridView dataGridView1;
@@ -362,10 +365,10 @@
         private System.Windows.Forms.Button buttonEditar;
         private System.Windows.Forms.Button buttonNuevo;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePickerFechaCobro;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBoxTotal;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label labelSucursal;
         private System.Windows.Forms.Button buttonSeleccionarCliente;
         private System.Windows.Forms.TextBox textBoxNombreCliente;
         private System.Windows.Forms.Label labelEmpresa;

@@ -19,8 +19,8 @@ namespace PagoAgilFrba.Modelo
             habilitado = (Boolean)data["ESTADO_EMPRESA"];
         }
 
-        public int id;
-        public String nombre;
+        public int id{ get; set; }
+        public String nombre{ get; set; }
         public Decimal cuit;
         public String direccion;
         public String rubro;
@@ -75,6 +75,19 @@ namespace PagoAgilFrba.Modelo
                     .AsEnumerable()
                     .Select(fila => fila.Field<string>("detalle"))
                     .ToList();
+        }
+
+        public static List<Empresa> getEmpresas()              // obtengo las Sucursales del usuario seleccionado
+        {
+            DataTable data = getXsConFiltros("",0,"");
+            return data.AsEnumerable()
+                        .Select(fila => new Empresa(fila))
+                        .ToList();
+        }
+
+        public static int tieneTodasFacturasCobradasRendidas(int idEmpresa)
+        {
+            return Factura.getFacturasPendientesDeRendicionEmpresa(idEmpresa).Rows.Count;
         }
 
     }

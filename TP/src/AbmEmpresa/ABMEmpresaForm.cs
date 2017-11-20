@@ -21,8 +21,13 @@ namespace PagoAgilFrba.AbmEmpresa
 
         private void buttonEditar_Click(object sender, EventArgs e)
         {
-            DataRow fila = ((DataRowView)DataGridViewEmpresas.SelectedRows[0].DataBoundItem).Row;
-            new EditarEmpresaForm(this, new Empresa(fila)).abrir();
+            try
+            {
+                DataRow fila = ((DataRowView)DataGridViewEmpresas.SelectedRows[0].DataBoundItem).Row;
+                new EditarEmpresaForm(this, new Empresa(fila)).abrir();
+            }
+            catch (ArgumentOutOfRangeException)
+            { Error.show("Seleccion un elemento de la Tabla"); }
         }
 
         private void buttonVolver_Click(object sender, EventArgs e)
@@ -37,10 +42,21 @@ namespace PagoAgilFrba.AbmEmpresa
 
         private void buttonBaja_Click(object sender, EventArgs e)
         {
-             try{        
-                Empresa.inhabilitar((int)DataGridViewEmpresas.SelectedRows[0].Cells["ID_EMPRESA"].Value);    // Obtengo el id de la sucursal seleccionada y la inhabilita
-                CargarTabla();
+            try
+            {
+                int cantPendientes = Empresa.tieneTodasFacturasCobradasRendidas((int)DataGridViewEmpresas.SelectedRows[0].Cells["ID_EMPRESA"].Value);
+                if (cantPendientes > 0)
+                {
+                    Error.show("No se pueder dar de baja la Empresa, aun tiene " + cantPendientes + "facturas pendientes de Cobrar y/o Rendir." );
+                }
+                else
+                {
+                    Empresa.inhabilitar((int)DataGridViewEmpresas.SelectedRows[0].Cells["ID_EMPRESA"].Value);    // Obtengo el id de la sucursal seleccionada y la inhabilita
+                    CargarTabla();
+                }
             }
+            catch (ArgumentOutOfRangeException)
+            { Error.show("Seleccion un elemento de la Tabla"); }
             catch (SqlException) { }
         }
     }

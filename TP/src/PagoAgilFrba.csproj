@@ -191,6 +191,7 @@
     <Compile Include="Modelo\Cliente.cs" />
     <Compile Include="Modelo\Empresa.cs" />
     <Compile Include="Modelo\Exceptions\campoVacioException.cs" />
+    <Compile Include="Modelo\Exceptions\FacturaYaAgregadaException.cs" />
     <Compile Include="Modelo\Exceptions\EmpresaNoSeleccionadaException.cs" />
     <Compile Include="Modelo\Exceptions\EmptyFieldException.cs" />
     <Compile Include="Modelo\Exceptions\ExpireDateBeforeException.cs" />

@@ -26,9 +26,6 @@ namespace PagoAgilFrba.AbmFactura
         }
 
         private Cliente cliente;
-        private DateTime fechaAlta;
-        private DateTime fechaVencimiento;
-        private decimal total;
 
         public override void Refrescar()
         {
