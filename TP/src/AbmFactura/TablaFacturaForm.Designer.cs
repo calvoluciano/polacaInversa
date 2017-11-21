@@ -158,6 +158,7 @@
             // 
             // dataGridViewFacturas
             // 
+            this.dataGridViewFacturas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewFacturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewFacturas.Location = new System.Drawing.Point(12, 188);
             this.dataGridViewFacturas.MultiSelect = false;

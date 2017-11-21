@@ -78,7 +78,7 @@ namespace PagoAgilFrba.Modelo
                                             "total", total);
         }
 
-        public Boolean estaCobrada()
+        public static Boolean estaCobrada(Int32 idFactura)
         {
             return (Boolean)DB.correrFuncion("FACTURA_ESTACOBRADA",
                                     "idFactura", idFactura);
@@ -108,5 +108,40 @@ namespace PagoAgilFrba.Modelo
                                             "idEmpresa", idEmpresa);
         }
 
+        public static Boolean esFacturaExistente(Int32 idFactura)
+        {
+            return (Boolean)DB.correrFuncion("FACTURA_EXISTE",
+                                    "idFactura", idFactura);
+        }
+
+        public static Boolean esFacturaHabilitada(Int32 idFactura)
+        {
+            return (Boolean)DB.correrFuncion("FACTURA_ESTA_HABILITADA",
+                                    "idFactura", idFactura);
+        }
+
+        public static Boolean esFacturaDeLaEmpresa(Int32 idFactura, Int32 idEmpresa)
+        {
+            return (Boolean)DB.correrFuncion("FACTURA_ES_DE_EMPRESA",
+                                    "idFactura", idFactura,
+                                    "idEmpresa", idEmpresa);
+        }
+
+        public static Boolean esFacturaDelCliente(Int32 idFactura, Int32 idCliente)
+        {
+            return (Boolean)DB.correrFuncion("FACTURA_ES_DE_CLIENTE",
+                                    "idFactura", idFactura,
+                                    "idCliente", idCliente);
+        }
+
+        public static Boolean verificaFechaVencimiento(Int32 idFactura, DateTime fecVencimiento)
+        {
+            ComparadorFechas comparar = new ComparadorFechas();
+            DateTime fechaRegistrada = (DateTime)DB.correrFuncion("GET_FECHA_VENCIMIENTO_FACTURA",
+                                    "idFactura", idFactura);
+            return comparar.esIgual(fechaRegistrada, fecVencimiento);
+                
+        }
+        
     }
 }

@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using PagoAgilFrba.Modelo;
 using PagoAgilFrba.AbmFactura;
+using PagoAgilFrba.Modelo.Exceptions;
 
 namespace PagoAgilFrba.AbmFactura
 {
@@ -20,17 +21,24 @@ namespace PagoAgilFrba.AbmFactura
         }
         private void buttonEditar_Click(object sender, EventArgs e)
         {
-            try{
+            try
+            {
                 DataRow fila = ((DataRowView)DataGridViewFactura.SelectedRows[0].DataBoundItem).Row;
-                Factura facturaSeleccionada = new Factura(fila);
 
-                if (!facturaSeleccionada.estaCobrada())
-                    new EditarFacturaForm(this, facturaSeleccionada).abrir();
-                else
-                    Error.show("La Factura seleccionada esta cobrada, por lo tanto no puede ser modificada!");
-            }catch (ArgumentOutOfRangeException) 
-            { Error.show("Seleccion un elemento de la Tabla"); }
+                if (Factura.estaCobrada(Convert.ToInt32(fila["ID_FACTURA"]))) throw new FacturaYaCobradaException(fila["ID_FACTURA"].ToString());
+
+                Factura facturaSeleccionada = new Factura(fila);
+                new EditarFacturaForm(this, facturaSeleccionada).abrir();
+
+            }
+            catch (ArgumentOutOfRangeException) { Error.show("Seleccion un elemento de la Tabla"); }
+            catch (Exception exception)
+            {
+                if (exception is FacturaYaCobradaException) Error.show(exception.Message);
+                    else throw;
+            } 
         }
+ 
         private void buttonVolver_Click(object sender, EventArgs e)
         {
             this.Close();

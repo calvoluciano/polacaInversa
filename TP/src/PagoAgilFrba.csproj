@@ -188,6 +188,15 @@
       <DependentUpon>TablaSucursalForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Acceso.cs" />
+    <Compile Include="Modelo\ComparadorFechas.cs" />
+    <Compile Include="Modelo\Exceptions\ClienteFacturaException.cs" />
+    <Compile Include="Modelo\Exceptions\EmpresaFacturaException.cs" />
+    <Compile Include="Modelo\Exceptions\FacturaFechaVencimientoException.cs" />
+    <Compile Include="Modelo\Exceptions\FacturaYaCobradaException.cs" />
+    <Compile Include="Modelo\Exceptions\FacturaInexistenteException.cs" />
+    <Compile Include="Modelo\Exceptions\FacturaInhabilitadaException.cs" />
+    <Compile Include="Modelo\MedioDePago.cs" />
+    <Compile Include="Modelo\Pago.cs" />
     <Compile Include="Modelo\Cliente.cs" />
     <Compile Include="Modelo\Empresa.cs" />
     <Compile Include="Modelo\Exceptions\campoVacioException.cs" />

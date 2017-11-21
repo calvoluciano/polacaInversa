@@ -33,7 +33,7 @@ namespace PagoAgilFrba.AbmFactura
             CargarTabla();
             DataGridViewFactura.Columns["ID_FACTURA"].HeaderText = "Num Fctura";  // oculto columna que no quiero mostrar
             //DataGridViewUsuario.Columns["Chofer_Habilitado"].HeaderText = "Habilitado"; //  cambio nombre visible de columna
-            DataGridViewFactura.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            //DataGridViewFactura.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
         public DataGridView DataGridViewFactura

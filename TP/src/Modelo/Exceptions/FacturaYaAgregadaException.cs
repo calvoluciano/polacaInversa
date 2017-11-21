@@ -10,6 +10,6 @@ namespace PagoAgilFrba.Modelo.Exceptions
     {
 
         public FacturaYaAgregadaException(String campo)
-            : base("El campo " + campo + " no contiene datos.") { }
+            : base("La Factura " + campo + " ya esta agregada en la lista.") { }
     }
 }
