@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.checkBoxHabilitado = new System.Windows.Forms.CheckBox();
+            this.buttonSeleccionarEmpresa = new System.Windows.Forms.Button();
             this.dateTimePickerFechaVencimiento = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerFechaAlta = new System.Windows.Forms.DateTimePicker();
             this.textBoxNumeroFactura = new System.Windows.Forms.TextBox();
@@ -44,9 +46,32 @@
             this.labelIdFactura = new System.Windows.Forms.Label();
             this.labelEmpresa = new System.Windows.Forms.Label();
             this.labelDniCliente = new System.Windows.Forms.Label();
-            this.buttonSeleccionarEmpresa = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDetalleFactura)).BeginInit();
             this.SuspendLayout();
+            // 
+            // checkBoxHabilitado
+            // 
+            this.checkBoxHabilitado.AutoSize = true;
+            this.checkBoxHabilitado.Checked = true;
+            this.checkBoxHabilitado.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxHabilitado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxHabilitado.Location = new System.Drawing.Point(155, 442);
+            this.checkBoxHabilitado.Name = "checkBoxHabilitado";
+            this.checkBoxHabilitado.Size = new System.Drawing.Size(92, 22);
+            this.checkBoxHabilitado.TabIndex = 48;
+            this.checkBoxHabilitado.Text = "Hablitado";
+            this.checkBoxHabilitado.UseVisualStyleBackColor = true;
+            // 
+            // buttonSeleccionarEmpresa
+            // 
+            this.buttonSeleccionarEmpresa.Location = new System.Drawing.Point(345, 55);
+            this.buttonSeleccionarEmpresa.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonSeleccionarEmpresa.Name = "buttonSeleccionarEmpresa";
+            this.buttonSeleccionarEmpresa.Size = new System.Drawing.Size(31, 28);
+            this.buttonSeleccionarEmpresa.TabIndex = 47;
+            this.buttonSeleccionarEmpresa.Text = "...";
+            this.buttonSeleccionarEmpresa.UseVisualStyleBackColor = true;
+            this.buttonSeleccionarEmpresa.Click += new System.EventHandler(this.buttonSeleccionarEmpresa_Click);
             // 
             // dateTimePickerFechaVencimiento
             // 
@@ -113,7 +138,7 @@
             // 
             // buttonCancelar
             // 
-            this.buttonCancelar.Location = new System.Drawing.Point(233, 454);
+            this.buttonCancelar.Location = new System.Drawing.Point(233, 480);
             this.buttonCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(100, 28);
@@ -124,7 +149,7 @@
             // 
             // buttonAceptar
             // 
-            this.buttonAceptar.Location = new System.Drawing.Point(70, 454);
+            this.buttonAceptar.Location = new System.Drawing.Point(70, 480);
             this.buttonAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAceptar.Name = "buttonAceptar";
             this.buttonAceptar.Size = new System.Drawing.Size(100, 28);
@@ -204,22 +229,12 @@
             this.labelDniCliente.TabIndex = 28;
             this.labelDniCliente.Text = "DNI Cliente: ";
             // 
-            // buttonSeleccionarEmpresa
-            // 
-            this.buttonSeleccionarEmpresa.Location = new System.Drawing.Point(345, 55);
-            this.buttonSeleccionarEmpresa.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonSeleccionarEmpresa.Name = "buttonSeleccionarEmpresa";
-            this.buttonSeleccionarEmpresa.Size = new System.Drawing.Size(31, 28);
-            this.buttonSeleccionarEmpresa.TabIndex = 47;
-            this.buttonSeleccionarEmpresa.Text = "...";
-            this.buttonSeleccionarEmpresa.UseVisualStyleBackColor = true;
-            this.buttonSeleccionarEmpresa.Click += new System.EventHandler(this.buttonSeleccionarEmpresa_Click);
-            // 
-            // NuevaFacturaDetalle
+            // EditarFacturaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(406, 501);
+            this.ClientSize = new System.Drawing.Size(406, 521);
+            this.Controls.Add(this.checkBoxHabilitado);
             this.Controls.Add(this.buttonSeleccionarEmpresa);
             this.Controls.Add(this.dateTimePickerFechaVencimiento);
             this.Controls.Add(this.dateTimePickerFechaAlta);
@@ -237,7 +252,7 @@
             this.Controls.Add(this.labelIdFactura);
             this.Controls.Add(this.labelEmpresa);
             this.Controls.Add(this.labelDniCliente);
-            this.Name = "NuevaFacturaDetalle";
+            this.Name = "EditarFacturaForm";
             this.Text = "Cargar Factura";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDetalleFactura)).EndInit();
             this.ResumeLayout(false);
@@ -264,5 +279,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerFechaAlta;
         private System.Windows.Forms.DateTimePicker dateTimePickerFechaVencimiento;
         private System.Windows.Forms.Button buttonSeleccionarEmpresa;
+        private System.Windows.Forms.CheckBox checkBoxHabilitado;
     }
 }

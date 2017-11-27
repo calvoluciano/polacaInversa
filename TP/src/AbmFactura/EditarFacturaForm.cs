@@ -109,6 +109,7 @@ namespace PagoAgilFrba.AbmFactura
                 dateTimePickerFechaAlta.Value = Factura.fechaAlta;
                 dateTimePickerFechaVencimiento.Value = Factura.fechaVencimiento;
                 labelTotal.Text += "Total: " + Factura.total;
+                checkBoxHabilitado.Checked = Factura.habilitado;
             }
         }
 
@@ -151,6 +152,20 @@ namespace PagoAgilFrba.AbmFactura
                 dateTimePickerFechaVencimiento.Value = value;
             }
         }
+
+        public Boolean CheckBoxHabilitado
+        {
+            get
+            {
+                return checkBoxHabilitado.Checked;
+            }
+
+            set
+            {
+                checkBoxHabilitado.Checked = value;
+            }
+        }
+
         private void buttonAceptar_Click(object sender, EventArgs e)
         {
             try
@@ -160,6 +175,7 @@ namespace PagoAgilFrba.AbmFactura
                 Factura.fechaAlta = FechaAlta;
                 Factura.fechaVencimiento = FechaVencimiento;
                 Factura.idEmpresa = Empresa.id;
+                Factura.habilitado = CheckBoxHabilitado;
                 Factura.detalleFactura = dt;
                 if(edicion){
                     Factura.editar();
@@ -168,7 +184,7 @@ namespace PagoAgilFrba.AbmFactura
                     Factura.nuevo();
                 }
 
-                Factura.guardarDetalle();
+                //Factura.guardarDetalle(); Esto paso a la clase Factura
                 this.Close();
             }
             catch (SqlException) { }
@@ -189,7 +205,9 @@ namespace PagoAgilFrba.AbmFactura
             if (item != null)
             {
                 dt.Rows.Add(item);
-                Factura.total += Convert.ToDecimal(item["Monto"]) * Convert.ToInt32(item["Cantidad"]);
+                //No se multiplica la cantidad
+                //Factura.total += Convert.ToDecimal(item["Monto"]) * Convert.ToInt32(item["Cantidad"]);
+                Factura.total += Convert.ToDecimal(item["Monto"]);
                 labelTotal.Text = "Total: " + Factura.total;
             }
         }
@@ -197,9 +215,14 @@ namespace PagoAgilFrba.AbmFactura
         private void button3_Click(object sender, EventArgs e)
         {
             DataRow item = ((DataRowView)DataGridViewDetalleFactura.SelectedRows[0].DataBoundItem).Row;
-            Factura.total -= Convert.ToDecimal(item["Monto"]) * Convert.ToInt32(item["Cantidad"]);
-            dt.Rows.RemoveAt((DataGridViewDetalleFactura.SelectedRows[0].Index));
-            labelTotal.Text = "Total: " + Factura.total;
+            if (item != null)
+            {
+                //Factura.total -= Convert.ToDecimal(item["Monto"]) * Convert.ToInt32(item["Cantidad"]);
+                //No se multiplica la cantidad
+                Factura.total -= Convert.ToDecimal(item["Monto"]);
+                dt.Rows.RemoveAt((DataGridViewDetalleFactura.SelectedRows[0].Index));
+                labelTotal.Text = "Total: " + Factura.total;
+            }
         }
 
         private void buttonCancelar_Click(object sender, EventArgs e)
@@ -237,6 +260,7 @@ namespace PagoAgilFrba.AbmFactura
             dt.Columns.Add(new DataColumn("Fecha Alta", System.Type.GetType("System.DateTime")));
             dt.Columns.Add(new DataColumn("Fecha Vencimiento", System.Type.GetType("System.DateTime")));
             dt.Columns.Add(new DataColumn("Total", System.Type.GetType("System.Decimal")));
+            dt.Columns.Add(new DataColumn("HABILITADO", System.Type.GetType("System.Boolean")));
 
             fila["ID_FACTURA"] = DNICliente;
             fila["Nombre Empresa"] = "";
@@ -246,6 +270,7 @@ namespace PagoAgilFrba.AbmFactura
             fila["Fecha Alta"] = FechaAlta;
             fila["Fecha Vencimiento"] = FechaVencimiento;
             fila["Total"] = 0;
+            fila["HABILITADO"] = CheckBoxHabilitado;
 
             return fila;
 

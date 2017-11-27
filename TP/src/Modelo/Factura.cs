@@ -24,6 +24,8 @@ namespace PagoAgilFrba.Modelo
         public int idRendicion;
         public int idDevolucion;
 
+        public Boolean habilitado;
+
 
         public DateTime fechaAlta;
         public DateTime fechaVencimiento;
@@ -38,11 +40,11 @@ namespace PagoAgilFrba.Modelo
             nombreEmpresa = (string)data["Nombre Empresa"];
             cuitEmpresa = Convert.ToDecimal(data["Cuit Empresa"]);
             nombreCliente = (string)data["Nombre Cliente"];
-            //idPago = (int)data["ID_PAGO"];
             dniCliente = Convert.ToDecimal(data["DNI"]);
             fechaAlta = (DateTime)data["Fecha Alta"];
             fechaVencimiento = (DateTime)data["Fecha Vencimiento"];
             total = (Decimal)data["Total"];
+            habilitado = (Boolean)data["HABILITADO"];
         }
 
         public Factura() { }
@@ -54,7 +56,9 @@ namespace PagoAgilFrba.Modelo
                                          "idEmpresa", idEmpresa,
                                          "dniCliente", dniCliente,
                                          "fechaAlta", fechaAlta,
-                                         "fechaVencimiento", fechaVencimiento);
+                                         "fechaVencimiento", fechaVencimiento,
+                                         "habilitado", habilitado);
+            guardarDetalle();
         }
 
         public void nuevo()  // persisto una factura nueva
@@ -64,12 +68,14 @@ namespace PagoAgilFrba.Modelo
                                          "idEmpresa", idEmpresa,
                                          "dniCliente", dniCliente,
                                          "fechaAlta", fechaAlta,
-                                         "fechaVencimiento",fechaVencimiento);
+                                         "fechaVencimiento",fechaVencimiento,
+                                         "habilitado", habilitado);
+            guardarDetalle();
         }
-        public static DataTable getXsConFiltros(    int numFactura, // "FACTURAS"
-                                                    decimal dniCliente,
-                                                    decimal cuitEmpresa,
-                                                    decimal total)        // obtengo un tipo de usuarios que cumplen con los filtros
+        public static DataTable getXsConFiltros(    Decimal numFactura, // "FACTURAS"
+                                                    Decimal dniCliente,
+                                                    Decimal cuitEmpresa,
+                                                    Decimal total)        // obtengo un tipo de usuarios que cumplen con los filtros
         {
             return DB.correrFuncionDeTabla("GET_FACTURAS_CON_FILTROS",
                                             "numFactura", numFactura,
@@ -78,7 +84,7 @@ namespace PagoAgilFrba.Modelo
                                             "total", total);
         }
 
-        public static Boolean estaCobrada(Int32 idFactura)
+        public static Boolean estaCobrada(Decimal idFactura)
         {
             return (Boolean)DB.correrFuncion("FACTURA_ESTACOBRADA",
                                     "idFactura", idFactura);
@@ -108,39 +114,52 @@ namespace PagoAgilFrba.Modelo
                                             "idEmpresa", idEmpresa);
         }
 
-        public static Boolean esFacturaExistente(Int32 idFactura)
+        public static Boolean esFacturaExistente(Decimal idFactura)
         {
             return (Boolean)DB.correrFuncion("FACTURA_EXISTE",
                                     "idFactura", idFactura);
         }
 
-        public static Boolean esFacturaHabilitada(Int32 idFactura)
+        public static Boolean esFacturaHabilitada(Decimal idFactura)
         {
             return (Boolean)DB.correrFuncion("FACTURA_ESTA_HABILITADA",
                                     "idFactura", idFactura);
         }
 
-        public static Boolean esFacturaDeLaEmpresa(Int32 idFactura, Int32 idEmpresa)
+        public static Boolean esFacturaDeLaEmpresa(Decimal idFactura, Int32 idEmpresa)
         {
             return (Boolean)DB.correrFuncion("FACTURA_ES_DE_EMPRESA",
                                     "idFactura", idFactura,
                                     "idEmpresa", idEmpresa);
         }
 
-        public static Boolean esFacturaDelCliente(Int32 idFactura, Int32 idCliente)
+        public static Boolean esFacturaDelCliente(Decimal idFactura, Int32 idCliente)
         {
             return (Boolean)DB.correrFuncion("FACTURA_ES_DE_CLIENTE",
                                     "idFactura", idFactura,
                                     "idCliente", idCliente);
         }
 
-        public static Boolean verificaFechaVencimiento(Int32 idFactura, DateTime fecVencimiento)
+        public static Boolean esImporteCorrecto(Decimal idFactura, Double importe)
+        {
+            return (Boolean)DB.correrFuncion("FACTURA_VALIDAR_IMPORTE",
+                                             "idFactura", idFactura,
+                                             "importe", importe);
+        }
+
+        public static Boolean verificaFechaVencimiento(Decimal idFactura, DateTime fecVencimiento)
         {
             ComparadorFechas comparar = new ComparadorFechas();
             DateTime fechaRegistrada = (DateTime)DB.correrFuncion("GET_FECHA_VENCIMIENTO_FACTURA",
                                     "idFactura", idFactura);
             return comparar.esIgual(fechaRegistrada, fecVencimiento);
                 
+        }
+
+        public static void inhabilitar(Decimal idFactura)
+        {
+            DB.correrProcedimiento("INHABILITAR_FACTURA",
+                                    "idFactura",idFactura);
         }
         
     }

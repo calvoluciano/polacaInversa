@@ -38,6 +38,7 @@
             this.buttonNuevo = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.buttonAgregar = new System.Windows.Forms.Button();
             this.textBoxImporte = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -53,7 +54,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxNombreCliente = new System.Windows.Forms.TextBox();
             this.labelEmpresa = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -75,6 +75,7 @@
             this.textBoxTotal.Location = new System.Drawing.Point(616, 557);
             this.textBoxTotal.MaxLength = 20;
             this.textBoxTotal.Name = "textBoxTotal";
+            this.textBoxTotal.ReadOnly = true;
             this.textBoxTotal.Size = new System.Drawing.Size(136, 24);
             this.textBoxTotal.TabIndex = 24;
             // 
@@ -137,6 +138,7 @@
             this.buttonNuevo.TabIndex = 18;
             this.buttonNuevo.Text = "Registrar Pago";
             this.buttonNuevo.UseVisualStyleBackColor = true;
+            this.buttonNuevo.Click += new System.EventHandler(this.buttonNuevo_Click);
             // 
             // dataGridView1
             // 
@@ -171,6 +173,16 @@
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos de Factura";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(503, 122);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(183, 20);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "(seleccione de la tabla)";
             // 
             // buttonAgregar
             // 
@@ -321,16 +333,6 @@
             this.labelEmpresa.Size = new System.Drawing.Size(66, 20);
             this.labelEmpresa.TabIndex = 48;
             this.labelEmpresa.Text = "Cliente ";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(503, 122);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(183, 20);
-            this.label2.TabIndex = 21;
-            this.label2.Text = "(seleccione de la tabla)";
             // 
             // RegistroPagoForm
             // 

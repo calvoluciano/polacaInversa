@@ -55,15 +55,19 @@ namespace PagoAgilFrba.RegistroPago
             set
             {
                 cliente = value;
-                textBoxNombreCliente.Text = cliente.nombre + ", " + cliente.apellido;
+
+                if (cliente != null)
+                    textBoxNombreCliente.Text = cliente.nombre + ", " + cliente.apellido;
+                else
+                    textBoxNombreCliente.Text = "";
             }
         }
 
-        public Int32 NumeroFactura
+        public UInt32 NumeroFactura
         {
             get
             {
-                return Convert.ToInt32(textBoxNumeroFactura.Text);
+                return Convert.ToUInt32(textBoxNumeroFactura.Text);
             }
             set
             {
@@ -101,6 +105,8 @@ namespace PagoAgilFrba.RegistroPago
         {
             get
             {
+                if (string.IsNullOrWhiteSpace(textBoxImporte.Text)) return 0;
+
                 return Convert.ToDouble(textBoxImporte.Text);
             }
 
@@ -114,6 +120,8 @@ namespace PagoAgilFrba.RegistroPago
         {
             get
             {
+                if (string.IsNullOrWhiteSpace(textBoxTotal.Text)) return 0;
+
                 return Convert.ToDouble(textBoxTotal.Text);
             }
 
@@ -184,14 +192,14 @@ namespace PagoAgilFrba.RegistroPago
                     exception is FacturaYaCobradaException ||
                     exception is ClienteFacturaException ||
                     exception is EmpresaFacturaException ||
-                    exception is FacturaFechaVencimientoException) Error.show(exception.Message);
+                    exception is FacturaFechaVencimientoException ||
+                    exception is ImporteFacturaException) Error.show(exception.Message);
                 else throw;
             } 
         }
 
         private void validarDatosFactura()
         {
-            if (string.IsNullOrWhiteSpace(textBoxNombreCliente.Text)) throw new CampoVacioException("Cliente");
             if (string.IsNullOrWhiteSpace(textBoxNumeroFactura.Text)) throw new CampoVacioException("Numero Factura");
             if (string.IsNullOrWhiteSpace(textBoxImporte.Text)) throw new CampoVacioException("Importe");
             if (comboBoxEmpresa.SelectedItem == null) throw new CampoVacioException("Empresa");
@@ -202,12 +210,19 @@ namespace PagoAgilFrba.RegistroPago
             if (!Factura.esFacturaExistente(NumeroFactura)) throw new FacturaInexistenteException(NumeroFactura.ToString());
             if (!Factura.esFacturaHabilitada(NumeroFactura)) throw new FacturaInhabilitadaException(NumeroFactura.ToString());
             if (Factura.estaCobrada(NumeroFactura)) throw new FacturaYaCobradaException(NumeroFactura.ToString());
-            if (!Factura.esFacturaDelCliente(NumeroFactura, Cliente.id)) throw new ClienteFacturaException(NumeroFactura.ToString(), Cliente.nombre);
             if (!Factura.esFacturaDeLaEmpresa(NumeroFactura, empresaSeleccionada.id)) throw new EmpresaFacturaException(NumeroFactura.ToString(), empresaSeleccionada.nombre);
-            if (!Factura.verificaFechaVencimiento(NumeroFactura, FechaVencimiento)) throw new FacturaFechaVencimientoException(NumeroFactura.ToString(), empresaSeleccionada.nombre);
+            if (!Factura.verificaFechaVencimiento(NumeroFactura, FechaVencimiento)) throw new FacturaFechaVencimientoException(NumeroFactura.ToString(), FechaVencimiento.ToString());
+            if (!Factura.esImporteCorrecto(NumeroFactura, Importe)) throw new ImporteFacturaException(NumeroFactura.ToString());
 
             ComparadorFechas comparar = new ComparadorFechas();
             if (comparar.esMenor(FechaVencimiento,FechaCobro)) throw new ExpireDateBeforeException("Factura vencida controle las fechas");
+        }
+
+        private void validarDatosPago()
+        {
+            if (string.IsNullOrWhiteSpace(textBoxNombreCliente.Text)) throw new CampoVacioException("Cliente");
+            if (tablaFacturas.Rows.Count==0) throw new EmptyFieldException("Tabla Facturas");
+            if (comboBoxMedioPago.SelectedItem == null) throw new CampoVacioException("Medio de Pago");
         }
 
         public void registrarNuevaFactura()
@@ -219,13 +234,6 @@ namespace PagoAgilFrba.RegistroPago
             fila["Importe"] = Importe;
 
             tablaFacturas.Rows.Add(fila);
-                
-            Factura factura = new Factura();
-            factura.idFactura = Convert.ToDecimal(textBoxNumeroFactura.Text);
-            factura.idEmpresa = ((Empresa)(comboBoxEmpresa.SelectedItem)).id;
-            factura.fechaVencimiento = dateTimePickerFechaVencimiento.Value;
-            pago.agregarFacturaAPagar(factura);
-
         }
 
         public void actualizarImporteTotal()
@@ -242,7 +250,7 @@ namespace PagoAgilFrba.RegistroPago
             textBoxImporte.Text = "";
         }
 
-        public Boolean esFacturaYaAgregada(int idFactura)
+        public Boolean esFacturaYaAgregada(UInt32 idFactura)
         {
             DataRow foundRow = tablaFacturas.Rows.Find(idFactura);
             
@@ -259,6 +267,47 @@ namespace PagoAgilFrba.RegistroPago
                 DataRow selectedRow = ((DataRowView)dataGridView1.SelectedRows[0].DataBoundItem).Row;
                 tablaFacturas.Rows.Remove(selectedRow);
             }
+        }
+
+        private void buttonNuevo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                validarDatosPago();
+
+                pago.idCliente = cliente.id;
+                pago.total = Total;
+                pago.fechaCobro = DateTime.Now;
+                pago.idSucursal = Usuario.sucursalSeleccionada.id;
+                MedioDePago item = (MedioDePago)comboBoxMedioPago.SelectedItem;
+                pago.idMedioPago = item.id;
+                pago.detallePago = tablaFacturas;
+                pago.registrarPago();
+
+                MessageBox.Show("El pago ha sido procesado exitosamente", "Pago", MessageBoxButtons.OK,
+                                 MessageBoxIcon.Information);
+                reiniciarPago();
+
+            }
+            catch (SqlException) { }
+            catch (Exception exception)
+            {
+                if (exception is EmptyFieldException ||
+                    exception is CampoVacioException) Error.show(exception.Message);
+                else throw;
+            } 
+        }
+
+        public void reiniciarPago()
+        {
+            tablaFacturas.Rows.Clear();
+            actualizarTablaFacturas();
+            actualizarImporteTotal();
+            empresaSeleccionada = null;
+            Cliente = null;
+            comboBoxEmpresa.SelectedItem = null;
+            comboBoxMedioPago.SelectedItem = null;
+            
         }
 
     }

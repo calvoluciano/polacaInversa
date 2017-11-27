@@ -54,13 +54,13 @@ namespace PagoAgilFrba.AbmFactura
             }
         }
 
-        public int NumeroFactura
+        public Decimal NumeroFactura
         {
             get
             {
                 if (string.IsNullOrWhiteSpace(textBoxNumeroFactura.Text)) return 0;
 
-                return Convert.ToInt32(textBoxNumeroFactura.Text);
+                return Convert.ToDecimal(textBoxNumeroFactura.Text);
             }
         }
         public Decimal CUIT

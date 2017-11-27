@@ -189,6 +189,7 @@
     </Compile>
     <Compile Include="Modelo\Acceso.cs" />
     <Compile Include="Modelo\ComparadorFechas.cs" />
+    <Compile Include="Modelo\Exceptions\ImporteFacturaException.cs" />
     <Compile Include="Modelo\Exceptions\ClienteFacturaException.cs" />
     <Compile Include="Modelo\Exceptions\EmpresaFacturaException.cs" />
     <Compile Include="Modelo\Exceptions\FacturaFechaVencimientoException.cs" />
