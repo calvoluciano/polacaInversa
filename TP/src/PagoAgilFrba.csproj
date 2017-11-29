@@ -332,6 +332,9 @@
     <EmbeddedResource Include="RegistroPago\RegistroPagoForm.resx">
       <DependentUpon>RegistroPagoForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Rendicion\RendicionForm.resx">
+      <DependentUpon>RendicionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SeleccionarFuncionalidad\SeleccionarFuncionalidadForm.resx">
       <DependentUpon>SeleccionarFuncionalidadForm.cs</DependentUpon>
     </EmbeddedResource>

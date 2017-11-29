@@ -63,11 +63,11 @@ namespace PagoAgilFrba.RegistroPago
             }
         }
 
-        public UInt32 NumeroFactura
+        public Decimal NumeroFactura
         {
             get
             {
-                return Convert.ToUInt32(textBoxNumeroFactura.Text);
+                return Convert.ToDecimal(textBoxNumeroFactura.Text);
             }
             set
             {
@@ -250,7 +250,7 @@ namespace PagoAgilFrba.RegistroPago
             textBoxImporte.Text = "";
         }
 
-        public Boolean esFacturaYaAgregada(UInt32 idFactura)
+        public Boolean esFacturaYaAgregada(Decimal idFactura)
         {
             DataRow foundRow = tablaFacturas.Rows.Find(idFactura);
             

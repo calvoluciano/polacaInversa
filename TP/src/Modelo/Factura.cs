@@ -161,6 +161,36 @@ namespace PagoAgilFrba.Modelo
             DB.correrProcedimiento("INHABILITAR_FACTURA",
                                     "idFactura",idFactura);
         }
-        
+
+        public static DataTable getFacturasARendirDeEmpresa(int idEmpresa, DateTime fechaRendicion)
+        {
+            return DB.correrFuncionDeTabla("BUSCAR_FACTURAS_A_RENDIR",
+                                            "idEmpresa", idEmpresa,
+                                            "fechaRendicion", fechaRendicion);
+        }
+
+        public static Boolean esEmpresaYFecharendida(int idEmpresa, DateTime fechaRendicion)
+        {
+            return (Boolean)DB.correrFuncion("VALIDAR_RENDICION_FECHAxEMPRESA",
+                                             "idEmpresa", idEmpresa,
+                                             "fechaRendicion", fechaRendicion);
+        }
+
+        public static void rendir(DataTable facturas, Decimal porcentajeComision ,double comision, int cantidadfacturas, double total, int idEmpresa, DateTime fechaRendicion)
+        {
+            SqlCommand comando = DB.nuevoProcedimiento("RENDIR_FACTURAS",
+                                                        "porcentajeComision", porcentajeComision,
+                                                        "comision", comision,
+                                                        "total", total,
+                                                        "cantidadfacturas", cantidadfacturas,
+                                                        "idEmpresa", idEmpresa,
+                                                        "fechaRendicion", fechaRendicion);
+            SqlParameter parametroFacturas = new SqlParameter("@itemsFacturas", SqlDbType.Structured); // dado que uno de los parametros es una tabla tengo que hacer un poco de magia
+            parametroFacturas.TypeName = "POLACA_INVERSA.TABLA_ITEMS_RENDICION";
+            parametroFacturas.Value = facturas;
+            comando.Parameters.Add(parametroFacturas);
+            DB.ejecutarProcedimiento(comando);
+        }
+
     }
 }
