@@ -107,5 +107,16 @@ namespace PagoAgilFrba.Modelo
             return (Boolean) DB.correrFuncion("ES_EMAIL_EXISTENTE",
                                             "emailCliente", emailCliente);
         }
+
+        public static DataTable obtenerListadoClientes(DateTime fechaDesde,
+                                                       DateTime fechaHasta,
+                                                       int cantElementos,
+                                                       string SP)
+        {
+            return DB.correrFuncionDeTabla("BUSCAR_CLIENTES_PAGOS_" + SP,
+                                           "fechaDesde", fechaDesde,
+                                           "fechaHasta", fechaHasta,
+                                           "cantElementos", cantElementos);
+        }
     }
 }

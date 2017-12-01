@@ -164,6 +164,15 @@ IF OBJECT_ID('POLACA_INVERSA.GET_FACTURAS_PAGAS_CON_FILTROS') IS NOT NULL
 
 IF OBJECT_ID('POLACA_INVERSA.ES_EMAIL_EXISTENTE') IS NOT NULL
     DROP FUNCTION POLACA_INVERSA.ES_EMAIL_EXISTENTE;	
+
+IF OBJECT_ID('POLACA_INVERSA.BUSCAR_FACTURAS_EMPRESA') IS NOT NULL
+    DROP FUNCTION POLACA_INVERSA.BUSCAR_FACTURAS_EMPRESA;		
+
+IF OBJECT_ID('POLACA_INVERSA.BUSCAR_CLIENTES_PAGOS_TOTALES') IS NOT NULL
+    DROP FUNCTION POLACA_INVERSA.BUSCAR_CLIENTES_PAGOS_TOTALES;	
+
+IF OBJECT_ID('POLACA_INVERSA.BUSCAR_CLIENTES_PAGOS_PORCENTAJE') IS NOT NULL
+    DROP FUNCTION POLACA_INVERSA.BUSCAR_CLIENTES_PAGOS_PORCENTAJE;	
 	
 IF OBJECT_ID('POLACA_INVERSA.SUCURSAL_UPDATE') IS NOT NULL
     DROP PROCEDURE POLACA_INVERSA.SUCURSAL_UPDATE;
@@ -778,6 +787,65 @@ AS
 						and p.FECHA_PAGO BETWEEN @fechaDesde AND @fechaHasta)
 GO
 
+CREATE FUNCTION [POLACA_INVERSA].[BUSCAR_FACTURAS_EMPRESA](@fechaDesde datetime,@fechaHasta datetime, @cantElementos int)
+RETURNS TABLE
+AS
+	RETURN (
+	select top (@cantElementos) E.NOMBRE Empresa, count(*) 'Facturas Totales', (select count(*) 
+															from [POLACA_INVERSA].[FACTURAS_RENDIDAS] R join [POLACA_INVERSA].[ITEMS_FACTURAS_RENDIDAS] IR on (R.ID_RENDICION = IR.ID_RENDICION)
+																								 join [POLACA_INVERSA].[FACTURAS] F1 on (IR.ID_FACTURA = F1.ID_FACTURA)
+															where R.ID_EMPRESA = E.ID_EMPRESA and FECHA_ALTA BETWEEN  @fechaDesde and @fechaHasta) 'Facturas Cobradas',
+															(select count(*)
+															from [POLACA_INVERSA].[FACTURAS_RENDIDAS] R join [POLACA_INVERSA].[ITEMS_FACTURAS_RENDIDAS] IR on (R.ID_RENDICION = IR.ID_RENDICION)
+																								 join [POLACA_INVERSA].[FACTURAS] F1 on (IR.ID_FACTURA = F1.ID_FACTURA)
+															where R.ID_EMPRESA = E.ID_EMPRESA and FECHA_ALTA BETWEEN @fechaDesde and @fechaHasta) * 100 / count(*) Porcentaje
+	from [POLACA_INVERSA].[FACTURAS] F left join [POLACA_INVERSA].[EMPRESAS] E on (F.ID_EMPRESA = E.ID_EMPRESA)
+	where FECHA_ALTA BETWEEN @fechaDesde and @fechaHasta
+	group by E.NOMBRE,E.ID_EMPRESA
+	order by 4 desc
+	)
+go
+
+CREATE FUNCTION [POLACA_INVERSA].[BUSCAR_RENDIDAS_EMPRESA](@fechaDesde datetime,@fechaHasta datetime, @cantElementos int)
+RETURNS TABLE
+AS
+	RETURN (
+			select top (@cantElementos) e.NOMBRE Empresa, count(*) 'Cantidad Rendiciones', sum(fr.TOTAL_RENDICION) 'Monto Rendido'
+			from [POLACA_INVERSA].[FACTURAS_RENDIDAS] fr left join [POLACA_INVERSA].[EMPRESAS] e on (fr.ID_EMPRESA = e.ID_EMPRESA)
+			where fr.FEC_RENDICION BETWEEN @fechaDesde and @fechaHasta
+			group by e.NOMBRE
+			order by 3 desc)
+go
+
+CREATE FUNCTION [POLACA_INVERSA].[BUSCAR_CLIENTES_PAGOS_TOTALES](@fechaDesde datetime,@fechaHasta datetime, @cantElementos int)
+RETURNS TABLE
+AS
+	RETURN (
+			select top (@cantElementos) c.DNI,c.Apellido,c.Nombre,c.Mail, count(distinct I.ID_PAGO) 'Cantidad Pagos', sum(P.TOTAL_PAGO) 'Monto Total de Pagos'
+			from [POLACA_INVERSA].[PAGOS] P join [POLACA_INVERSA].[ITEMS_PAGOS] I on (I.ID_PAGO = P.ID_PAGO)
+											join [POLACA_INVERSA].[FACTURAS] F on (F.ID_FACTURA = I.ID_FACTURA)
+											join [POLACA_INVERSA].[CLIENTES] c on (c.ID_CLIENTE= F.ID_CLIENTE)
+			where p.FECHA_PAGO BETWEEN @fechaDesde and @fechaHasta
+			group by c.DNI,c.APELLIDO,c.NOMBRE,c.MAIL
+			order by 5 desc)
+go
+
+CREATE FUNCTION [POLACA_INVERSA].[BUSCAR_CLIENTES_PAGOS_PORCENTAJE](@fechaDesde datetime,@fechaHasta datetime, @cantElementos int)
+RETURNS TABLE
+AS
+	RETURN (
+			select top (@cantElementos) C.ID_CLIENTE 'Id Cliente',c.DNI,c.Apellido,c.Nombre,c.Mail, count(F.ID_FACTURA) 'Cantidad Facturas', (select count (*)
+																										from [POLACA_INVERSA].[FACTURAS] F1 join [POLACA_INVERSA].ITEMS_PAGOS I on (F1.ID_FACTURA = I.ID_FACTURA)
+																										where c.ID_CLIENTE = F1.ID_CLIENTE and F1.FECHA_ALTA between @fechaDesde and @fechaHasta) 'Cantidad Facturas Pagas',
+																									(select count (*)
+																										from [POLACA_INVERSA].[FACTURAS] F1 join [POLACA_INVERSA].[ITEMS_PAGOS] I on (F1.ID_FACTURA = I.ID_FACTURA)
+																										where c.ID_CLIENTE = F1.ID_CLIENTE and F1.FECHA_ALTA BETWEEN @fechaDesde and @fechaHasta) * 100 / count(F.ID_FACTURA) 'Porcentaje Pago'									
+			from [POLACA_INVERSA].[CLIENTES] c join [POLACA_INVERSA].[FACTURAS] F on (c.ID_CLIENTE = F.ID_CLIENTE) 
+			where F.FECHA_ALTA BETWEEN @fechaDesde and @fechaHasta
+			group by C.ID_CLIENTE,c.DNI,c.APELLIDO,c.NOMBRE,c.MAIL
+			order by 7 desc)
+go
+
 -- Fin de Funciones
 	
 -- Procedimientos
@@ -1384,7 +1452,7 @@ VALUES	('ABM de Rol'),
 
 --Accesos x Rol
 INSERT POLACA_INVERSA.ROL_ACCESOS (id_rol, id_acceso)
-	VALUES (1, 1),(1,2), (1,3),(1,4),(1,5),(1,6),(1,7),(1,8),(2,2),(2,3),(2,5)
+	VALUES (1, 1),(1,2), (1,3),(1,4),(1,5),(1,6),(1,7),(1,8),(1,9),(2,2),(2,3),(2,5)
 
 -- Rol_X_Usuario
 

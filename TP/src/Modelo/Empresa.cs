@@ -90,5 +90,16 @@ namespace PagoAgilFrba.Modelo
             return Factura.getFacturasPendientesDeRendicionEmpresa(idEmpresa).Rows.Count;
         }
 
+        public static DataTable obtenerListadoEmpresas(DateTime fechaDesde,
+                                                       DateTime fechaHasta,
+                                                       int cantElementos,
+                                                       string SP)
+        {
+            return DB.correrFuncionDeTabla("BUSCAR_" + SP + "_EMPRESA",
+                                           "fechaDesde", fechaDesde,
+                                           "fechaHasta", fechaHasta,
+                                           "cantElementos", cantElementos);
+        }
+        
     }
 }

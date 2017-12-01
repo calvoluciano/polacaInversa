@@ -227,6 +227,7 @@
     <Compile Include="Modelo\Rol.cs" />
     <Compile Include="Modelo\Error.cs" />
     <Compile Include="Modelo\Sucursal.cs" />
+    <Compile Include="Modelo\Trimestre.cs" />
     <Compile Include="Modelo\Usuario.cs" />
     <Compile Include="Modelo\DB.cs" />
     <Compile Include="SeleccionarFuncionalidad\SeleccionarFuncionalidadForm.cs">
