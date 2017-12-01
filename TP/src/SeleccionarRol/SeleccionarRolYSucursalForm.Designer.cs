@@ -30,7 +30,7 @@
         {
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonAceptar = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxRol = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxSucursal = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -54,14 +54,15 @@
             this.buttonAceptar.TabIndex = 6;
             this.buttonAceptar.Text = "Aceptar";
             this.buttonAceptar.UseVisualStyleBackColor = true;
+            this.buttonAceptar.Click += new System.EventHandler(this.buttonAceptar_Click_1);
             // 
-            // comboBox1
+            // comboBoxRol
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(70, 67);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(314, 24);
-            this.comboBox1.TabIndex = 5;
+            this.comboBoxRol.FormattingEnabled = true;
+            this.comboBoxRol.Location = new System.Drawing.Point(70, 67);
+            this.comboBoxRol.Name = "comboBoxRol";
+            this.comboBoxRol.Size = new System.Drawing.Size(314, 24);
+            this.comboBoxRol.TabIndex = 5;
             // 
             // label1
             // 
@@ -100,7 +101,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonAceptar);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBoxRol);
             this.Controls.Add(this.label1);
             this.Name = "SeleccionarRolYSucursalForm";
             this.Text = "Seleccionar Rol y Sucursal";
@@ -113,7 +114,7 @@
 
         private System.Windows.Forms.Button buttonCancelar;
         private System.Windows.Forms.Button buttonAceptar;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxRol;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBoxSucursal;
         private System.Windows.Forms.Label label2;

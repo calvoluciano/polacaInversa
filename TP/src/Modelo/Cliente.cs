@@ -18,9 +18,10 @@ namespace PagoAgilFrba.Modelo
             mail = (String)data["Mail"];
             telefono = Convert.ToDecimal(data["Telefono"]);
             domicilio = (String)data["Domicilio"];
-            //numero = (decimal)data["Numero"];
-            //piso = (String)data["Piso"];
-            //localidad = (String)data["Localidad"];
+            numero = Convert.ToDecimal(data["Numero"]);
+            piso = Convert.ToDecimal(data["Piso"]);
+            dpto = (string)data["Dpto"];
+            localidad = (String)data["Localidad"];
             fechaNac = (DateTime)data["Fecha Nacimiento"];
             codigoPostal = Convert.ToDecimal(data["Codigo Postal"]);
             habilitado = (Boolean)data["HABILITADO"];
@@ -34,7 +35,7 @@ namespace PagoAgilFrba.Modelo
         public decimal telefono;
         public String domicilio;
         public decimal numero;
-        public String piso;
+        public Decimal piso;
         public String dpto;
         public String localidad;
         public DateTime fechaNac;
@@ -51,17 +52,17 @@ namespace PagoAgilFrba.Modelo
                                          "mail", mail,
                                          "telefono", telefono,
                                          "domicilio", domicilio,
-                                         //"Numero", numero,
-                                         //"Piso", piso,
-                                         //"Dpto", dpto,
-                                         //"Localidad", localidad,
+                                         "numero", numero,
+                                         "piso", piso,
+                                         "dpto", dpto,
+                                         "localidad", localidad,
                                          "fechaNac", fechaNac,
                                          "codigoPostal", codigoPostal,
                                          "habilitado", habilitado);
         }
 
         public static void nuevo(String nombre, String apellido, Decimal dni ,String mail, Decimal telefono, String domicilio,
-                            DateTime fechaNac, Decimal codigoPostal, Boolean habilitado)  // persisto un cliente nuevo
+                            Decimal numero, Decimal piso, string dpto ,string localidad, DateTime fechaNac, Decimal codigoPostal, Boolean habilitado)  // persisto un cliente nuevo
         {
             DB.correrProcedimiento("CLIENTE_NUEVO",
                                          "nombre", nombre,
@@ -70,10 +71,10 @@ namespace PagoAgilFrba.Modelo
                                          "mail", mail,
                                          "telefono", telefono,
                                          "domicilio", domicilio,
-                                         //"Numero", numero,
-                                         //"Piso", piso,
-                                         //"Dpto", dpto,
-                                         //"Localidad", localidad,
+                                         "numero", numero,
+                                         "piso", piso,
+                                         "dpto", dpto,
+                                         "localidad", localidad,
                                          "fechaNac", fechaNac,
                                          "codigoPostal", codigoPostal,
                                          "habilitado", habilitado);
@@ -99,6 +100,12 @@ namespace PagoAgilFrba.Modelo
         {
             DB.correrProcedimiento("_HABILITAR",
                                             "id", id_cliente);
+        }
+
+        public static Boolean esClienteExistenteMail(string emailCliente)    // habilito un usuario
+        {
+            return (Boolean) DB.correrFuncion("ES_EMAIL_EXISTENTE",
+                                            "emailCliente", emailCliente);
         }
     }
 }

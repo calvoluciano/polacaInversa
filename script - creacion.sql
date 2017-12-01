@@ -160,7 +160,10 @@ IF OBJECT_ID('POLACA_INVERSA.VALIDAR_RENDICION_FECHAxEMPRESA') IS NOT NULL
     DROP FUNCTION POLACA_INVERSA.VALIDAR_RENDICION_FECHAxEMPRESA;
 
 IF OBJECT_ID('POLACA_INVERSA.GET_FACTURAS_PAGAS_CON_FILTROS') IS NOT NULL
-    DROP FUNCTION POLACA_INVERSA.GET_FACTURAS_PAGAS_CON_FILTROS;	
+    DROP FUNCTION POLACA_INVERSA.GET_FACTURAS_PAGAS_CON_FILTROS;
+
+IF OBJECT_ID('POLACA_INVERSA.ES_EMAIL_EXISTENTE') IS NOT NULL
+    DROP FUNCTION POLACA_INVERSA.ES_EMAIL_EXISTENTE;	
 	
 IF OBJECT_ID('POLACA_INVERSA.SUCURSAL_UPDATE') IS NOT NULL
     DROP PROCEDURE POLACA_INVERSA.SUCURSAL_UPDATE;
@@ -320,6 +323,10 @@ CREATE TABLE [POLACA_INVERSA].CLIENTES (
 	MAIL VARCHAR(100) NOT NULL,
 	TELEFONO VARCHAR(20) NOT NULL DEFAULT '0',
 	DIRECCION VARCHAR(100) NOT NULL,
+	NUMERO INT NOT NULL,
+	PISO INT NOT NULL,
+	DPTO VARCHAR(10) NULL,
+	LOCALIDAD VARCHAR (50) NOT NULL,
 	CODIGO_POSTAL INT NOT NULL,
 	FECHA_NACIMIENTO DATETIME NOT NULL,
 	HABILITADO BIT NOT NULL Default 1
@@ -481,6 +488,10 @@ AS
 					 MAIL as Mail,
 					 TELEFONO as Telefono,
 					 DIRECCION as Domicilio,
+					 NUMERO as Numero,
+					 PISO as Piso,
+					 DPTO as Dpto,
+					 LOCALIDAD as Localidad,
 					 CODIGO_POSTAL as "Codigo Postal",
 					 FECHA_NACIMIENTO as "Fecha Nacimiento",
 					 HABILITADO
@@ -488,6 +499,20 @@ AS
 			WHERE (@nombre = '' OR CHARINDEX(@nombre, NOMBRE) > 0) AND
 				(@apellido = '' OR CHARINDEX(@apellido, APELLIDO) > 0) AND
 				(@dni = 0 OR @dni = DNI))
+GO
+
+CREATE FUNCTION POLACA_INVERSA.ES_EMAIL_EXISTENTE(@emailCliente varchar(100))
+RETURNS bit
+AS
+BEGIN
+		DECLARE @existe bit
+		set @existe = 0 
+		IF EXISTS (SELECT ID_CLIENTE FROM POLACA_INVERSA.CLIENTES where MAIL = @emailCliente)
+		begin
+			set @existe = 1
+		end
+		return @existe
+END;
 GO
 
 CREATE FUNCTION POLACA_INVERSA.FUNCIONALIDADES_GET_TABLA_DE_ROL (@Id_Rol TINYINT)
@@ -825,6 +850,10 @@ CREATE PROC POLACA_INVERSA.CLIENTE_UPDATE(	@id INT,
 											@mail VARCHAR(255),
 											@telefono NUMERIC(18,0),
 											@domicilio VARCHAR(255),
+											@numero INT,
+											@piso INT,
+											@dpto varchar(10),
+											@localidad varchar(50),
 											@fechaNac DATETIME,
 											@codigoPostal NUMERIC(18,0),
 											@habilitado BIT)
@@ -839,7 +868,11 @@ BEGIN
 										FECHA_NACIMIENTO = @fechaNac,
 										MAIL = @mail,
 										TELEFONO = @telefono,
-										DIRECCION = @domicilio
+										DIRECCION = @domicilio,
+										NUMERO =@numero,
+										PISO =@piso,
+										DPTO=@dpto,
+										LOCALIDAD=@localidad
 	WHERE ID_CLIENTE = @id
 END
 GO
@@ -850,6 +883,10 @@ CREATE PROC POLACA_INVERSA.CLIENTE_NUEVO(	@nombre VARCHAR(255),
 											@mail VARCHAR(255),
 											@telefono NUMERIC(18,0),
 											@domicilio VARCHAR(255),
+											@numero INT,
+											@piso INT,
+											@dpto varchar(10),
+											@localidad varchar(50),
 											@fechaNac DATETIME,
 											@codigoPostal NUMERIC(18,0),
 											@habilitado BIT)
@@ -862,6 +899,10 @@ BEGIN
 												@mail,
 												@telefono,
 												@domicilio,
+												@numero,
+												@piso,
+												@dpto,
+												@localidad,
 												@codigoPostal,
 												@fechaNac,
 												@habilitado)
@@ -1184,8 +1225,8 @@ CREATE PROCEDURE [POLACA_INVERSA].MigrarClientes
 AS
 BEGIN
 
-	INSERT INTO [POLACA_INVERSA].CLIENTES(NOMBRE, APELLIDO, DNI, MAIL, DIRECCION, CODIGO_POSTAL, FECHA_NACIMIENTO)
-	SELECT DISTINCT "Cliente-Nombre", "Cliente-Apellido", "Cliente-Dni", Cliente_Mail, Cliente_Direccion, Cliente_Codigo_Postal, "Cliente-Fecha_Nac"
+	INSERT INTO [POLACA_INVERSA].CLIENTES(NOMBRE, APELLIDO, DNI, MAIL, DIRECCION,NUMERO,PISO,DPTO,LOCALIDAD, CODIGO_POSTAL, FECHA_NACIMIENTO)
+	SELECT DISTINCT "Cliente-Nombre", "Cliente-Apellido", "Cliente-Dni", Cliente_Mail, Cliente_Direccion,0,0,'-','No Definido', Cliente_Codigo_Postal, "Cliente-Fecha_Nac"
 	FROM gd_esquema.Maestra
 
 END;
@@ -1320,7 +1361,8 @@ GO
 --Usuario Administrador
 
 INSERT INTO POLACA_INVERSA.USUARIOS (USERNAME,PASSWORD,HABILITADO,INTENTOS)
-	VALUES ('admin', HASHBYTES('SHA2_256', 'w23e'), 1, 0)
+	VALUES ('admin', HASHBYTES('SHA2_256', 'w23e'), 1, 0),
+		   ('cobrador', HASHBYTES('SHA2_256', 'cobrador'), 1, 0)
 	
 --Rol
 
@@ -1342,12 +1384,12 @@ VALUES	('ABM de Rol'),
 
 --Accesos x Rol
 INSERT POLACA_INVERSA.ROL_ACCESOS (id_rol, id_acceso)
-	VALUES (1, 1),(1,2), (1,3),(1,4),(1,5),(1,6),(1,7),(1,8)
+	VALUES (1, 1),(1,2), (1,3),(1,4),(1,5),(1,6),(1,7),(1,8),(2,2),(2,3),(2,5)
 
 -- Rol_X_Usuario
 
 INSERT POLACA_INVERSA.ROL_USUARIO (id_usuario, id_rol)
-VALUES (1,1)
+VALUES (1,1),(1,2)
 
 EXEC [POLACA_INVERSA].MigrarClientes
 go

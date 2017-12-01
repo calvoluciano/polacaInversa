@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -27,6 +28,10 @@ namespace PagoAgilFrba.AbmCliente
             Apellido = clienteAEditar.apellido;
             DNI = clienteAEditar.dni;
             Domicilio = clienteAEditar.domicilio;
+            Numero = clienteAEditar.numero;
+            Piso = clienteAEditar.piso;
+            Dpto = clienteAEditar.dpto;
+            Localidad = clienteAEditar.localidad;
             Telefono = clienteAEditar.telefono;
             Mail = clienteAEditar.mail;
             FechaNac = clienteAEditar.fechaNac;
@@ -86,6 +91,58 @@ namespace PagoAgilFrba.AbmCliente
             }
         }
 
+        public Decimal Numero
+        {
+            get
+            {
+                return decimal.Parse(textBoxNumero.Text);
+            }
+
+            set
+            {
+                textBoxNumero.Text = value.ToString();
+            }
+        }
+
+        public Decimal Piso
+        {
+            get
+            {
+                return decimal.Parse(textBoxPiso.Text);
+            }
+
+            set
+            {
+                textBoxPiso.Text = value.ToString();
+            }
+        }
+
+        public string Dpto
+        {
+            get
+            {
+                return textBoxDpto.Text;
+            }
+
+            set
+            {
+                textBoxDpto.Text = value;
+            }
+        }
+
+        public string Localidad
+        {
+            get
+            {
+                return textBoxLocalidad.Text;
+            }
+
+            set
+            {
+                textBoxLocalidad.Text = value;
+            }
+        }
+
         public decimal Telefono
         {
             get
@@ -116,12 +173,12 @@ namespace PagoAgilFrba.AbmCliente
         {
             get
             {
-                return dateTimePickerFechaNac.Value;
+                return dateTimePickerFechaNacimiento.Value;
             }
 
             set
             {
-                dateTimePickerFechaNac.Value = value;
+                dateTimePickerFechaNacimiento.Value = value;
             }
         }
 
@@ -150,7 +207,7 @@ namespace PagoAgilFrba.AbmCliente
             }
         }
 
-        private void aceptar_Click(object sender, EventArgs e)
+        private void aceptar_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -159,6 +216,10 @@ namespace PagoAgilFrba.AbmCliente
                 clienteAEditar.apellido = Apellido;
                 clienteAEditar.dni = DNI;
                 clienteAEditar.domicilio = Domicilio;
+                clienteAEditar.numero = Numero;
+                clienteAEditar.piso = Piso;
+                clienteAEditar.dpto = Dpto;
+                clienteAEditar.localidad = Localidad;
                 clienteAEditar.telefono = Telefono;
                 clienteAEditar.mail = Mail;
                 clienteAEditar.fechaNac = FechaNac;
@@ -174,7 +235,9 @@ namespace PagoAgilFrba.AbmCliente
             {
                 if (exception is FormatException ||
                     exception is CampoVacioException ||
-                    exception is ValorNegativoException) Error.show(exception.Message);
+                    exception is ValorNegativoException ||
+                    exception is EmailExistenteException ||
+                    exception is EmailFormatException) Error.show(exception.Message);
                 else throw;
             }
         }
@@ -190,18 +253,27 @@ namespace PagoAgilFrba.AbmCliente
             if (string.IsNullOrWhiteSpace(Apellido)) throw new CampoVacioException("Apellido");
             if (string.IsNullOrWhiteSpace(textBoxDni.Text)) throw new CampoVacioException("DNI");
             if (string.IsNullOrWhiteSpace(Domicilio)) throw new CampoVacioException("Domicilio");
+            if (string.IsNullOrWhiteSpace(textBoxNumero.Text)) throw new CampoVacioException("Numero");
+            if (string.IsNullOrWhiteSpace(textBoxPiso.Text)) throw new CampoVacioException("Piso");
+            if (string.IsNullOrWhiteSpace(textBoxDpto.Text)) throw new CampoVacioException("Dpto");
+            if (string.IsNullOrWhiteSpace(textBoxLocalidad.Text)) throw new CampoVacioException("Localidad");
             if (string.IsNullOrWhiteSpace(textBoxTelefono.Text)) throw new CampoVacioException("Telefono");
             if (FechaNac == null) throw new CampoVacioException("Fecha_Nac");
             if (string.IsNullOrWhiteSpace(textBoxCodigoPostal.Text)) throw new CampoVacioException("Codigo_Postal");
+
+            if (Cliente.esClienteExistenteMail(textBoxEmail.Text)) throw new EmailExistenteException(textBoxEmail.Text);
+            if (!esFormatoEmail()) throw new EmailFormatException(textBoxEmail.Text);
 
             if (DNI <= 0) throw new ValorNegativoException("DNI");
             if (Telefono <= 0) throw new ValorNegativoException("Telefono");
             if (CodigoPostal <= 0) throw new ValorNegativoException("Codigo_Postal");
         }
 
-        private void EditarClienteForm_Load(object sender, EventArgs e)
+        private Boolean esFormatoEmail()
         {
-
+            if (!Regex.IsMatch(textBoxEmail.Text, @"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*" + "@" + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$"))
+                return false;
+            return true;
         }
 
     }

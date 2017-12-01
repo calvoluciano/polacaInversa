@@ -42,7 +42,12 @@ namespace PagoAgilFrba
                 else if (cantidadDeRoles > 1)                                                                   // si tiene mas de uno doy a elegir
                 {
                     if (cantidadDeSucursales <= 1)
+                    {
+                        if (cantidadDeSucursales == 1)
+                            Usuario.sucursalSeleccionada = Usuario.getSucursales().First();
+
                         new SeleccionarRolForm(this).abrir();
+                    }
                     else
                         new SeleccionarRolYSucursalForm(this).abrir();
                 }
@@ -51,7 +56,12 @@ namespace PagoAgilFrba
                     // caso contrario elijo el unico directamente
                     Rol.rolSeleccionado = roles.First();
                     if (cantidadDeSucursales <= 1)
+                    {
+                        if (cantidadDeSucursales == 1)
+                            Usuario.sucursalSeleccionada = Usuario.getSucursales().First();
+
                         new SeleccionarFuncionalidadForm(this).abrir();
+                    }
                     else
                         new SeleccionarSucursalForm(this).abrir();
                 }
