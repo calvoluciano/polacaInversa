@@ -16,7 +16,8 @@ namespace PagoAgilFrba.Modelo
             new Acceso(5, typeof(AbmSucursal.ABMSucursalForm)),
             new Acceso(6, typeof(RegistroPago.RegistroPagoForm)),
             new Acceso(7, typeof(Rendicion.RendicionForm)),
-            new Acceso(8, typeof(ListadoEstadistico.ListadoEstadisticoForm))};
+            new Acceso(8, typeof(Devoluciones.DevolucionesForm)),
+            new Acceso(9, typeof(ListadoEstadistico.ListadoEstadisticoForm))};
 
         public static Acceso get(byte idAcceso)                               // obtengo una funcionalidad
         {

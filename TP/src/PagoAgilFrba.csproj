@@ -187,8 +187,16 @@
     <Compile Include="AbmSucursal\TablaSucursalForm.Designer.cs">
       <DependentUpon>TablaSucursalForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Devoluciones\DevolucionesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Devoluciones\DevolucionesForm.Designer.cs">
+      <DependentUpon>DevolucionesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modelo\Acceso.cs" />
     <Compile Include="Modelo\ComparadorFechas.cs" />
+    <Compile Include="Modelo\Devolucion.cs" />
+    <Compile Include="Modelo\Exceptions\rangoFechasException.cs" />
     <Compile Include="Modelo\Exceptions\ImporteFacturaException.cs" />
     <Compile Include="Modelo\Exceptions\ClienteFacturaException.cs" />
     <Compile Include="Modelo\Exceptions\EmpresaFacturaException.cs" />
@@ -328,6 +336,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AbmSucursal\TablaSucursalForm.resx">
       <DependentUpon>TablaSucursalForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Devoluciones\DevolucionesForm.resx">
+      <DependentUpon>DevolucionesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RegistroPago\RegistroPagoForm.resx">
       <DependentUpon>RegistroPagoForm.cs</DependentUpon>

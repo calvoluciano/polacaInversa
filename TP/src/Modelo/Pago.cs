@@ -12,23 +12,11 @@ namespace PagoAgilFrba.Modelo
     {
         public int idPago;
         public int idMedioPago { get; set; }
-        //public List<Factura> facturas = new List<Factura>();
         public DataTable detallePago;
         public DateTime fechaCobro {get; set;}
         public Double total {get; set;}
         public int idCliente {get; set;}
         public int idSucursal {get; set;}
-    
-    /*
-    public List<Factura> getFacturasAPagar()
-    {
-        return this.facturas;
-    }
-
-    public void agregarFacturaAPagar(Factura factura)
-    {
-        this.facturas.Add(factura);
-    }*/
 
         public void aumentarImporteTotal(Double importeFactura)
         {

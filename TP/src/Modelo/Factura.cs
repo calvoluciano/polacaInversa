@@ -192,5 +192,14 @@ namespace PagoAgilFrba.Modelo
             DB.ejecutarProcedimiento(comando);
         }
 
+        public static DataTable getFacturasPagasConfiltro(Decimal dniCliente, // "FACTURAS"
+                                                          DateTime FechaDesde,
+                                                          DateTime FechaHasta)        // obtengo un tipo de usuarios que cumplen con los filtros
+        {
+            return DB.correrFuncionDeTabla("GET_FACTURAS_PAGAS_CON_FILTROS",
+                                            "dniCliente", dniCliente,
+                                            "FechaDesde", FechaDesde,
+                                            "FechaHasta", FechaHasta);
+        }
     }
 }
