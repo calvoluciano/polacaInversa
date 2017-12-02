@@ -46,6 +46,8 @@
             // 
             // dataGridViewFacturas
             // 
+            this.dataGridViewFacturas.AllowUserToAddRows = false;
+            this.dataGridViewFacturas.AllowUserToDeleteRows = false;
             this.dataGridViewFacturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewFacturas.Location = new System.Drawing.Point(12, 188);
             this.dataGridViewFacturas.MultiSelect = false;

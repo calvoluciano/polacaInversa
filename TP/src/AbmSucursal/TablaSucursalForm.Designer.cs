@@ -44,9 +44,12 @@
             // 
             // dataGridViewSucursal
             // 
+            this.dataGridViewSucursal.AllowUserToAddRows = false;
+            this.dataGridViewSucursal.AllowUserToDeleteRows = false;
             this.dataGridViewSucursal.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewSucursal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSucursal.Location = new System.Drawing.Point(12, 145);
+            this.dataGridViewSucursal.MultiSelect = false;
             this.dataGridViewSucursal.Name = "dataGridViewSucursal";
             this.dataGridViewSucursal.ReadOnly = true;
             this.dataGridViewSucursal.RowTemplate.Height = 24;

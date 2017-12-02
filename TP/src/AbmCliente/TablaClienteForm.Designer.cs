@@ -136,6 +136,8 @@
             // 
             // dataGridClientes
             // 
+            this.dataGridClientes.AllowUserToAddRows = false;
+            this.dataGridClientes.AllowUserToDeleteRows = false;
             this.dataGridClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridClientes.Location = new System.Drawing.Point(12, 145);
             this.dataGridClientes.MultiSelect = false;

@@ -38,6 +38,8 @@
             // 
             // dataGridViewRoles
             // 
+            this.dataGridViewRoles.AllowUserToAddRows = false;
+            this.dataGridViewRoles.AllowUserToDeleteRows = false;
             this.dataGridViewRoles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewRoles.Location = new System.Drawing.Point(22, 21);
             this.dataGridViewRoles.MultiSelect = false;

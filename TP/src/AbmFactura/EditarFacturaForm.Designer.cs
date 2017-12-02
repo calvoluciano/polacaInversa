@@ -172,6 +172,8 @@
             // 
             // dataGridViewDetalleFactura
             // 
+            this.dataGridViewDetalleFactura.AllowUserToAddRows = false;
+            this.dataGridViewDetalleFactura.AllowUserToDeleteRows = false;
             this.dataGridViewDetalleFactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewDetalleFactura.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGridViewDetalleFactura.Location = new System.Drawing.Point(28, 183);

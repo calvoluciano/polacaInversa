@@ -133,12 +133,6 @@
     <Compile Include="AbmFactura\EditarFacturaForm.Designer.cs">
       <DependentUpon>EditarFacturaForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmFactura\SeleccionarFacturaForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AbmFactura\SeleccionarFacturaForm.Designer.cs">
-      <DependentUpon>SeleccionarFacturaForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="AbmFactura\TablaFacturaForm.cs">
       <SubType>Form</SubType>
     </Compile>

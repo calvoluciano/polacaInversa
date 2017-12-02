@@ -140,6 +140,7 @@
             // 
             this.dataGridViewEmpresas.AllowUserToAddRows = false;
             this.dataGridViewEmpresas.AllowUserToDeleteRows = false;
+            this.dataGridViewEmpresas.AllowUserToOrderColumns = true;
             this.dataGridViewEmpresas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewEmpresas.Location = new System.Drawing.Point(12, 145);
             this.dataGridViewEmpresas.MultiSelect = false;

@@ -154,6 +154,7 @@
             this.dataGridViewDevoluciones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewDevoluciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewDevoluciones.Location = new System.Drawing.Point(12, 364);
+            this.dataGridViewDevoluciones.MultiSelect = false;
             this.dataGridViewDevoluciones.Name = "dataGridViewDevoluciones";
             this.dataGridViewDevoluciones.ReadOnly = true;
             this.dataGridViewDevoluciones.RowTemplate.Height = 24;
@@ -177,6 +178,7 @@
             this.dataGridViewFacturasPagas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewFacturasPagas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewFacturasPagas.Location = new System.Drawing.Point(9, 127);
+            this.dataGridViewFacturasPagas.MultiSelect = false;
             this.dataGridViewFacturasPagas.Name = "dataGridViewFacturasPagas";
             this.dataGridViewFacturasPagas.ReadOnly = true;
             this.dataGridViewFacturasPagas.RowTemplate.Height = 24;

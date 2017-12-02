@@ -170,6 +170,7 @@
             this.dataGridViewTablaInformes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewTablaInformes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewTablaInformes.Location = new System.Drawing.Point(12, 171);
+            this.dataGridViewTablaInformes.MultiSelect = false;
             this.dataGridViewTablaInformes.Name = "dataGridViewTablaInformes";
             this.dataGridViewTablaInformes.ReadOnly = true;
             this.dataGridViewTablaInformes.RowTemplate.Height = 24;
