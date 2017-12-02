@@ -24,6 +24,7 @@ namespace PagoAgilFrba.Devoluciones
         {
             InitializeComponent();
             setearTablaFacturasDevolucion();
+            //dateTimePickerFechaPagoHasta.MaxDate = DateTime.Today;
         }
 
         public Decimal DNICliente

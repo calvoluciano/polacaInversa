@@ -108,6 +108,12 @@ namespace PagoAgilFrba.Modelo
                                             "emailCliente", emailCliente);
         }
 
+        public static Boolean esClienteExistente(Decimal dni)    // habilito un usuario
+        {
+            return (Boolean)DB.correrFuncion("ES_CLIENTE_EXISTENTE",
+                                            "dni", dni);
+        }
+
         public static DataTable obtenerListadoClientes(DateTime fechaDesde,
                                                        DateTime fechaHasta,
                                                        int cantElementos,

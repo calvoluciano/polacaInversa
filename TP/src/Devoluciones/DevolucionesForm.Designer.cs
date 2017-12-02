@@ -215,7 +215,6 @@
             this.dateTimePickerFechaPagoHasta.Checked = false;
             this.dateTimePickerFechaPagoHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerFechaPagoHasta.Location = new System.Drawing.Point(470, 60);
-            this.dateTimePickerFechaPagoHasta.MaxDate = new System.DateTime(2017, 11, 28, 0, 16, 34, 0);
             this.dateTimePickerFechaPagoHasta.Name = "dateTimePickerFechaPagoHasta";
             this.dateTimePickerFechaPagoHasta.Size = new System.Drawing.Size(119, 27);
             this.dateTimePickerFechaPagoHasta.TabIndex = 70;

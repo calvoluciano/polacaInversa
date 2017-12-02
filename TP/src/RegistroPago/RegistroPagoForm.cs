@@ -277,7 +277,7 @@ namespace PagoAgilFrba.RegistroPago
 
                 pago.idCliente = cliente.id;
                 pago.total = Total;
-                pago.fechaCobro = DateTime.Now;
+                pago.fechaCobro = FechaCobro;
                 pago.idSucursal = Usuario.sucursalSeleccionada.id;
                 MedioDePago item = (MedioDePago)comboBoxMedioPago.SelectedItem;
                 pago.idMedioPago = item.id;

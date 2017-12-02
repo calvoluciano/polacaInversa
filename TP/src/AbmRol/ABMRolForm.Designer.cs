@@ -40,7 +40,9 @@
             // 
             this.dataGridViewRoles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewRoles.Location = new System.Drawing.Point(22, 21);
+            this.dataGridViewRoles.MultiSelect = false;
             this.dataGridViewRoles.Name = "dataGridViewRoles";
+            this.dataGridViewRoles.ReadOnly = true;
             this.dataGridViewRoles.RowTemplate.Height = 24;
             this.dataGridViewRoles.Size = new System.Drawing.Size(581, 245);
             this.dataGridViewRoles.TabIndex = 0;

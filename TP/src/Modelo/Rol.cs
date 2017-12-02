@@ -68,10 +68,10 @@ namespace PagoAgilFrba.Modelo
             DB.ejecutarProcedimiento(comando);
         }
 
-        public static void inhabilitar(byte id)         // inhabilito un rol
+        public static void inhabilitar(byte idRol)         // inhabilito un rol
         {
             DB.correrProcedimiento("ROL_INHABILITAR",
-                                    "rol", id);
+                                    "idRol", idRol);
         }
 
         public static DataTable getRoles()              // obtengo todos los roles

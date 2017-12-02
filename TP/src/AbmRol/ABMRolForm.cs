@@ -37,7 +37,7 @@ namespace PagoAgilFrba.AbmRol
 
         private void buttonBaja_Click(object sender, EventArgs e)
         {
-            Rol.inhabilitar((byte)dataGridViewRoles.SelectedRows[0].Cells["rol_id"].Value);       // obtengo id del rol seleccionado y lo inhabilito
+            Rol.inhabilitar((byte)dataGridViewRoles.SelectedRows[0].Cells["id_Rol"].Value);       // obtengo id del rol seleccionado y lo inhabilito
             CargarTabla();
         }
 

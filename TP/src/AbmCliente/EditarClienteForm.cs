@@ -261,7 +261,9 @@ namespace PagoAgilFrba.AbmCliente
             if (FechaNac == null) throw new CampoVacioException("Fecha_Nac");
             if (string.IsNullOrWhiteSpace(textBoxCodigoPostal.Text)) throw new CampoVacioException("Codigo_Postal");
 
-            if (Cliente.esClienteExistenteMail(textBoxEmail.Text)) throw new EmailExistenteException(textBoxEmail.Text);
+            if (Mail != textBoxEmail.Text)
+                if (Cliente.esClienteExistenteMail(textBoxEmail.Text)) throw new EmailExistenteException(textBoxEmail.Text);
+            
             if (!esFormatoEmail()) throw new EmailFormatException(textBoxEmail.Text);
 
             if (DNI <= 0) throw new ValorNegativoException("DNI");

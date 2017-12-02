@@ -193,7 +193,8 @@ namespace PagoAgilFrba.AbmFactura
                 if (exception is FormatException
                     || exception is EmpresaNoSeleccionadaException
                     || exception is CampoVacioException
-                    || exception is ExpireDateBeforeException) Error.show(exception.Message);
+                    || exception is ExpireDateBeforeException
+                    || exception is ClienteInexistenteException) Error.show(exception.Message);
                 else throw;
             } 
         }
@@ -233,6 +234,7 @@ namespace PagoAgilFrba.AbmFactura
         private void validar()
         {
                 if (string.IsNullOrWhiteSpace(textBoxDNICliente.Text)) throw new CampoVacioException("DNI Cliente");
+                if (!Cliente.esClienteExistente(Convert.ToDecimal(textBoxDNICliente.Text))) throw new ClienteInexistenteException(textBoxDNICliente.Text);
                 if (string.IsNullOrWhiteSpace(textBoxNumeroFactura.Text)) throw new CampoVacioException("Numero de Factura");
                 if (Empresa == null) throw new EmpresaNoSeleccionadaException();    // valido los datos ingresados
                 if (dateTimePickerFechaAlta == null) throw new CampoVacioException("Fecha de Alta");

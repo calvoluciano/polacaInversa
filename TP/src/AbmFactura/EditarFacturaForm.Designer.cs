@@ -76,6 +76,7 @@
             // dateTimePickerFechaVencimiento
             // 
             this.dateTimePickerFechaVencimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerFechaVencimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerFechaVencimiento.Location = new System.Drawing.Point(155, 401);
             this.dateTimePickerFechaVencimiento.Name = "dateTimePickerFechaVencimiento";
             this.dateTimePickerFechaVencimiento.Size = new System.Drawing.Size(221, 24);
@@ -84,6 +85,7 @@
             // dateTimePickerFechaAlta
             // 
             this.dateTimePickerFechaAlta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerFechaAlta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerFechaAlta.Location = new System.Drawing.Point(155, 137);
             this.dateTimePickerFechaAlta.Name = "dateTimePickerFechaAlta";
             this.dateTimePickerFechaAlta.Size = new System.Drawing.Size(221, 24);

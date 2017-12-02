@@ -196,6 +196,7 @@
     <Compile Include="Modelo\Acceso.cs" />
     <Compile Include="Modelo\ComparadorFechas.cs" />
     <Compile Include="Modelo\Devolucion.cs" />
+    <Compile Include="Modelo\Exceptions\ClienteInexistenteException.cs" />
     <Compile Include="Modelo\Exceptions\EmailFormatException.cs" />
     <Compile Include="Modelo\Exceptions\EmailExistenteException.cs" />
     <Compile Include="Modelo\Exceptions\rangoFechasException.cs" />

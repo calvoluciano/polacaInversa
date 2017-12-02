@@ -16,7 +16,8 @@ namespace PagoAgilFrba.Rendicion
     public partial class RendicionForm : PagoAgilFrba.Modelo.ReturnForm
     {
         DataTable tablaFacturas = new DataTable();
-        double comision;
+        double comision = 0;
+        double totalRendicion = 0;
         private Empresa empresaSeleccionada = null;
 
         public RendicionForm (ReturnForm caller)
@@ -26,7 +27,7 @@ namespace PagoAgilFrba.Rendicion
 
             cargarEmpresas();
 
-            dateTimePickerFechaRendicion.MaxDate = DateTime.Today;
+            //dateTimePickerFechaRendicion.MaxDate = DateTime.Today;
 
             tablaFacturas.Columns.Add("Numero Factura", typeof(decimal));
             tablaFacturas.Columns.Add("Empresa", typeof(string));
@@ -116,7 +117,7 @@ namespace PagoAgilFrba.Rendicion
 
                 foreach (DataRow row in tablaFacturas.Rows)
                 {
-                    Total += Convert.ToDouble(row["Monto"]);
+                    totalRendicion += Convert.ToDouble(row["Monto"]);
                 }
 
                 actualizarTablaFacturas();
@@ -135,6 +136,7 @@ namespace PagoAgilFrba.Rendicion
         {
             CantidadFacturas = tablaFacturas.Rows.Count;
             dataGridView1.DataSource = tablaFacturas;
+            Total = totalRendicion;
         }
 
         private void validarDatosBusquedaRendicion()
@@ -177,9 +179,9 @@ namespace PagoAgilFrba.Rendicion
 
         private void numericUpDownPorcentajeComision_ValueChanged(object sender, EventArgs e)
         {
-            comision = Total * Convert.ToDouble(PorcentajeComision) / 100;
+            comision = totalRendicion * Convert.ToDouble(PorcentajeComision) / 100;
             textBoxImporteComision.Text = comision.ToString() + " $";
-            textBoxTotal.Text = (Total - comision).ToString();
+            Total = (totalRendicion - comision);
         }
 
         public void validarDatosRendicion()

@@ -92,6 +92,7 @@
             // dateTimePickerFechaCobro
             // 
             this.dateTimePickerFechaCobro.Enabled = false;
+            this.dateTimePickerFechaCobro.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerFechaCobro.Location = new System.Drawing.Point(575, 9);
             this.dateTimePickerFechaCobro.Name = "dateTimePickerFechaCobro";
             this.dateTimePickerFechaCobro.Size = new System.Drawing.Size(194, 22);
@@ -216,6 +217,7 @@
             // 
             // dateTimePickerFechaVencimiento
             // 
+            this.dateTimePickerFechaVencimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerFechaVencimiento.Location = new System.Drawing.Point(175, 76);
             this.dateTimePickerFechaVencimiento.Name = "dateTimePickerFechaVencimiento";
             this.dateTimePickerFechaVencimiento.Size = new System.Drawing.Size(228, 27);

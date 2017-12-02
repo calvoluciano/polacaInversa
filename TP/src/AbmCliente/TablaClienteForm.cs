@@ -60,8 +60,8 @@ namespace PagoAgilFrba.AbmCliente
             base.Refrescar();
             CargarTabla();
             DataGridClientes.Columns["ID_CLIENTE"].Visible = false; 
-            DataGridClientes.Columns["Habilitado"].Visible = false;              // oculto columna que no quiero mostrar
-            DataGridClientes.Columns["Habilitado"].HeaderText = "Habilitado";    // cambio nombre visible de columna
+            //DataGridClientes.Columns["Habilitado"].Visible = false;              // oculto columna que no quiero mostrar
+            //DataGridClientes.Columns["Habilitado"].HeaderText = "Habilitado";    // cambio nombre visible de columna
         }
 
         private void validar()

@@ -185,7 +185,6 @@
             // 
             this.dateTimePickerFechaRendicion.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerFechaRendicion.Location = new System.Drawing.Point(277, 60);
-            this.dateTimePickerFechaRendicion.MaxDate = new System.DateTime(2017, 11, 28, 0, 16, 34, 0);
             this.dateTimePickerFechaRendicion.Name = "dateTimePickerFechaRendicion";
             this.dateTimePickerFechaRendicion.Size = new System.Drawing.Size(200, 27);
             this.dateTimePickerFechaRendicion.TabIndex = 8;

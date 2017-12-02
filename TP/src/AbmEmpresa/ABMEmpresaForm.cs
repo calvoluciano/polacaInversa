@@ -44,7 +44,8 @@ namespace PagoAgilFrba.AbmEmpresa
         {
             try
             {
-                int cantPendientes = Empresa.tieneTodasFacturasCobradasRendidas((int)DataGridViewEmpresas.SelectedRows[0].Cells["ID_EMPRESA"].Value);
+                int idEmpresa = (int)DataGridViewEmpresas.SelectedRows[0].Cells["ID_EMPRESA"].Value;
+                int cantPendientes = Empresa.tieneTodasFacturasCobradasRendidas(idEmpresa);
                 if (cantPendientes > 0)
                 {
                     Error.show("No se pueder dar de baja la Empresa, aun tiene " + cantPendientes + "facturas pendientes de Cobrar y/o Rendir." );
