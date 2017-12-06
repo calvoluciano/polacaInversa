@@ -240,6 +240,7 @@ namespace PagoAgilFrba.AbmFactura
                 if (dateTimePickerFechaAlta == null) throw new CampoVacioException("Fecha de Alta");
                 if (dateTimePickerFechaVencimiento == null) throw new CampoVacioException("Fecha de Vencimiento");
                 if (FechaAlta > FechaVencimiento) throw new ExpireDateBeforeException("Corrija las fechas");
+                if (FechaVencimiento < System.DateTime.Today) throw new ExpireDateBeforeException("Corrija la fecha de vencimiento para que sea posterior a la fecha actual");
         }
 
         private void buttonSeleccionarEmpresa_Click(object sender, EventArgs e)

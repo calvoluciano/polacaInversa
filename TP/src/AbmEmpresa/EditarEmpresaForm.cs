@@ -109,6 +109,8 @@ namespace PagoAgilFrba.AbmEmpresa
         {
             if (string.IsNullOrWhiteSpace(Nombre)) throw new CampoVacioException("Nombre");
             if (Cuit < 0) throw new ValorNegativoException("Cuit");
+            if (Cuit == 0) throw new CampoVacioException("Cuit");
+            if (string.IsNullOrWhiteSpace(textBoxCuit.Text)) throw new CampoVacioException("Cuit");
             if (string.IsNullOrWhiteSpace(Direccion)) throw new CampoVacioException("Direccion");
             if (string.IsNullOrWhiteSpace(Rubro)) throw new CampoVacioException("Rubro");   
         }
