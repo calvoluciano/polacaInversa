@@ -762,7 +762,9 @@ AS
 		WHERE f.ID_EMPRESA = @idEmpresa
 			AND f.ID_FACTURA not in (SELECT ID_FACTURA FROM POLACA_INVERSA.ITEMS_FACTURAS_RENDIDAS)
 			AND (p.FECHA_PAGO >= d.FECHA_DEVOLUCION OR d.FECHA_DEVOLUCION IS NULL) 
-			AND @fechaRendicion >= p.FECHA_PAGO
+			--AND @fechaRendicion >= p.FECHA_PAGO
+			AND month(@fechaRendicion)=month(p.FECHA_PAGO)
+			AND year(@fechaRendicion)=year(p.FECHA_PAGO)
 			)
 GO
 
