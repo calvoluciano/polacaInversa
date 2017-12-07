@@ -1386,7 +1386,7 @@ BEGIN
 	
 	--Se agrega relacion Usuario Admin Sucursales
 	INSERT INTO POLACA_INVERSA.SUCURSAL_USUARIO (ID_USUARIO, ID_SUCURSAL) 
-	VALUES (1,1),(3,1),(3,2)
+	VALUES (1,1),(2,1),(2,2),(3,1),(3,2)
 END;
 GO
 
