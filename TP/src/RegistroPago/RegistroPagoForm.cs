@@ -202,7 +202,8 @@ namespace PagoAgilFrba.RegistroPago
         {
             if (string.IsNullOrWhiteSpace(textBoxNumeroFactura.Text)) throw new CampoVacioException("Numero Factura");
             if (string.IsNullOrWhiteSpace(textBoxImporte.Text)) throw new CampoVacioException("Importe");
-            if (comboBoxEmpresa.SelectedItem == null) throw new CampoVacioException("Empresa");
+
+            if (string.IsNullOrWhiteSpace(comboBoxEmpresa.Text)) throw new CampoVacioException("Empresa");
             if (dateTimePickerFechaVencimiento == null) throw new CampoVacioException("Fecha de Vencimiento");
             if (Importe <= 0) throw new ValorNegativoException("Importe");
 
@@ -308,6 +309,37 @@ namespace PagoAgilFrba.RegistroPago
             comboBoxEmpresa.SelectedItem = null;
             comboBoxMedioPago.SelectedItem = null;
             
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(textBoxNumeroFactura.Text))
+            {
+                DataTable dt = Factura.getXsConFiltros(NumeroFactura, 0, 0, 0);
+                if (dt.Rows.Count == 1)
+                {
+                    Factura facturaSeleccionada = new Factura(dt.Rows[0]);
+                    cargarDatosFactura(facturaSeleccionada);
+                }
+                else
+                {
+                    MessageBox.Show("No existe factura con ese numero", "ERROR", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void cargarDatosFactura(Factura factura)
+        {
+            empresaSeleccionada = new Empresa(Empresa.getXsConFiltros("", factura.cuitEmpresa, "").Rows[0]);
+            comboBoxEmpresa.SelectedText = empresaSeleccionada.nombre;
+            if (!empresaSeleccionada.habilitado)
+            {
+                Error.show("No se puede seleccionar una empresa inhabilitada.");
+                comboBoxEmpresa.SelectedItem = null;
+            }
+            FechaVencimiento = factura.fechaVencimiento;
+            Importe = Convert.ToDouble(factura.total);
         }
 
     }
