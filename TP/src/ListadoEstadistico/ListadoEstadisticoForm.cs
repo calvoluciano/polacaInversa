@@ -109,28 +109,32 @@ namespace PagoAgilFrba.ListadoEstadistico
         private void buttonCargarFacturasPagas_Click(object sender, EventArgs e)
         {
             Trimestre trimestre = new Trimestre();
-            trimestre.configurar(dateTimePickerAnio.Value.Year, (int)comboBoxTrimestre.SelectedItem);
-
-            int cantidad = Convert.ToInt32(numericUpDownCantidadElementos.Value);
-
-            if (comboBoxInforme.SelectedItem != null)
+            try
             {
-                if (cantidad == 0) cantidad = 5;
+                trimestre.configurar(dateTimePickerAnio.Value.Year, (int)comboBoxTrimestre.SelectedItem);
+                int cantidad = Convert.ToInt32(numericUpDownCantidadElementos.Value);
 
-                if (comboBoxInforme.SelectedIndex == 0)
-                    tablaListado = Empresa.obtenerListadoEmpresas(trimestre.fecha_inicio, trimestre.fecha_fin, cantidad, "FACTURAS");
+                if (comboBoxInforme.SelectedItem != null)
+                {
+                    if (cantidad == 0) cantidad = 5;
 
-                if (comboBoxInforme.SelectedIndex == 1)
-                    tablaListado = Empresa.obtenerListadoEmpresas(trimestre.fecha_inicio, trimestre.fecha_fin, cantidad, "RENDIDAS");
+                    if (comboBoxInforme.SelectedIndex == 0)
+                        tablaListado = Empresa.obtenerListadoEmpresas(trimestre.fecha_inicio, trimestre.fecha_fin, cantidad, "FACTURAS");
 
-                if (comboBoxInforme.SelectedIndex == 2)
-                    tablaListado = Cliente.obtenerListadoClientes(trimestre.fecha_inicio, trimestre.fecha_fin, cantidad, "TOTALES");
+                    if (comboBoxInforme.SelectedIndex == 1)
+                        tablaListado = Empresa.obtenerListadoEmpresas(trimestre.fecha_inicio, trimestre.fecha_fin, cantidad, "RENDIDAS");
 
-                if (comboBoxInforme.SelectedIndex == 3)
-                    tablaListado = Cliente.obtenerListadoClientes(trimestre.fecha_inicio, trimestre.fecha_fin, cantidad, "PORCENTAJE");
+                    if (comboBoxInforme.SelectedIndex == 2)
+                        tablaListado = Cliente.obtenerListadoClientes(trimestre.fecha_inicio, trimestre.fecha_fin, cantidad, "TOTALES");
 
-                actualizarGrid();
+                    if (comboBoxInforme.SelectedIndex == 3)
+                        tablaListado = Cliente.obtenerListadoClientes(trimestre.fecha_inicio, trimestre.fecha_fin, cantidad, "PORCENTAJE");
+
+                    actualizarGrid();
+                }
             }
+            catch (NullReferenceException) { Error.show("Seleccion un Trimestre de la lista"); }
+
         }
 
         private void button1_Click(object sender, EventArgs e)

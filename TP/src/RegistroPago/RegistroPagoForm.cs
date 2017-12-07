@@ -250,7 +250,7 @@ namespace PagoAgilFrba.RegistroPago
         {
             textBoxNumeroFactura.Text = "";
             comboBoxEmpresa.SelectedIndex = -1;
-            dateTimePickerFechaVencimiento.Value = DateTime.Today;
+            dateTimePickerFechaVencimiento.Value = Program.FechaEjecucion;
             textBoxImporte.Text = "";
         }
 
@@ -335,7 +335,7 @@ namespace PagoAgilFrba.RegistroPago
         private void cargarDatosFactura(Factura factura)
         {
             empresaSeleccionada = new Empresa(Empresa.getXsConFiltros("", factura.cuitEmpresa, "").Rows[0]);
-            comboBoxEmpresa.SelectedText = empresaSeleccionada.nombre;
+            comboBoxEmpresa.Text = empresaSeleccionada.nombre;
             if (!empresaSeleccionada.habilitado)
             {
                 Error.show("No se puede seleccionar una empresa inhabilitada.");

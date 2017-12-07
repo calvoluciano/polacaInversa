@@ -28,16 +28,22 @@ namespace PagoAgilFrba.AbmCliente
 
         private void buttonSeleccionar_Click(object sender, EventArgs e)
         {
-            DataRow fila = ((DataRowView)DataGridClientes.SelectedRows[0].DataBoundItem).Row;    // obtengo la fila seleccionada
+            DataRow fila = null;
 
-            if (!(Boolean)fila["HABILITADO"])    
+            try
             {
-                Error.show("No se puede seleccionar un Cliente inhabilitada.");
-                return;
-            }
+                fila = ((DataRowView)DataGridClientes.SelectedRows[0].DataBoundItem).Row;     // obtengo la fila seleccionada
+                if (!(Boolean)fila["HABILITADO"])
+                {
+                    Error.show("No se puede seleccionar un Cliente inhabilitada.");
+                    return;
+                }
 
-            clienteSeleccionado = new Cliente(fila);      
-            this.Close();
+                clienteSeleccionado = new Cliente(fila);
+                this.Close();
+            }
+            catch (ArgumentOutOfRangeException) { Error.show("Seleccion un elemento de la Tabla"); }
+
         }
 
         private void buttonCancelar_Click(object sender, EventArgs e)

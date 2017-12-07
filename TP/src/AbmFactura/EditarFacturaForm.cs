@@ -246,7 +246,7 @@ namespace PagoAgilFrba.AbmFactura
 
             ComparadorFechas comparar = new ComparadorFechas();
             if (comparar.esMenor(FechaVencimiento, FechaAlta)) throw new ExpireDateBeforeException("Corrija las fechas de alta con las de vencimiento. Fecha de alta debe ser anterior al vencimiento.");
-            if (comparar.esMenor(FechaVencimiento, System.DateTime.Today)) throw new ExpireDateBeforeException("Corrija la fecha de vencimiento para que sea posterior a la fecha actual");
+            if (comparar.esMenor(FechaVencimiento, Program.FechaEjecucion)) throw new ExpireDateBeforeException("Corrija la fecha de vencimiento para que sea posterior a la fecha actual");
 
         }
 
