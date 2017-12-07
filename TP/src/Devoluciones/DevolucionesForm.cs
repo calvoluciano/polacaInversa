@@ -24,8 +24,8 @@ namespace PagoAgilFrba.Devoluciones
         {
             InitializeComponent();
             setearTablaFacturasDevolucion();
-            FechaDesde = Program.FechaEjecucion;
-            FechaHasta = Program.FechaEjecucion;
+            dateTimePickerFechaPagoDesde.Value = Program.FechaEjecucion;
+            dateTimePickerFechaPagoHasta.Value = Program.FechaEjecucion;
             //dateTimePickerFechaPagoHasta.MaxDate = DateTime.Today;
         }
 
@@ -102,7 +102,7 @@ namespace PagoAgilFrba.Devoluciones
         {
             if (DNICliente < 0) throw new ValorNegativoException("DNI Cliente");
             ComparadorFechas comparador = new ComparadorFechas();
-            if (comparador.esMenor(FechaHasta,FechaDesde)) throw new rangoFechasException("Fecha Hasta/Desde");
+            if (comparador.esMenor(FechaHasta, FechaDesde)) throw new rangoFechasException("Fecha Hasta/Desde");
         }
 
         private void buttonCargarFacturasPagas_Click(object sender, EventArgs e)
