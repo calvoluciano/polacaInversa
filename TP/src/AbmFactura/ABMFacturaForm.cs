@@ -31,6 +31,7 @@ namespace PagoAgilFrba.AbmFactura
                 new EditarFacturaForm(this, facturaSeleccionada).abrir();
 
             }
+            catch (ArgumentOutOfRangeException) { Error.show("Seleccion un elemento de la Tabla"); }
             catch (NullReferenceException) { Error.show("Seleccion un elemento de la Tabla"); }
             catch (Exception exception)
             {

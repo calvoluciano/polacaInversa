@@ -242,7 +242,8 @@ namespace PagoAgilFrba.AbmFactura
             if (Empresa == null) throw new EmpresaNoSeleccionadaException();    // valido los datos ingresados
             if (dateTimePickerFechaAlta == null) throw new CampoVacioException("Fecha de Alta");
             if (dateTimePickerFechaVencimiento == null) throw new CampoVacioException("Fecha de Vencimiento");
-          
+
+            if (DataGridViewDetalleFactura.RowCount < 1) throw new CampoVacioException("Items facturas (debe ingresar al menos 1 Item)");
 
             ComparadorFechas comparar = new ComparadorFechas();
             if (comparar.esMenor(FechaVencimiento, FechaAlta)) throw new ExpireDateBeforeException("Corrija las fechas de alta con las de vencimiento. Fecha de alta debe ser anterior al vencimiento.");
