@@ -1386,7 +1386,7 @@ BEGIN
 	
 	--Se agrega relacion Usuario Admin Sucursales
 	INSERT INTO POLACA_INVERSA.SUCURSAL_USUARIO (ID_USUARIO, ID_SUCURSAL) 
-	VALUES (1,1),(3,1),(3,2)
+	VALUES (1,1),(2,1),(2,2),(3,1),(3,2)
 END;
 GO
 
@@ -1461,8 +1461,7 @@ INSERT INTO POLACA_INVERSA.USUARIOS (USERNAME,PASSWORD,HABILITADO,INTENTOS)
 --Rol
 
 INSERT POLACA_INVERSA.ROLES (nombre_rol, habilitado)
-VALUES	('Administrador General', 1),
-		('Administrador',1),
+VALUES	('Administrador',1),
 		('Cobrador', 1)
 		
 --ACCESOS
@@ -1480,13 +1479,12 @@ VALUES	('ABM de Rol'),
 --Accesos x Rol
 INSERT POLACA_INVERSA.ROL_ACCESOS (id_rol, id_acceso)
 	VALUES (1,1),(1,2), (1,3),(1,4),(1,5),(1,6),(1,7),(1,8),(1,9),
-		   (2,1),(2,2),(2,3),(2,4),(2,5),(2,7),(2,9),
-		   (3,6),(3,8)
+		   (2,6),(2,8)
 
 -- Rol_X_Usuario
 
 INSERT POLACA_INVERSA.ROL_USUARIO (id_usuario, id_rol)
-VALUES (1,1),(1,2),(2,2),(3,3)
+VALUES (1,1),(1,2),(2,1),(3,2)
 
 EXEC [POLACA_INVERSA].MigrarClientes
 go
