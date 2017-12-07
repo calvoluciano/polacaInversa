@@ -1456,7 +1456,7 @@ GO
 
 INSERT INTO POLACA_INVERSA.USUARIOS (USERNAME,PASSWORD,HABILITADO,INTENTOS)
 	VALUES ('admin', HASHBYTES('SHA2_256', 'w23e'), 1, 0),
-		   ('administrador', HASHBYTES('SHA2_256', 'administrador'), 1, 0),
+		   ('luciano', HASHBYTES('SHA2_256', 'luciano'), 1, 0),
 		   ('cobrador', HASHBYTES('SHA2_256', 'cobrador'), 1, 0)
 		   
 	
@@ -1486,7 +1486,7 @@ INSERT POLACA_INVERSA.ROL_ACCESOS (id_rol, id_acceso)
 -- Rol_X_Usuario
 
 INSERT POLACA_INVERSA.ROL_USUARIO (id_usuario, id_rol)
-VALUES (1,1),(1,2),(2,1),(3,2)
+VALUES (1,1),(2,1),(2,2),(3,2)
 
 EXEC [POLACA_INVERSA].MigrarClientes
 go
