@@ -25,6 +25,7 @@ namespace PagoAgilFrba.Rendicion
         {
             InitializeComponent();
 
+            FechaRendicion = Program.FechaEjecucion;
             cargarEmpresas();
 
             //dateTimePickerFechaRendicion.MaxDate = DateTime.Today;

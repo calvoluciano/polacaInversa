@@ -19,6 +19,7 @@ namespace PagoAgilFrba.AbmCliente
         public NuevoClienteForm(ReturnForm caller) : base(caller)
         {
             InitializeComponent();
+            dateTimePickerFechaNacimiento.Value = Program.FechaEjecucion;
         }
   
         private void validar()      // valido los datos ingresados

@@ -24,6 +24,8 @@ namespace PagoAgilFrba.Devoluciones
         {
             InitializeComponent();
             setearTablaFacturasDevolucion();
+            FechaDesde = Program.FechaEjecucion;
+            FechaHasta = Program.FechaEjecucion;
             //dateTimePickerFechaPagoHasta.MaxDate = DateTime.Today;
         }
 
@@ -192,7 +194,7 @@ namespace PagoAgilFrba.Devoluciones
                 validarDatosPago();
 
                 devolucion.motivoDevolucion = Motivo;
-                devolucion.fechaDevolucion = DateTime.Now;
+                devolucion.fechaDevolucion = Program.FechaEjecucion;
                 devolucion.detalleFacturas = tablaFacturasDevolucion;
                 devolucion.registrarDevolucion();
 

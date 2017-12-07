@@ -19,6 +19,7 @@ namespace PagoAgilFrba.ListadoEstadistico
             : base(caller)
         {
             InitializeComponent();
+            dateTimePickerAnio.Value = Program.FechaEjecucion;
             cargarTrimestres();
             comboBoxTrimestre.SelectedItem = 1;
             cargarOpcionesInformes();

@@ -25,6 +25,9 @@ namespace PagoAgilFrba.AbmFactura
             : base(caller)
         {
             InitializeComponent();
+            FechaAlta = Program.FechaEjecucion;
+            FechaVencimiento = Program.FechaEjecucion;
+
             DataRow fila = cargarFila();
             facturaAEditar = new Factura(fila);
 

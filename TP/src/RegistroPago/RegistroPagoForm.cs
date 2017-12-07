@@ -26,6 +26,9 @@ namespace PagoAgilFrba.RegistroPago
         {
             
             InitializeComponent();
+            FechaCobro = Program.FechaEjecucion;
+            FechaVencimiento = Program.FechaEjecucion;
+
             cargarEmpresas();
             cargarMediosDePago();
             labelSucursal.Text += Usuario.sucursalSeleccionada.nombre;
