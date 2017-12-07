@@ -27,16 +27,21 @@ namespace PagoAgilFrba.AbmEmpresa
 
         private void buttonSeleccionar_Click(object sender, EventArgs e)
         {
-            DataRow fila = ((DataRowView)DataGridViewEmpresas.SelectedRows[0].DataBoundItem).Row;    // obtengo la fila seleccionada
+            try{
+                DataRow fila = ((DataRowView)DataGridViewEmpresas.SelectedRows[0].DataBoundItem).Row;    // obtengo la fila seleccionada
 
-            if (!(Boolean)fila["ESTADO_EMPRESA"])    // si la sucursal no está habilitada...
-            {
-                Error.show("No se puede seleccionar una empresa inhabilitada.");
-                return;
+                if (!(Boolean)fila["ESTADO_EMPRESA"])    // si la sucursal no está habilitada...
+                {
+                    Error.show("No se puede seleccionar una empresa inhabilitada.");
+                    return;
+                }
+
+                empresaSeleccionada = new Empresa(fila);      // creo una sucursal de la fila seleccionada
+                this.Close();
+
             }
-
-            empresaSeleccionada = new Empresa(fila);      // creo una sucursal de la fila seleccionada
-            this.Close();
+            catch (ArgumentOutOfRangeException)
+            { Error.show("Seleccion un elemento de la Tabla"); }
         }
 
         public Empresa getEmpresa()
