@@ -42,12 +42,12 @@
             this.dataGridViewFacturasPagas = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.dateTimePickerFechaPagoHasta = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.textBoxDNICliente = new System.Windows.Forms.TextBox();
-            this.dateTimePickerFechaPagoDesde = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.dateTimePickerFechaPagoDesde = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerFechaPagoHasta = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDevoluciones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFacturasPagas)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -187,11 +187,11 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.dateTimePickerFechaPagoHasta);
+            this.groupBox1.Controls.Add(this.dateTimePickerFechaPagoDesde);
+            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.textBoxDNICliente);
-            this.groupBox1.Controls.Add(this.dateTimePickerFechaPagoDesde);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -212,16 +212,6 @@
             this.label7.TabIndex = 71;
             this.label7.Text = "Hasta:";
             // 
-            // dateTimePickerFechaPagoHasta
-            // 
-            this.dateTimePickerFechaPagoHasta.Checked = false;
-            this.dateTimePickerFechaPagoHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerFechaPagoHasta.Location = new System.Drawing.Point(470, 60);
-            this.dateTimePickerFechaPagoHasta.Name = "dateTimePickerFechaPagoHasta";
-            this.dateTimePickerFechaPagoHasta.Size = new System.Drawing.Size(119, 27);
-            this.dateTimePickerFechaPagoHasta.TabIndex = 70;
-            this.dateTimePickerFechaPagoHasta.Value = new System.DateTime(2017, 11, 28, 0, 0, 0, 0);
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -239,16 +229,6 @@
             this.textBoxDNICliente.Name = "textBoxDNICliente";
             this.textBoxDNICliente.Size = new System.Drawing.Size(391, 24);
             this.textBoxDNICliente.TabIndex = 59;
-            // 
-            // dateTimePickerFechaPagoDesde
-            // 
-            this.dateTimePickerFechaPagoDesde.Checked = false;
-            this.dateTimePickerFechaPagoDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerFechaPagoDesde.Location = new System.Drawing.Point(258, 60);
-            this.dateTimePickerFechaPagoDesde.Name = "dateTimePickerFechaPagoDesde";
-            this.dateTimePickerFechaPagoDesde.Size = new System.Drawing.Size(119, 27);
-            this.dateTimePickerFechaPagoDesde.TabIndex = 8;
-            this.dateTimePickerFechaPagoDesde.Value = new System.DateTime(2017, 11, 28, 0, 0, 0, 0);
             // 
             // label2
             // 
@@ -269,6 +249,22 @@
             this.label1.Size = new System.Drawing.Size(100, 20);
             this.label1.TabIndex = 5;
             this.label1.Text = "DNI Cliente:";
+            // 
+            // dateTimePickerFechaPagoDesde
+            // 
+            this.dateTimePickerFechaPagoDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerFechaPagoDesde.Location = new System.Drawing.Point(272, 60);
+            this.dateTimePickerFechaPagoDesde.Name = "dateTimePickerFechaPagoDesde";
+            this.dateTimePickerFechaPagoDesde.Size = new System.Drawing.Size(119, 27);
+            this.dateTimePickerFechaPagoDesde.TabIndex = 72;
+            // 
+            // dateTimePickerFechaPagoHasta
+            // 
+            this.dateTimePickerFechaPagoHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerFechaPagoHasta.Location = new System.Drawing.Point(480, 60);
+            this.dateTimePickerFechaPagoHasta.Name = "dateTimePickerFechaPagoHasta";
+            this.dateTimePickerFechaPagoHasta.Size = new System.Drawing.Size(119, 27);
+            this.dateTimePickerFechaPagoHasta.TabIndex = 73;
             // 
             // DevolucionesForm
             // 
@@ -304,7 +300,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button buttonCargarFacturasPagas;
-        private System.Windows.Forms.DateTimePicker dateTimePickerFechaPagoDesde;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridViewFacturasPagas;
@@ -319,7 +314,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBoxDNICliente;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DateTimePicker dateTimePickerFechaPagoHasta;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DateTimePicker dateTimePickerFechaPagoHasta;
+        private System.Windows.Forms.DateTimePicker dateTimePickerFechaPagoDesde;
     }
 }
